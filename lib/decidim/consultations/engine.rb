@@ -10,46 +10,31 @@ module Decidim
     class Engine < ::Rails::Engine
       isolate_namespace Decidim::Consultations
 
-      # routes do
-      #   get "/initiative_types/search", to: "initiative_types#search", as: :initiative_types_search
-      #   get "/initiative_type_scopes/search", to: "initiatives_type_scopes#search", as: :initiative_type_scopes_search
-      #
-      #   resources :create_initiative
-      #
-      #   get "initiatives/:initiative_id", to: redirect { |params, _request|
-      #     initiative = Decidim::Initiative.find(params[:initiative_id])
-      #     initiative ? "/initiatives/#{initiative.slug}" : "/404"
-      #   }, constraints: { initiative_id: /[0-9]+/ }
-      #
-      #   get "/initiatives/:initiative_id/f/:feature_id", to: redirect { |params, _request|
-      #     initiative = Decidim::Initiative.find(params[:initiative_id])
-      #     initiative ? "/initiatives/#{initiative.slug}/f/#{params[:feature_id]}" : "/404"
-      #   }, constraints: { initiative_id: /[0-9]+/ }
-      #
-      #   resources :initiatives, param: :slug, only: [:index, :show], path: "initiatives" do
-      #     member do
-      #       get :signature_identities
-      #     end
-      #
-      #     resource :initiative_vote, only: [:create, :destroy]
-      #     resource :initiative_widget, only: :show, path: "embed"
-      #     resources :committee_requests, only: [:new], shallow: true do
-      #       collection do
-      #         get :spawn
-      #       end
-      #     end
-      #   end
-      #
-      #   scope "/initiatives/:initiative_slug/f/:feature_id" do
-      #     Decidim.feature_manifests.each do |manifest|
-      #       next unless manifest.engine
-      #
-      #       constraints CurrentFeature.new(manifest) do
-      #         mount manifest.engine, at: "/", as: "decidim_initiative_#{manifest.name}"
-      #       end
-      #     end
-      #   end
-      # end
+      routes do
+        get "/consultations/:consultation_id", to: redirect { |params, _request|
+          consultation = Decidim::Consultation.find(params[:consultation_id])
+          consultation ? "/consultations/#{initiative.slug}" : "/404"
+        }, constraints: { consultation_id: /[0-9]+/ }
+
+        get "/consultations/:consultation_id/f/:feature_id", to: redirect { |params, _request|
+          consultation = Decidim::Consultation.find(params[:consultation_id])
+          consultation ? "/consultation/#{consultation.slug}/f/#{params[:feature_id]}" : "/404"
+        }, constraints: { consultation_id: /[0-9]+/ }
+
+        resources :consultations, only: [:index, :show], param: :slug, path: "consultations" do
+          # resource :consultation_widget, only: :show, path: "embed"
+        end
+
+        scope "/consultations/:consultation_slug/f/:feature_id" do
+          Decidim.feature_manifests.each do |manifest|
+            next unless manifest.engine
+
+            constraints CurrentFeature.new(manifest) do
+              mount manifest.engine, at: "/", as: "decidim_consultation_#{manifest.name}"
+            end
+          end
+        end
+      end
 
       # initializer "decidim_initiatives.assets" do |app|
       #   app.config.assets.precompile += %w(

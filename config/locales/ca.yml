@@ -1,0 +1,58 @@
+---
+ca:
+  activemodel:
+    attributes:
+      consultation:
+        slug: Nom curt d'URL
+        title: Títol
+        subtitle: Subtítol
+        description: Descripció
+        banner_image: Imatge de bàner
+        introductory_video_url: URL de vídeo introductori
+        start_voting_date: Inici del periode de votació
+        decidim_highlighted_scope_id: Àmbit destacat
+  decidim:
+    admin:
+      menu:
+        consultations: Consultes
+        consultations_submenu:
+          info: Informació
+          features: Funcionalitats
+      titles:
+        consultations: Consultes
+      models:
+        consultation:
+          name:
+            one: Consulta
+            other: Consultes
+          fields:
+            title: Títol
+            published: Publicada
+            created_at: Data de creació
+      consultations:
+        index:
+          not_published: No publicada
+          published: Publicat
+        new:
+          title: Nova consulta
+          create: Crea
+        edit:
+          update: Actualitzar
+        update:
+          error: S'ha produït un error en actualitzar aquesta consulta.
+          success: La consulta s'ha actualitzat correctament.
+        form:
+          title: Informació general
+          slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquesta consulta. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+        create:
+          error: S'ha produït un error en crear una nova consulta.
+          success: Consulta creada correctament.
+        destroy:
+          success: La consulta s'ha eliminat amb èxit.
+      consultation_publications:
+        create:
+          error: S'ha produït un error en publicar aquesta consulta.
+          success: Consulta publicada amb èxit.
+        destroy:
+          error: S'ha produït un error en despublicar aquesta consulta.
+          success: Consulta despublicada amb èxit.
