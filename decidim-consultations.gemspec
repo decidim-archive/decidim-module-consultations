@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.authors = ["Juan Salvador Perez Garcia"]
   s.email = ["jsperezg@gmail.com"]
   s.homepage = "https://github.com/decidim/decidim-module-consultations"
-  s.summary = "TODO: Summary of Decidim::Consultations."
+  s.summary = "Extends Decidim adding a first level public consultation feature"
   s.description = s.summary
   s.license = "AGPL-3.0"
   s.required_ruby_version = ">= 2.3.1"

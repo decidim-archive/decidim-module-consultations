@@ -1,0 +1,58 @@
+---
+es:
+  activemodel:
+    attributes:
+      consultation:
+        slug: Texto corto de URL
+        title: Título
+        subtitle: Subtítulo
+        description: Descripción
+        banner_image: Imagen de banner
+        introductory_video_url: URL del vídeo introductorio
+        start_voting_date: Inicio del periodo de votación
+        decidim_highlighted_scope_id: Ámbito destacado
+  decidim:
+    admin:
+      menu:
+        consultations: Consultas
+        consultations_submenu:
+          info: Información
+          features: Funcionalidades
+      titles:
+        consultations: Consultas
+      models:
+        consultation:
+          name:
+            one: Consulta
+            other: Consultas
+          fields:
+            title: Título
+            published: Publicada
+            created_at: Fecha de creación
+      consultations:
+        index:
+          not_published: No publicado
+          published: Publicado
+        new:
+          title: Nueva consulta
+          create: Crear
+        edit:
+          update: Actualizar
+        update:
+          error: Se ha producido un error al actualizar esta consulta.
+          success: La consulta se ha actualizado correctamente.
+        form:
+          title: Información general
+          slug_help: 'Los textos cortos de URL se utilizan para generar las URL que apuntan a esta consulta. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
+        create:
+          error: Se produjo un error al crear una nueva consulta.
+          success: Consulta creada correctamente.
+        destroy:
+          success: Consulta destruida correctamente.
+      consultation_publications:
+        create:
+          error: Se produjo un error al publicar esta consulta.
+          success: Consulta publicada con éxito.
+        destroy:
+          error: Se produjo un error al despublicar esta consulta.
+          success: Consulta despublicada con éxito.
