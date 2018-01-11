@@ -15,6 +15,13 @@ en:
     home:
       statistics:
         consultations_count: Consultations
+  layouts:
+    decidim:
+      consultation_voting_data:
+        start_voting_date: Voting from
+      consultation_header:
+        consultation_menu_item: Consultation
+        unfold: Unfold
   decidim:
     admin:
       menu:

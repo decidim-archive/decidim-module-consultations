@@ -21,9 +21,7 @@ module Decidim
           consultation ? "/consultation/#{consultation.slug}/f/#{params[:feature_id]}" : "/404"
         }, constraints: { consultation_id: /[0-9]+/ }
 
-        resources :consultations, only: [:index, :show], param: :slug, path: "consultations" do
-          # resource :consultation_widget, only: :show, path: "embed"
-        end
+        resources :consultations, only: [:index, :show], param: :slug, path: "consultations"
 
         scope "/consultations/:consultation_slug/f/:feature_id" do
           Decidim.feature_manifests.each do |manifest|
@@ -36,12 +34,12 @@ module Decidim
         end
       end
 
-      # initializer "decidim_initiatives.assets" do |app|
-      #   app.config.assets.precompile += %w(
-      #     decidim_consultations_manifest.js
-      #   )
-      # end
-      #
+      initializer "decidim_consultations.assets" do |app|
+        app.config.assets.precompile += %w(
+          decidim_consultations_manifest.css
+        )
+      end
+
       initializer "decidim_consultations.inject_abilities_to_user" do |_app|
         Decidim.configure do |config|
           config.abilities += %w(
@@ -56,22 +54,22 @@ module Decidim
         end
       end
 
+      # TODO: Define the criteria to select consultations in main page.
+      # initializer "decidim_consultations.view_hooks" do
+      #   Decidim.view_hooks.register(:active_elements, priority: Decidim::ViewHooks::MEDIUM_PRIORITY) do |view_context|
+      #     active_consultations = OrganizationActiveConsultations.for(view_context.current_organization)
       #
-      # initializer "decidim_initiatives.view_hooks" do
-      #   Decidim.view_hooks.register(:highlighted_elements, priority: Decidim::ViewHooks::MEDIUM_PRIORITY) do |view_context|
-      #     highlighted_initiatives = OrganizationPrioritizedInitiatives.new(view_context.current_organization)
-      #
-      #     next unless highlighted_initiatives.any?
+      #     next unless active_consultations.any?
       #
       #     view_context.render(
-      #       partial: "decidim/initiatives/pages/home/highlighted_initiatives",
+      #       partial: "decidim/consultations/pages/home/active_consultations",
       #       locals: {
-      #         highlighted_initiatives: highlighted_initiatives
+      #         active_consultations: active_consultations
       #       }
       #     )
       #   end
       # end
-      #
+
       initializer "decidim_consultations.menu" do
         Decidim.menu :menu do |menu|
           menu.item I18n.t("menu.consultations", scope: "decidim"),

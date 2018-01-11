@@ -21,7 +21,7 @@ Decidim.register_participatory_space(:consultations) do |participatory_space|
         published_at: Time.now.utc,
         start_voting_date: Time.zone.today,
         banner_image: File.new(File.join(seeds_root, "city2.jpeg")),
-        introductory_video_url: "https://www.youtube.com/watch?v=OB5SS3wCZx0",
+        introductory_video_url: "https://www.youtube.com/embed/LakKJZjKkRM",
         decidim_highlighted_scope_id: Decidim::Scope.reorder("RANDOM()").first.id,
         organization: organization
       )

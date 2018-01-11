@@ -15,6 +15,13 @@ es:
     home:
       statistics:
         consultations_count: Multiconsultas
+  layouts:
+    decidim:
+      consultation_voting_data:
+        start_voting_date: Votación a partir de
+      consultation_header:
+        consultation_menu_item: Multiconsula
+        unfold: Desplegar
   decidim:
     admin:
       menu:
