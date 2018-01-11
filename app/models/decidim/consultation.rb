@@ -23,6 +23,7 @@ module Decidim
 
     scope :upcoming, -> { published.where("start_voting_date > ?", Time.now.utc) }
     scope :active, -> { published.where("start_voting_date <= ?", Time.now.utc) }
+    scope :order_by_most_recent, -> { order(created_at: :desc) }
 
     def to_param
       slug

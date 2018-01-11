@@ -11,6 +11,10 @@ ca:
         introductory_video_url: URL de vídeo introductori
         start_voting_date: Inici del periode de votació
         decidim_highlighted_scope_id: Àmbit destacat
+  pages:
+    home:
+      statistics:
+        consultations_count: Multiconsultes
   decidim:
     admin:
       menu:
@@ -56,3 +60,32 @@ ca:
         destroy:
           error: S'ha produït un error en despublicar aquesta consulta.
           success: Consulta despublicada amb èxit.
+    menu:
+      consultations: Multiconsultes
+    consultations:
+      index:
+        title: Multiconsultes
+      count:
+        title:
+          one: "%{count} multiconsulta"
+          other: "%{count} multiconsultes"
+      filters_small_view:
+        filter: Filtra
+        unfold: Desplegar
+        filter_by: Filtrar per
+        close_modal: Tancar finestra
+      filters:
+        search: Cerca
+        state: Estat
+        all: Tots
+        active: Actives
+        upcoming: Properes
+      consultation:
+        check: Veure
+      consultation_badge:
+        upcoming: Pròximament
+      consultations:
+        orders:
+          label: 'Ordenar mlticonsultes per:'
+          random: Aleatori
+          recent: Més recent

@@ -1,0 +1,22 @@
+<div class="column">
+  <article class="card card--consultation">
+    <div class="card__content">
+      <div class="card__header">
+        <%= link_to consultation do%>
+          <h5 class="card__title"><%= translated_attribute consultation.title %></h5>
+        <% end %>
+      </div>
+      <%= render partial: 'decidim/consultations/consultations/consultation_badge', locals: { consultation: consultation } %>
+      <%= decidim_sanitize html_truncate(translated_attribute(consultation.description), length: 100, separator: '...') %>
+    </div>
+
+    <div class="card__footer">
+      <div class="card__support">
+        <div class="card__support__data"></div>
+        <%= link_to t("consultations.consultation.check", scope: "decidim"),
+                    consultation,
+                    class: 'card__button button small secondary' %>
+      </div>
+    </div>
+  </article>
+</div>
