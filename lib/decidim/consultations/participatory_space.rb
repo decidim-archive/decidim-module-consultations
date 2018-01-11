@@ -3,6 +3,7 @@
 Decidim.register_participatory_space(:consultations) do |participatory_space|
   participatory_space.engine = Decidim::Consultations::Engine
   participatory_space.admin_engine = Decidim::Consultations::AdminEngine
+  # participatory_space.icon = "decidim/assemblies/icon.svg"
   participatory_space.model_class_name = "Decidim::Consultation"
 
   participatory_space.seeds do

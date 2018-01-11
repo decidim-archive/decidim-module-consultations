@@ -42,16 +42,20 @@ module Decidim
       #   )
       # end
       #
-      # initializer "decidim_initiatives.inject_abilities_to_user" do |_app|
-      #   Decidim.configure do |config|
-      #     config.abilities += %w(
-      #       Decidim::Initiatives::Abilities::NonLoggedUserAbility
-      #       Decidim::Initiatives::Abilities::EveryoneAbility
-      #       Decidim::Initiatives::Abilities::CurrentUserAbility
-      #       Decidim::Initiatives::Abilities::VoteAbility
-      #     )
-      #   end
-      # end
+      initializer "decidim_consultations.inject_abilities_to_user" do |_app|
+        Decidim.configure do |config|
+          config.abilities += %w(
+            Decidim::Consultations::Abilities::EveryoneAbility
+          )
+        end
+      end
+
+      initializer "decidim.stats" do
+        Decidim.stats.register :consultations_count, priority: StatsRegistry::HIGH_PRIORITY do |organization, _start_at, _end_at|
+          Decidim::Consultation.where(organization: organization).published.count
+        end
+      end
+
       #
       # initializer "decidim_initiatives.view_hooks" do
       #   Decidim.view_hooks.register(:highlighted_elements, priority: Decidim::ViewHooks::MEDIUM_PRIORITY) do |view_context|
@@ -68,14 +72,14 @@ module Decidim
       #   end
       # end
       #
-      # initializer "decidim_initiatives.menu" do
-      #   Decidim.menu :menu do |menu|
-      #     menu.item I18n.t("menu.initiatives", scope: "decidim"),
-      #               decidim_initiatives.initiatives_path,
-      #               position: 2.6,
-      #               active: :inclusive
-      #   end
-      # end
+      initializer "decidim_consultations.menu" do
+        Decidim.menu :menu do |menu|
+          menu.item I18n.t("menu.consultations", scope: "decidim"),
+                    decidim_consultations.consultations_path,
+                    position: 2.7,
+                    active: :inclusive
+        end
+      end
     end
   end
 end

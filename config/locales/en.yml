@@ -11,6 +11,10 @@ en:
         introductory_video_url: Introductory video URL
         start_voting_date: Start of the voting period
         decidim_highlighted_scope_id: Highlighted scope
+  pages:
+    home:
+      statistics:
+        consultations_count: Consultations
   decidim:
     admin:
       menu:
@@ -56,3 +60,32 @@ en:
         destroy:
           error: There was an error unpublishing this consultation.
           success: Consultation unpublished successfully.
+    menu:
+      consultations: Consultations
+    consultations:
+      index:
+        title: Consultations
+      count:
+        title:
+          one: "%{count} consultation"
+          other: "%{count} consultations"
+      filters_small_view:
+        filter: Filter
+        unfold: Unfold
+        filter_by: Filter by
+        close_modal: Close window
+      filters:
+        search: Search
+        state: State
+        all: All
+        active: Active
+        upcoming: Upcoming
+      consultation:
+        check: Check
+      consultation_badge:
+        upcoming: Upcoming
+      consultations:
+        orders:
+          label: 'Sort consultations by:'
+          random: Random
+          recent: Most recent

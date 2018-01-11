@@ -189,34 +189,17 @@ describe "Admin manages consultations", type: :feature do
     end
   end
 
-  # TODO: Implement this test as soon as the public view is ready.
-  # describe "previewing assemblies" do
-  #   context "when the consultation is unpublished" do
-  #     let!(:consultation) { create(:consultation, :unpublished, organization: organization) }
-  #
-  #     it "allows the user to preview the unpublished consultation" do
-  #       within find("tr", text: translated(consultation.title)) do
-  #         click_link "Preview"
-  #       end
-  #
-  #       expect(page).to have_css(".process-header")
-  #       expect(page).to have_content(translated(consultation.title))
-  #     end
-  #   end
-  #
-  #   context "when the consultation is published" do
-  #     let!(:consultation) { create(:consultation, organization: organization) }
-  #
-  #     it "allows the user to view the published consultation" do
-  #       within find("tr", text: translated(consultation.title)) do
-  #         click_link "Preview"
-  #       end
-  #
-  #       expect(page).to have_current_path decidim_consultations.consultation_path(consultation)
-  #       expect(page).to have_content(translated(consultation.title))
-  #     end
-  #   end
-  # end
+  describe "previewing consultations" do
+    let!(:consultation) { create(:consultation, organization: organization) }
+
+    it "allows the user to preview the unpublished consultation" do
+      within find("tr", text: translated(consultation.title)) do
+        click_link "Preview"
+      end
+
+      expect(page).to have_content(translated(consultation.title))
+    end
+  end
 
   describe "viewing a missing consultation" do
     it_behaves_like "a 404 page" do

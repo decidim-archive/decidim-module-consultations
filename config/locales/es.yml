@@ -11,6 +11,10 @@ es:
         introductory_video_url: URL del vídeo introductorio
         start_voting_date: Inicio del periodo de votación
         decidim_highlighted_scope_id: Ámbito destacado
+  pages:
+    home:
+      statistics:
+        consultations_count: Multiconsultas
   decidim:
     admin:
       menu:
@@ -56,3 +60,32 @@ es:
         destroy:
           error: Se produjo un error al despublicar esta consulta.
           success: Consulta despublicada con éxito.
+    menu:
+      consultations: Multiconsultas
+    consultations:
+      index:
+        title: Multiconsultas
+      count:
+        title:
+          one: "%{count} multiconsulta"
+          other: "%{count} multiconsultas"
+      filters_small_view:
+        filter: Filtrar
+        unfold: Desplegar
+        filter_by: Filtrar por
+        close_modal: Cerrar ventana
+      filters:
+        search: Buscar
+        state: Estado
+        all: Todos
+        active: Activas
+        upcoming: Próximas
+      consultation:
+        check: Ver
+      consultation_badge:
+        upcoming: Próximamente
+      consultations:
+        orders:
+          label: 'Ordenar multiconsultas por:'
+          random: Aleatorio
+          recent: Mas reciente
