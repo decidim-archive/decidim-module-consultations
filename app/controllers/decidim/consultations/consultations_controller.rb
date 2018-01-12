@@ -5,6 +5,8 @@ module Decidim
     # A controller that holds the logic to show consultations in a
     # public layout.
     class ConsultationsController < Decidim::ApplicationController
+      layout "layouts/decidim/consultation", only: :show
+
       include NeedsConsultation
       include FilterResource
       include Paginable
@@ -16,6 +18,7 @@ module Decidim
       helper Decidim::OrdersHelper
       helper Decidim::SanitizeHelper
       helper Decidim::PaginateHelper
+      helper Decidim::IconHelper
 
       def index
         authorize! :read, Consultation
