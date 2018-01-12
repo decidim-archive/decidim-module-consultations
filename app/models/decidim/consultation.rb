@@ -37,6 +37,10 @@ module Decidim
       start_voting_date <= Time.now.utc
     end
 
+    def has_subscopes?
+      false
+    end
+
     def self.order_randomly(seed)
       transaction do
         connection.execute("SELECT setseed(#{connection.quote(seed)})")
