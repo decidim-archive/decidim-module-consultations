@@ -16,6 +16,11 @@ module Decidim
 
     has_many :features, as: :participatory_space, dependent: :restrict_with_error
 
+    has_many :questions,
+             foreign_key: "decidim_consultation_id",
+             class_name: "Decidim::Consultations::Question",
+             dependent: :restrict_with_error
+
     validates :slug, uniqueness: { scope: :organization }
     validates :slug, presence: true, format: { with: Decidim::Consultation.slug_format }
 
