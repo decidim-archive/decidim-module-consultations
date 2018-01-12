@@ -21,7 +21,7 @@ module Decidim
 
         validates :slug, presence: true, format: { with: Decidim::Consultation.slug_format }
         validates :title, :subtitle, :description, translatable_presence: true
-        validates :highlighted_scope, presence: true
+        validates :decidim_highlighted_scope_id, presence: true
         validates :start_voting_date, presence: true
 
         validate :slug_uniqueness

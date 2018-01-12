@@ -2,6 +2,6 @@
 
 module Decidim
   module Consultations
-    VERSION = "0.1.1"
+    VERSION = "0.1.2"
   end
 end
