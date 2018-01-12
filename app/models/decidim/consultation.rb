@@ -5,6 +5,8 @@ module Decidim
   class Consultation < ApplicationRecord
     include Decidim::Participable
     include Decidim::Publicable
+    include Decidim::Consultations::OverrideCategorization
+    include Decidim::Consultations::OverrideScopeable
 
     belongs_to :organization,
                foreign_key: "decidim_organization_id",
@@ -35,10 +37,6 @@ module Decidim
 
     def active?
       start_voting_date <= Time.now.utc
-    end
-
-    def has_subscopes?
-      false
     end
 
     def self.order_randomly(seed)
