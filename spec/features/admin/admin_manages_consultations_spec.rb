@@ -20,6 +20,9 @@ describe "Admin manages consultations", type: :feature do
       execute_script("$('#date_field_consultation_start_voting_date').focus()")
       find(".active").click
 
+      execute_script("$('#date_field_consultation_end_voting_date').focus()")
+      find(".active").click
+
       within ".new_consultation" do
         fill_in_i18n(
           :consultation_title,
@@ -65,6 +68,9 @@ describe "Admin manages consultations", type: :feature do
 
     it "fails to create a new consultation" do
       execute_script("$('#date_field_consultation_start_voting_date').focus()")
+      find(".active").click
+
+      execute_script("$('#date_field_consultation_end_voting_date').focus()")
       find(".active").click
 
       within ".new_consultation" do

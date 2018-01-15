@@ -18,12 +18,13 @@ module Decidim
         attribute :introductory_video_url, String
         attribute :decidim_highlighted_scope_id, Integer
         attribute :start_voting_date, Date
+        attribute :end_voting_date, Date
 
         validates :slug, presence: true, format: { with: Decidim::Consultation.slug_format }
         validates :title, :subtitle, :description, translatable_presence: true
         validates :decidim_highlighted_scope_id, presence: true
-        validates :start_voting_date, presence: true
-
+        validates :start_voting_date, presence: true, date: { before_or_equal_to: :end_voting_date }
+        validates :end_voting_date, presence: true, date: { after_or_equal_to: :start_voting_date }
         validate :slug_uniqueness
 
         validates :banner_image, file_size: { less_than_or_equal_to: ->(_record) { Decidim.maximum_attachment_size } }, file_content_type: { allow: ["image/jpeg", "image/png"] }

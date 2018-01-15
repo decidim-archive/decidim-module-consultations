@@ -17,6 +17,7 @@ FactoryBot.define do
     banner_image { Decidim::Dev.test_file("city2.jpeg", "image/jpeg") }
     published_at { Time.current }
     start_voting_date { Time.zone.today }
+    end_voting_date { Time.zone.today + 1.month }
     introductory_video_url "https://www.youtube.com/embed/LakKJZjKkRM"
     decidim_highlighted_scope_id { create(:scope, organization: organization).id }
 
@@ -30,10 +31,17 @@ FactoryBot.define do
 
     trait :upcoming do
       start_voting_date { Time.zone.today + 7.days }
+      end_voting_date { Time.zone.today + 1.month + 7.days }
     end
 
     trait :active do
       start_voting_date { Time.zone.today - 7.days }
+      end_voting_date { Time.zone.today - 7.days + 1.month }
+    end
+
+    trait :finished do
+      start_voting_date { Time.zone.today - 7.days - 1.month }
+      end_voting_date { Time.zone.today - 7.days }
     end
   end
 

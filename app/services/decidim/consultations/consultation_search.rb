@@ -34,6 +34,8 @@ module Decidim
           query.active
         when "upcoming"
           query.upcoming
+        when "finished"
+          query.finished
         else # Assume all
           query
         end

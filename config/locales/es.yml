@@ -10,6 +10,7 @@ es:
         banner_image: Imagen de banner
         introductory_video_url: URL del vídeo introductorio
         start_voting_date: Inicio del periodo de votación
+        end_voting_date: Fin del periodo de votación
         decidim_highlighted_scope_id: Ámbito destacado
       question:
         title: Título
@@ -90,6 +91,9 @@ es:
           error: Se produjo un error al despublicar esta consulta.
           success: Consulta despublicada con éxito.
       questions:
+        index:
+          not_published: No publicado
+          published: Publicado
         new:
           title: Nueva pregunta
           create: Crear
@@ -132,6 +136,7 @@ es:
         all: Todos
         active: Activas
         upcoming: Próximas
+        finished: Finalizadas
       consultation:
         check: Ver
       consultation_badge:

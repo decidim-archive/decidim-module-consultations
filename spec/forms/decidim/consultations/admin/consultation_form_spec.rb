@@ -33,6 +33,7 @@ module Decidim
         end
         let(:slug) { "slug" }
         let(:start_voting_date) { Time.zone.today }
+        let(:end_voting_date) { Time.zone.today + 1.month }
         let(:attachment) { Decidim::Dev.test_file("city2.jpeg", "image/jpeg") }
 
         let(:attributes) do
@@ -50,7 +51,8 @@ module Decidim
               "banner_image" => attachment,
               "slug" => slug,
               "decidim_highlighted_scope_id" => scope&.id,
-              "start_voting_date" => start_voting_date
+              "start_voting_date" => start_voting_date,
+              "end_voting_date" => end_voting_date
             }
           }
         end
@@ -143,10 +145,32 @@ module Decidim
           end
         end
 
-        context "when start_voting_date is missing" do
-          let(:start_voting_date) { nil }
+        describe "start_voting_date" do
+          context "when it is missing" do
+            let(:start_voting_date) { nil }
 
-          it { is_expected.to be_invalid }
+            it { is_expected.to be_invalid }
+          end
+
+          context "when it is after end_voting_date" do
+            let(:start_voting_date) { end_voting_date + 1.day }
+
+            it { is_expected.to be_invalid }
+          end
+        end
+
+        describe "end_voting_date" do
+          context "when it is missing" do
+            let(:end_voting_date) { nil }
+
+            it { is_expected.to be_invalid }
+          end
+
+          context "when it is before start_voting_date" do
+            let(:end_voting_date) { start_voting_date - 1.day }
+
+            it { is_expected.to be_invalid }
+          end
         end
 
         context "when highlighted scope is missing" do

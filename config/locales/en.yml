@@ -10,6 +10,7 @@ en:
         banner_image: Banner image
         introductory_video_url: Introductory video URL
         start_voting_date: Start of the voting period
+        end_voting_date: End of the voting period
         decidim_highlighted_scope_id: Highlighted scope
       question:
         title: Title
@@ -135,6 +136,7 @@ en:
         all: All
         active: Active
         upcoming: Upcoming
+        finished: Finished
       consultation:
         check: Check
       consultation_badge:

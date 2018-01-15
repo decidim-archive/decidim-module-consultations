@@ -39,6 +39,10 @@ module Decidim
           create_list(:consultation, 3, :published, :upcoming, organization: organization)
         end
 
+        let!(:finished_consultations) do
+          create_list(:consultation, 3, :published, :finished, organization: organization)
+        end
+
         context "when filtering active consultations" do
           let(:state) { "active" }
 
@@ -57,13 +61,23 @@ module Decidim
           end
         end
 
+        context "when filtering finished consultations" do
+          let(:state) { "finished" }
+
+          it "returns only finished consultations" do
+            expect(subject.size).to eq(3)
+            expect(subject).to match_array(finished_consultations)
+          end
+        end
+
         context "when filtering all consultations" do
           let(:state) { "all" }
 
           it "Returns all consultations" do
-            expect(subject.size).to eq(6)
+            expect(subject.size).to eq(9)
             expect(subject).to include(*active_consultations)
             expect(subject).to include(*upcoming_consultations)
+            expect(subject).to include(*finished_consultations)
           end
         end
       end

@@ -11,6 +11,7 @@ module Decidim
         let(:organization) { create :organization }
         let(:scope) { create :scope, organization: organization }
         let(:start_voting_date) { Time.zone.today }
+        let(:end_voting_date) { Time.zone.today + 1.month }
         let(:attachment) { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
         let(:errors) { double.as_null_object }
         let(:form) do
@@ -24,6 +25,7 @@ module Decidim
             banner_image: attachment,
             highlighted_scope: scope,
             start_voting_date: start_voting_date,
+            end_voting_date: end_voting_date,
             introductory_video_url: nil,
             current_organization: organization,
             errors: errors

@@ -45,7 +45,8 @@ module Decidim
             banner_image: form.banner_image,
             highlighted_scope: form.highlighted_scope,
             introductory_video_url: form.introductory_video_url,
-            start_voting_date: form.start_voting_date
+            start_voting_date: form.start_voting_date,
+            end_voting_date: form.end_voting_date
           )
 
           return consultation unless consultation.valid?

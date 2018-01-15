@@ -29,7 +29,12 @@ module Decidim
     mount_uploader :banner_image, Decidim::BannerImageUploader
 
     scope :upcoming, -> { published.where("start_voting_date > ?", Time.now.utc) }
-    scope :active, -> { published.where("start_voting_date <= ?", Time.now.utc) }
+    scope :active, lambda {
+      published
+        .where("start_voting_date <= ?", Time.now.utc)
+        .where("end_voting_date >= ?", Time.now.utc)
+    }
+    scope :finished, -> { published.where("end_voting_date < ?", Time.now.utc) }
     scope :order_by_most_recent, -> { order(created_at: :desc) }
 
     def to_param
@@ -41,7 +46,11 @@ module Decidim
     end
 
     def active?
-      start_voting_date <= Time.now.utc
+      start_voting_date <= Time.now.utc && end_voting_date >= Time.now.utc
+    end
+
+    def finished?
+      end_voting_date < Time.now.utc
     end
 
     def self.order_randomly(seed)

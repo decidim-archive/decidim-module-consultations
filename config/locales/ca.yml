@@ -10,6 +10,7 @@ ca:
         banner_image: Imatge de bàner
         introductory_video_url: URL del vídeo introductori
         start_voting_date: Inici del periode de votació
+        end_voting_date: Fi del periode de votació
         decidim_highlighted_scope_id: Àmbit destacat
       question:
         title: Títol
@@ -90,6 +91,9 @@ ca:
           error: S'ha produït un error en despublicar aquesta consulta.
           success: Consulta despublicada amb èxit.
       questions:
+        index:
+          not_published: No publicada
+          published: Publicat
         new:
           title: Nova pregunta
           create: Crea
@@ -132,6 +136,7 @@ ca:
         all: Tots
         active: Actives
         upcoming: Properes
+        finished: Finalitzades
       consultation:
         check: Veure
       consultation_badge:
