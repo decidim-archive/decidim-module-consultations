@@ -7,22 +7,24 @@ class CreateDecidimConsultationsQuestions < ActiveRecord::Migration[5.1]
       t.references :decidim_scope
 
       t.jsonb :title, null: false
+      t.jsonb :subtitle, null: false
+      t.jsonb :what_is_decided, null: false
       t.jsonb :promoter_group, null: false
       t.jsonb :participatory_scope, null: false
-      t.jsonb :context
+      t.jsonb :question_context
 
       # Text search indexes for consultation questions.
       t.index :title, name: "consultation_questions_title_search"
+      t.index :subtitle, name: "consultation_questions_subtitle_search"
+      t.index :what_is_decided, name: "consultation_questions_what_is_decided_search"
       t.index :promoter_group, name: "consultation_question_promoter_group_search"
       t.index :participatory_scope, name: "consultation_question_participatory_scope_search"
-      t.index :participatory_scope, name: "consultation_question_context_search"
+      t.index :context, name: "consultation_question_context_search"
 
+      t.string :banner_image
       t.string :introductory_video_url
       t.string :reference
       t.string :hashtag
-
-      t.date :start_voting_date, null: false
-      t.date :end_voting_date, null: false
 
       # Publicable
       t.datetime :published_at, index: true

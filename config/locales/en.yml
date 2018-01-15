@@ -11,6 +11,18 @@ en:
         introductory_video_url: Introductory video URL
         start_voting_date: Start of the voting period
         decidim_highlighted_scope_id: Highlighted scope
+      question:
+        title: Title
+        subtitle: Subtitle
+        promoter_group: Promoter group
+        decidim_scope_id: Municipal area
+        participatory_scope: Participatory scope
+        what_is_decided: What is decided
+        question_context: Context
+        reference: Reference
+        introductory_video_url: Introductory video URL
+        hashtag: Hashtag
+        banner_image: Banner image
   pages:
     home:
       statistics:
@@ -28,14 +40,24 @@ en:
         consultations: Consultations
         consultations_submenu:
           info: Information
+          questions: Questions
           features: Features
       titles:
         consultations: Consultations
+        questions: Questions
       models:
         consultation:
           name:
             one: Consultation
             other: Consultations
+          fields:
+            title: Title
+            published: Published
+            created_at: Created at
+        question:
+          name:
+            one: Question
+            other: Questions
           fields:
             title: Title
             published: Published
@@ -67,6 +89,32 @@ en:
         destroy:
           error: There was an error unpublishing this consultation.
           success: Consultation unpublished successfully.
+      questions:
+        index:
+          not_published: Not published
+          published: Published
+        new:
+          title: New question
+          create: Create
+        form:
+          title: General information
+        create:
+          error: There was an error creating a new question.
+          success: Question successfully created.
+        edit:
+          update: Update
+        update:
+          error: There was an error when updating this question.
+          success: Question updated successfully.
+        destroy:
+          success: Question successfully destroyed.
+      question_publications:
+        create:
+          error: There was an error publishing this question.
+          success: Question published successfully.
+        destroy:
+          error: There was an error unpublishing this question.
+          success: Question unpublished successfully.
     menu:
       consultations: Consultations
     consultations:

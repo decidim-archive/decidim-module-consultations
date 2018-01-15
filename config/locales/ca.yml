@@ -8,9 +8,21 @@ ca:
         subtitle: Subtítol
         description: Descripció
         banner_image: Imatge de bàner
-        introductory_video_url: URL de vídeo introductori
+        introductory_video_url: URL del vídeo introductori
         start_voting_date: Inici del periode de votació
         decidim_highlighted_scope_id: Àmbit destacat
+      question:
+        title: Títol
+        subtitle: Subtítol
+        promoter_group: Grup promotor
+        decidim_scope_id: Àrea municipal
+        participatory_scope: Àmbit participatiu
+        what_is_decided: Què es decideix
+        question_context: Contexte
+        reference: Referència
+        introductory_video_url: URL del vídeo introductori
+        hashtag: Hashtag
+        banner_image: Imatge de bàner
   pages:
     home:
       statistics:
@@ -28,14 +40,24 @@ ca:
         consultations: Consultes
         consultations_submenu:
           info: Informació
+          questions: Preguntes
           features: Funcionalitats
       titles:
         consultations: Consultes
+        questions: Preguntes
       models:
         consultation:
           name:
             one: Consulta
             other: Consultes
+          fields:
+            title: Títol
+            published: Publicada
+            created_at: Data de creació
+        question:
+          name:
+            one: Pregunta
+            other: Preguntes
           fields:
             title: Títol
             published: Publicada
@@ -67,6 +89,29 @@ ca:
         destroy:
           error: S'ha produït un error en despublicar aquesta consulta.
           success: Consulta despublicada amb èxit.
+      questions:
+        new:
+          title: Nova pregunta
+          create: Crea
+        form:
+          title: Informació general
+        create:
+          error: S'ha produït un error en crear una nova pregunta.
+          success: Pregunta creada correctament.
+        edit:
+          update: Actualitzar
+        update:
+          error: S'ha produït un error en actualitzar aquesta pregunta.
+          success: La pregunta s'ha actualitzat correctament.
+        destroy:
+          success: La pregunta s'ha eliminat amb èxit.
+      question_publications:
+        create:
+          error: S'ha produït un error en publicar aquesta pregunta.
+          success: Pregunta publicada amb èxit.
+        destroy:
+          error: S'ha produït un error en despublicar aquesta pregunta.
+          success: Pregunta despublicada amb èxit.
     menu:
       consultations: Multiconsultes
     consultations:

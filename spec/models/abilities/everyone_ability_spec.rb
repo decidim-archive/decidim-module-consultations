@@ -22,6 +22,20 @@ module Decidim
 
             it { is_expected.to be_able_to(:read, consultation) }
           end
+
+          context "and publised question" do
+            let(:consultation) { create(:consultation, organization: user.organization) }
+            let(:question) { build(:question, :published, consultation: consultation) }
+
+            it { is_expected.to be_able_to(:read, question) }
+          end
+
+          context "and unpublised question" do
+            let(:consultation) { create(:consultation, organization: user.organization) }
+            let(:question) { build(:question, :unpublished, consultation: consultation) }
+
+            it { is_expected.to be_able_to(:read, question) }
+          end
         end
 
         context "when regular user" do
@@ -38,6 +52,20 @@ module Decidim
 
             it { is_expected.not_to be_able_to(:read, consultation) }
           end
+
+          context "and publised question" do
+            let(:consultation) { create(:consultation, organization: user.organization) }
+            let(:question) { build(:question, :published, consultation: consultation) }
+
+            it { is_expected.to be_able_to(:read, question) }
+          end
+
+          context "and unpublised question" do
+            let(:consultation) { create(:consultation, organization: user.organization) }
+            let(:question) { build(:question, :unpublished, consultation: consultation) }
+
+            it { is_expected.not_to be_able_to(:read, question) }
+          end
         end
 
         context "when guest user" do
@@ -53,6 +81,20 @@ module Decidim
             let(:consultation) { build(:consultation, :unpublished) }
 
             it { is_expected.not_to be_able_to(:read, consultation) }
+          end
+
+          context "and publised question" do
+            let(:consultation) { create(:consultation) }
+            let(:question) { build(:question, :published, consultation: consultation) }
+
+            it { is_expected.to be_able_to(:read, question) }
+          end
+
+          context "and unpublised question" do
+            let(:consultation) { create(:consultation) }
+            let(:question) { build(:question, :unpublished, consultation: consultation) }
+
+            it { is_expected.not_to be_able_to(:read, question) }
           end
         end
       end

@@ -15,6 +15,9 @@ module Decidim
       routes do
         resources :consultations, param: :slug, except: :show do
           resource :publish, controller: "consultation_publications", only: [:create, :destroy]
+          resources :questions, except: :show do
+            resource :publish, controller: "question_publications", only: [:create, :destroy]
+          end
         end
 
         scope "/consultations/:consultation_slug" do

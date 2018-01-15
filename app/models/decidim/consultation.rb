@@ -5,6 +5,8 @@ module Decidim
   class Consultation < ApplicationRecord
     include Decidim::Participable
     include Decidim::Publicable
+    include Decidim::Consultations::OverrideCategorization
+    include Decidim::Consultations::OverrideScopeable
 
     belongs_to :organization,
                foreign_key: "decidim_organization_id",

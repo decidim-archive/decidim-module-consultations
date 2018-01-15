@@ -23,7 +23,7 @@ module Decidim
             description: { en: "description" },
             banner_image: attachment,
             highlighted_scope: scope,
-            start_voting_date: Time.zone.today,
+            start_voting_date: start_voting_date,
             introductory_video_url: nil,
             current_organization: organization,
             errors: errors

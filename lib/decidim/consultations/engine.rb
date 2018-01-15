@@ -21,7 +21,9 @@ module Decidim
           consultation ? "/consultation/#{consultation.slug}/f/#{params[:feature_id]}" : "/404"
         }, constraints: { consultation_id: /[0-9]+/ }
 
-        resources :consultations, only: [:index, :show], param: :slug, path: "consultations"
+        resources :consultations, only: [:index, :show], param: :slug, path: "consultations" do
+          resources :questions, only: [:index, :show], path: "q"
+        end
 
         scope "/consultations/:consultation_slug/f/:feature_id" do
           Decidim.feature_manifests.each do |manifest|

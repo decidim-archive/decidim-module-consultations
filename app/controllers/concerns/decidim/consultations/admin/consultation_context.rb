@@ -10,8 +10,6 @@ module Decidim
           base.class_eval do
             include ConsultationAdmin
 
-            # delegate :active_step, to: :current_assembly, prefix: false
-
             alias_method :current_consultation, :current_participatory_space
           end
         end

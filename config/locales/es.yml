@@ -11,6 +11,18 @@ es:
         introductory_video_url: URL del vídeo introductorio
         start_voting_date: Inicio del periodo de votación
         decidim_highlighted_scope_id: Ámbito destacado
+      question:
+        title: Título
+        subtitle: Subtítulo
+        promoter_group: Grupo promotor
+        decidim_scope_id: Área municipal
+        participatory_scope: Ámbito participativo
+        what_is_decided: Qué se decide
+        question_context: Contexto
+        reference: Referencia
+        introductory_video_url: URL del vídeo introductorio
+        hashtag: Hashtag
+        banner_image: Imagen de banner
   pages:
     home:
       statistics:
@@ -28,14 +40,24 @@ es:
         consultations: Consultas
         consultations_submenu:
           info: Información
+          questions: Preguntas
           features: Funcionalidades
       titles:
         consultations: Consultas
+        questions: Preguntes
       models:
         consultation:
           name:
             one: Consulta
             other: Consultas
+          fields:
+            title: Título
+            published: Publicada
+            created_at: Fecha de creación
+        question:
+          name:
+            one: Pregunta
+            other: Preguntas
           fields:
             title: Título
             published: Publicada
@@ -67,6 +89,29 @@ es:
         destroy:
           error: Se produjo un error al despublicar esta consulta.
           success: Consulta despublicada con éxito.
+      questions:
+        new:
+          title: Nueva pregunta
+          create: Crear
+        form:
+          title: Información general
+        create:
+          error: Se produjo un error al crear una nueva pregunta.
+          success: Pregunta creada correctamente.
+        edit:
+          update: Actualizar
+        update:
+          error: Se ha producido un error al actualizar esta pregunta.
+          success: La pregunta se ha actualizado correctamente.
+        destroy:
+          success: Pregunta destruida correctamente.
+      question_publications:
+        create:
+          error: Se produjo un error al publicar esta pregunta.
+          success: Pregunta publicada con éxito.
+        destroy:
+          error: Se produjo un error al despublicar esta pregunta.
+          success: Pregunta despublicada con éxito.
     menu:
       consultations: Multiconsultas
     consultations:
