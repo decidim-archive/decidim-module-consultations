@@ -53,6 +53,10 @@ module Decidim
       questions.published.where(decidim_scope_id: decidim_highlighted_scope_id)
     end
 
+    def regular_questions
+      questions.published.where.not(decidim_scope_id: decidim_highlighted_scope_id).group_by(&:scope)
+    end
+
     def self.order_randomly(seed)
       transaction do
         connection.execute("SELECT setseed(#{connection.quote(seed)})")

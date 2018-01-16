@@ -152,5 +152,7 @@ ca:
           recent: Més recent
       highlighted_questions:
         title: Consultes de %{scope_name}
+      regular_questions:
+        title: Altres consultes
       highlighted_question:
         take_part: Participa

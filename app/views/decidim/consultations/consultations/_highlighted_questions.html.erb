@@ -7,7 +7,7 @@
     </h4>
 
     <% consultation.highlighted_questions.each do |question| %>
-      <%= render partial: "highlighted_question", locals: { question: question } %>
+      <%= render partial: "question", locals: { question: question } %>
     <% end %>
   </section>
 <% end %>
