@@ -1,0 +1,13 @@
+<% if consultation.highlighted_questions.any? %>
+  <section  id="highlighted-questions" class="row section">
+    <h4 class=section-heading>
+      <%= t "consultations.highlighted_questions.title",
+            scope: "decidim",
+            scope_name: translated_attribute(consultation.highlighted_scope.name) %>
+    </h4>
+
+    <% consultation.highlighted_questions.each do |question| %>
+      <%= render partial: "highlighted_question", locals: { question: question } %>
+    <% end %>
+  </section>
+<% end %>

@@ -1,0 +1,24 @@
+<article class="card card--full card--process">
+  <div class="row collapse card--process__row">
+    <div class="columns mediumlarge-8 large-8 card--process__column">
+      <div class="card__content">
+        <%= link_to decidim_consultations.question_path(question) do %>
+          <h2 class="card__title"><%= translated_attribute question.title %></h2>
+        <% end %>
+        <p><%= translated_attribute question.subtitle %></p>
+      </div>
+    </div>
+
+    <div class="columns mediumlarge-4 large-4 card--process__column">
+      <div class="card--full__image" style="background-image: url(<%= question.banner_image_url %>)">
+        <div class="card__content row collapse">
+          <div class="large-6 large-offset-3 columns">
+            <%= link_to t("consultations.highlighted_question.take_part", scope: "decidim"),
+                        decidim_consultations.question_path(question),
+                        class: "button expanded button--sc" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

@@ -49,6 +49,10 @@ module Decidim
       end_voting_date < Time.now.utc
     end
 
+    def highlighted_questions
+      questions.published.where(decidim_scope_id: decidim_highlighted_scope_id)
+    end
+
     def self.order_randomly(seed)
       transaction do
         connection.execute("SELECT setseed(#{connection.quote(seed)})")
