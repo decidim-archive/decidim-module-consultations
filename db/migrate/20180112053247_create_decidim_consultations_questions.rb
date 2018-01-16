@@ -19,7 +19,7 @@ class CreateDecidimConsultationsQuestions < ActiveRecord::Migration[5.1]
       t.index :what_is_decided, name: "consultation_questions_what_is_decided_search"
       t.index :promoter_group, name: "consultation_question_promoter_group_search"
       t.index :participatory_scope, name: "consultation_question_participatory_scope_search"
-      t.index :context, name: "consultation_question_context_search"
+      t.index :question_context, name: "consultation_question_context_search"
 
       t.string :banner_image
       t.string :introductory_video_url

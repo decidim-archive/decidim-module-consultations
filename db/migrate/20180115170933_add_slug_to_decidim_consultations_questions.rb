@@ -4,10 +4,11 @@ class AddSlugToDecidimConsultationsQuestions < ActiveRecord::Migration[5.1]
   def change
     add_column :decidim_consultations_questions,
                :decidim_organization_id,
-               foreign_key: true,
+               :integer,
                index: {
                  name: "index_decidim_questions_on_decidim_organization_id"
                }
+
     add_column :decidim_consultations_questions, :slug, :string
 
     Decidim::Consultations::Question.find_each do |question|
@@ -16,8 +17,8 @@ class AddSlugToDecidimConsultationsQuestions < ActiveRecord::Migration[5.1]
       question.save
     end
 
-    change_column_null :decidim_organizations_questions, :decidim_organization_id, false
-    change_column_null :decidim_organizations_questions, :slug, false
+    change_column_null :decidim_consultations_questions, :decidim_organization_id, false
+    change_column_null :decidim_consultations_questions, :slug, false
 
     add_index :decidim_consultations_questions,
               [:decidim_organization_id, :slug],
