@@ -5,8 +5,6 @@ module Decidim
   class Consultation < ApplicationRecord
     include Decidim::Participable
     include Decidim::Publicable
-    include Decidim::Consultations::OverrideCategorization
-    include Decidim::Consultations::OverrideScopeable
 
     belongs_to :organization,
                foreign_key: "decidim_organization_id",
@@ -16,12 +14,10 @@ module Decidim
                foreign_key: "decidim_highlighted_scope_id",
                class_name: "Decidim::Scope"
 
-    has_many :features, as: :participatory_space, dependent: :restrict_with_error
-
     has_many :questions,
              foreign_key: "decidim_consultation_id",
              class_name: "Decidim::Consultations::Question",
-             dependent: :restrict_with_error
+             dependent: :destroy
 
     validates :slug, uniqueness: { scope: :organization }
     validates :slug, presence: true, format: { with: Decidim::Consultation.slug_format }

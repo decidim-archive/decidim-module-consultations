@@ -16,6 +16,7 @@ module Decidim
         let(:params) do
           {
             question: {
+              slug: "slug",
               title_en: "title",
               subtitle_en: "subtitle",
               promoter_group_en: "Promoter group",

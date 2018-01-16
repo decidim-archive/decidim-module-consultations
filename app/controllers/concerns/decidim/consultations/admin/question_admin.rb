@@ -12,10 +12,9 @@ module Decidim
         extend ActiveSupport::Concern
 
         included do
-          include NeedsConsultation
           include NeedsQuestion
 
-          layout "decidim/admin/consultation"
+          layout "decidim/admin/question"
 
           alias_method :current_participatory_space, :current_question
         end

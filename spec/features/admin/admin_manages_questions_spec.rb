@@ -60,6 +60,7 @@ describe "Admin manages questions", type: :feature do
           es: "Qué se decide",
           ca: "Què es decideix"
         )
+        fill_in :question_slug, with: "slug"
         attach_file :question_banner_image, image2_path
         select2(translated(organization.scopes.first.name), from: :question_decidim_scope_id)
 
@@ -82,6 +83,7 @@ describe "Admin manages questions", type: :feature do
 
     it "fails to create a new question" do
       within ".new_question" do
+        fill_in :question_slug, with: "slug"
         fill_in_i18n(
           :question_title,
           "#question-title-tabs",
@@ -228,7 +230,7 @@ describe "Admin manages questions", type: :feature do
 
   describe "viewing a missing question" do
     it_behaves_like "a 404 page" do
-      let(:target_path) { decidim_admin_consultations.consultation_question_path(consultation, 99_999_999) }
+      let(:target_path) { decidim_admin_consultations.question_path(99_999_999) }
     end
   end
 
@@ -243,7 +245,7 @@ describe "Admin manages questions", type: :feature do
       click_link "Publish"
       expect(page).to have_content("published successfully")
       expect(page).to have_content("Unpublish")
-      expect(page).to have_current_path decidim_admin_consultations.edit_consultation_question_path(consultation, question)
+      expect(page).to have_current_path decidim_admin_consultations.edit_question_path(question)
 
       question.reload
       expect(question).to be_published
@@ -261,7 +263,7 @@ describe "Admin manages questions", type: :feature do
       click_link "Unpublish"
       expect(page).to have_content("unpublished successfully")
       expect(page).to have_content("Publish")
-      expect(page).to have_current_path decidim_admin_consultations.edit_consultation_question_path(consultation, question)
+      expect(page).to have_current_path decidim_admin_consultations.edit_question_path(question)
 
       question.reload
       expect(question).not_to be_published

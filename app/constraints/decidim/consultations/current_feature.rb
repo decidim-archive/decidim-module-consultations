@@ -20,7 +20,7 @@ module Decidim
       # Returns a true if the request matches a consultation and a
       # feature belonging to that consultation, false otherwise
       def matches?(request)
-        CurrentConsultation.new.matches?(request) &&
+        CurrentQuestion.new.matches?(request) &&
           Decidim::CurrentFeature.new(@manifest).matches?(request)
       end
     end

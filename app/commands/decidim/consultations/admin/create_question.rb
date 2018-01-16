@@ -39,6 +39,7 @@ module Decidim
             consultation: form.context.current_consultation,
             decidim_scope_id: form.decidim_scope_id,
             title: form.title,
+            slug: form.slug,
             subtitle: form.subtitle,
             what_is_decided: form.what_is_decided,
             promoter_group: form.promoter_group,

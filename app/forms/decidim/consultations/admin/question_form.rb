@@ -15,15 +15,30 @@ module Decidim
         translatable_attribute :question_context, String
         translatable_attribute :subtitle, String
         translatable_attribute :what_is_decided, String
+        attribute :slug, String
         attribute :introductory_video_url, String
         attribute :banner_image
         attribute :remove_banner_image
         attribute :hashtag, String
         attribute :decidim_scope_id, Integer
 
+        validates :slug, presence: true, format: { with: Decidim::Consultations::Question.slug_format }
         validates :title, :promoter_group, :participatory_scope, :subtitle, :what_is_decided, translatable_presence: true
         validates :decidim_scope_id, presence: true
         validates :banner_image, file_size: { less_than_or_equal_to: ->(_record) { Decidim.maximum_attachment_size } }, file_content_type: { allow: ["image/jpeg", "image/png"] }
+        validate :slug_uniqueness
+
+        private
+
+        def slug_uniqueness
+          return unless context
+                        .current_consultation
+                        .questions
+                        .where(slug: slug)
+                        .where.not(id: context[:question_id]).any?
+
+          errors.add(:slug, :taken)
+        end
       end
     end
   end

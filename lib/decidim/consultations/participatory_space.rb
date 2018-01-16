@@ -4,7 +4,7 @@ Decidim.register_participatory_space(:consultations) do |participatory_space|
   participatory_space.engine = Decidim::Consultations::Engine
   participatory_space.admin_engine = Decidim::Consultations::AdminEngine
   # participatory_space.icon = "decidim/assemblies/icon.svg"
-  participatory_space.model_class_name = "Decidim::Consultation"
+  participatory_space.model_class_name = "Decidim::Consultations::Question"
 
   participatory_space.seeds do
     seeds_root = File.join(__dir__, "..", "..", "..", "db", "seeds")
@@ -30,6 +30,7 @@ Decidim.register_participatory_space(:consultations) do |participatory_space|
       4.times do
         Decidim::Consultations::Question.create!(
           consultation: consultation,
+          slug: Faker::Internet.unique.slug(nil, "-"),
           decidim_scope_id: Decidim::Scope.reorder("RANDOM()").first.id,
           title: Decidim::Faker::Localized.sentence(3),
           subtitle: Decidim::Faker::Localized.sentence(3),

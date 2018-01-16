@@ -11,6 +11,7 @@ module Decidim
           {
             question: {
               id: question.id,
+              slug: "slug",
               title_en: "Foo title",
               title_ca: "Foo title",
               title_es: "Foo title",

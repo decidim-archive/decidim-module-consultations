@@ -8,6 +8,10 @@ FactoryBot.define do
     "#{Faker::Internet.slug(nil, "-")}-#{n}"
   end
 
+  sequence(:question_slug) do |n|
+    "#{Faker::Internet.slug(nil, "-")}-#{n}"
+  end
+
   factory :consultation, class: "Decidim::Consultation" do
     organization
     slug { generate(:consultation_slug) }
@@ -48,7 +52,7 @@ FactoryBot.define do
   factory :question, class: "Decidim::Consultations::Question" do
     consultation
     scope { create(:scope, organization: consultation.organization) }
-
+    slug { generate(:question_slug) }
     title { Decidim::Faker::Localized.sentence(3) }
     subtitle { Decidim::Faker::Localized.sentence(3) }
     promoter_group { Decidim::Faker::Localized.sentence(3) }

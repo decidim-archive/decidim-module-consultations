@@ -13,24 +13,29 @@ module Decidim
       routes do
         get "/consultations/:consultation_id", to: redirect { |params, _request|
           consultation = Decidim::Consultation.find(params[:consultation_id])
-          consultation ? "/consultations/#{initiative.slug}" : "/404"
+          consultation ? "/consultations/#{consultation.slug}" : "/404"
         }, constraints: { consultation_id: /[0-9]+/ }
 
-        get "/consultations/:consultation_id/f/:feature_id", to: redirect { |params, _request|
-          consultation = Decidim::Consultation.find(params[:consultation_id])
-          consultation ? "/consultation/#{consultation.slug}/f/#{params[:feature_id]}" : "/404"
-        }, constraints: { consultation_id: /[0-9]+/ }
+        get "/questions/:question_id", to: redirect { |params, _request|
+          question = Decidim::Consultations::Question.find(params[:question_id])
+          question ? "/questions/#{question.slug}" : "/404"
+        }, constraints: { question_id: /[0-9]+/ }
 
         resources :consultations, only: [:index, :show], param: :slug, path: "consultations" do
-          resources :questions, only: [:index, :show], path: "q"
+          resources :questions, only: [:index, :show], param: :slug, path: "questions", shallow: true
         end
 
-        scope "/consultations/:consultation_slug/f/:feature_id" do
+        get "/questions/:question_id/f/:feature_id", to: redirect { |params, _request|
+          consultation = Decidim::Consultations::Question.find(params[:question_id])
+          consultation ? "/questions/#{question.slug}/f/#{params[:feature_id]}" : "/404"
+        }, constraints: { question_id: /[0-9]+/ }
+
+        scope "/questions/:question_slug/f/:feature_id" do
           Decidim.feature_manifests.each do |manifest|
             next unless manifest.engine
 
             constraints CurrentFeature.new(manifest) do
-              mount manifest.engine, at: "/", as: "decidim_consultation_#{manifest.name}"
+              mount manifest.engine, at: "/", as: "decidim_question_#{manifest.name}"
             end
           end
         end

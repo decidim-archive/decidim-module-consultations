@@ -13,6 +13,7 @@ es:
         end_voting_date: Fin del periodo de votación
         decidim_highlighted_scope_id: Ámbito destacado
       question:
+        slug: Texto corto de URL
         title: Título
         subtitle: Subtítulo
         promoter_group: Grupo promotor
@@ -42,6 +43,9 @@ es:
         consultations_submenu:
           info: Información
           questions: Preguntas
+        questions_submenu:
+          consultation: Consulta
+          info: Información
           features: Funcionalidades
       titles:
         consultations: Consultas

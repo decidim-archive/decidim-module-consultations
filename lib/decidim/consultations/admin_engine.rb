@@ -15,12 +15,12 @@ module Decidim
       routes do
         resources :consultations, param: :slug, except: :show do
           resource :publish, controller: "consultation_publications", only: [:create, :destroy]
-          resources :questions, except: :show do
+          resources :questions, param: :slug, except: :show, shallow: true do
             resource :publish, controller: "question_publications", only: [:create, :destroy]
           end
         end
 
-        scope "/consultations/:consultation_slug" do
+        scope "/questions/:question_slug" do
           resources :features do
             resource :permissions, controller: "feature_permissions"
             member do
@@ -31,12 +31,12 @@ module Decidim
           end
         end
 
-        scope "/consultations/:consultation_slug/features/:feature_id/manage" do
+        scope "/questions/:question_slug/features/:feature_id/manage" do
           Decidim.feature_manifests.each do |manifest|
             next unless manifest.admin_engine
 
             constraints CurrentFeature.new(manifest) do
-              mount manifest.admin_engine, at: "/", as: "decidim_admin_consultation_#{manifest.name}"
+              mount manifest.admin_engine, at: "/", as: "decidim_admin_question_#{manifest.name}"
             end
           end
         end

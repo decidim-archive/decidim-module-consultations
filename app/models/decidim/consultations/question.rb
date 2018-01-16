@@ -18,7 +18,7 @@ module Decidim
 
       delegate :organization, to: :consultation
 
-      has_many :features, as: :participatory_space, dependent: :restrict_with_error
+      has_many :features, as: :participatory_space, dependent: :destroy
 
       mount_uploader :banner_image, Decidim::BannerImageUploader
 
@@ -43,6 +43,31 @@ module Decidim
           connection.execute("SELECT setseed(#{connection.quote(seed)})")
           select('"decidim_consultations_questions".*, RANDOM()').order("RANDOM()").load
         end
+      end
+
+      def scopes_enabled?
+        false
+      end
+
+      def scopes_enabled
+        false
+      end
+
+      def to_param
+        slug
+      end
+
+      # Overrides module name from participable concern
+      def module_name
+        "Decidim::Consultations"
+      end
+
+      def mounted_engine
+        "decidim_consultations"
+      end
+
+      def mounted_admin_engine
+        "decidim_admin_consultations"
       end
     end
   end

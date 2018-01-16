@@ -13,6 +13,7 @@ en:
         end_voting_date: End of the voting period
         decidim_highlighted_scope_id: Highlighted scope
       question:
+        slug: URL slug
         title: Title
         subtitle: Subtitle
         promoter_group: Promoter group
@@ -42,6 +43,9 @@ en:
         consultations_submenu:
           info: Information
           questions: Questions
+        questions_submenu:
+          consultation: Consultation
+          info: Information
           features: Features
       titles:
         consultations: Consultations

@@ -13,6 +13,7 @@ ca:
         end_voting_date: Fi del periode de votació
         decidim_highlighted_scope_id: Àmbit destacat
       question:
+        slug: Nom curt d'URL
         title: Títol
         subtitle: Subtítol
         promoter_group: Grup promotor
@@ -42,6 +43,9 @@ ca:
         consultations_submenu:
           info: Informació
           questions: Preguntes
+        questions_submenu:
+          consultation: Consulta
+          info: Informació
           features: Funcionalitats
       titles:
         consultations: Consultes

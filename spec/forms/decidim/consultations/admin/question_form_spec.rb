@@ -18,6 +18,7 @@ module Decidim
         let(:organization) { create :organization }
         let(:consultation) { create :consultation, organization: organization }
         let(:scope) { create :scope, organization: organization }
+        let(:slug) { "slug" }
         let(:title) do
           {
             en: "Title",
@@ -57,6 +58,7 @@ module Decidim
         let(:attributes) do
           {
             "question" => {
+              "slug" => slug,
               "title_en" => title[:en],
               "title_es" => title[:es],
               "title_ca" => title[:ca],
@@ -145,6 +147,41 @@ module Decidim
           let(:scope) { nil }
 
           it { is_expected.to be_invalid }
+        end
+
+        context "when slug is missing" do
+          let(:slug) { nil }
+
+          it { is_expected.to be_invalid }
+        end
+
+        context "when slug is not valid" do
+          let(:slug) { "123" }
+
+          it { is_expected.to be_invalid }
+        end
+
+        context "when slug is not unique" do
+          context "when in the same consultation" do
+            before do
+              create(:question, slug: slug, consultation: consultation)
+            end
+
+            it "is not valid" do
+              expect(subject).not_to be_valid
+              expect(subject.errors[:slug]).not_to be_empty
+            end
+          end
+
+          context "when in another consultation" do
+            before do
+              create(:question, slug: slug)
+            end
+
+            it "is valid" do
+              expect(subject).to be_valid
+            end
+          end
         end
       end
     end

@@ -9,11 +9,13 @@ module Decidim
         def index
           authorize! :index, Decidim::Consultations::Question
           @questions = collection
+          render layout: "decidim/admin/consultation"
         end
 
         def new
           authorize! :new, Decidim::Consultations::Question
           @form = question_form.instance
+          render layout: "decidim/admin/consultation"
         end
 
         def create
@@ -28,7 +30,7 @@ module Decidim
 
             on(:invalid) do
               flash.now[:alert] = I18n.t("questions.create.error", scope: "decidim.admin")
-              render :new
+              render :new, layout: "decidim/admin/consultation"
             end
           end
         end
@@ -36,6 +38,7 @@ module Decidim
         def edit
           authorize! :edit, current_question
           @form = question_form.from_model(current_question, current_consultation: current_consultation)
+          render layout: "decidim/admin/question"
         end
 
         def update
@@ -47,12 +50,12 @@ module Decidim
           UpdateQuestion.call(current_question, @form) do
             on(:ok) do |question|
               flash[:notice] = I18n.t("questions.update.success", scope: "decidim.admin")
-              redirect_to edit_consultation_question_path(current_consultation, question)
+              redirect_to edit_question_path(question)
             end
 
             on(:invalid) do
               flash.now[:alert] = I18n.t("questions.update.error", scope: "decidim.admin")
-              render :edit
+              render :edit, layout: "decidim/admin/question"
             end
           end
         end
@@ -63,7 +66,7 @@ module Decidim
 
           flash[:notice] = I18n.t("questions.destroy.success", scope: "decidim.admin")
 
-          redirect_to consultation_questions_path
+          redirect_to consultation_questions_path(current_consultation)
         end
 
         private

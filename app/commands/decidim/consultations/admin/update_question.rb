@@ -47,6 +47,7 @@ module Decidim
             decidim_scope_id: form.decidim_scope_id,
             title: form.title,
             subtitle: form.subtitle,
+            slug: form.slug,
             what_is_decided: form.what_is_decided,
             promoter_group: form.promoter_group,
             participatory_scope: form.participatory_scope,
