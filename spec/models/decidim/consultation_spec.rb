@@ -18,34 +18,34 @@ module Decidim
       context "when voting period starts in the future" do
         let(:consultation) { build(:consultation, :upcoming) }
 
-        it "returns true" do
+        it "is upcoming" do
           expect(consultation).to be_upcoming
-        end
-      end
-
-      context "when voting period starts in the past" do
-        let(:consultation) { build(:consultation, :active) }
-
-        it "returns false" do
-          expect(consultation).not_to be_upcoming
+          expect(consultation).not_to be_active
+          expect(consultation).not_to be_finished
         end
       end
     end
 
     describe "active?" do
-      context "when voting period starts in the future" do
-        let(:consultation) { build(:consultation, :upcoming) }
-
-        it "returns false" do
-          expect(consultation).not_to be_active
-        end
-      end
-
-      context "when voting period starts in the past" do
+      context "when today is inside the voting interval" do
         let(:consultation) { build(:consultation, :active) }
 
-        it "returns true" do
+        it "is active" do
+          expect(consultation).not_to be_upcoming
           expect(consultation).to be_active
+          expect(consultation).not_to be_finished
+        end
+      end
+    end
+
+    describe "finished?" do
+      context "when today is after the voting end time" do
+        let(:consultation) { build(:consultation, :finished) }
+
+        it "is active" do
+          expect(consultation).not_to be_upcoming
+          expect(consultation).not_to be_active
+          expect(consultation).to be_finished
         end
       end
     end

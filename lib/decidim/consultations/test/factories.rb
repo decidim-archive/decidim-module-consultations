@@ -8,6 +8,10 @@ FactoryBot.define do
     "#{Faker::Internet.slug(nil, "-")}-#{n}"
   end
 
+  sequence(:question_slug) do |n|
+    "#{Faker::Internet.slug(nil, "-")}-#{n}"
+  end
+
   factory :consultation, class: "Decidim::Consultation" do
     organization
     slug { generate(:consultation_slug) }
@@ -17,7 +21,8 @@ FactoryBot.define do
     banner_image { Decidim::Dev.test_file("city2.jpeg", "image/jpeg") }
     published_at { Time.current }
     start_voting_date { Time.zone.today }
-    introductory_video_url "https://www.youtube.com/watch?v=OB5SS3wCZx0"
+    end_voting_date { Time.zone.today + 1.month }
+    introductory_video_url "https://www.youtube.com/embed/LakKJZjKkRM"
     decidim_highlighted_scope_id { create(:scope, organization: organization).id }
 
     trait :unpublished do
@@ -30,10 +35,41 @@ FactoryBot.define do
 
     trait :upcoming do
       start_voting_date { Time.zone.today + 7.days }
+      end_voting_date { Time.zone.today + 1.month + 7.days }
     end
 
     trait :active do
       start_voting_date { Time.zone.today - 7.days }
+      end_voting_date { Time.zone.today - 7.days + 1.month }
+    end
+
+    trait :finished do
+      start_voting_date { Time.zone.today - 7.days - 1.month }
+      end_voting_date { Time.zone.today - 7.days }
+    end
+  end
+
+  factory :question, class: "Decidim::Consultations::Question" do
+    consultation
+    organization { consultation.organization }
+    scope { create(:scope, organization: consultation.organization) }
+    slug { generate(:question_slug) }
+    title { Decidim::Faker::Localized.sentence(3) }
+    subtitle { Decidim::Faker::Localized.sentence(3) }
+    promoter_group { Decidim::Faker::Localized.sentence(3) }
+    participatory_scope { Decidim::Faker::Localized.sentence(3) }
+    question_context { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
+    what_is_decided { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
+    published_at { Time.current }
+    introductory_video_url "https://www.youtube.com/embed/LakKJZjKkRM"
+    banner_image { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
+
+    trait :unpublished do
+      published_at nil
+    end
+
+    trait :published do
+      published_at { Time.current }
     end
   end
 end

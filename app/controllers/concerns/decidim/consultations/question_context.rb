@@ -3,16 +3,16 @@
 module Decidim
   module Consultations
     # This module, when injected into a controller, ensures there's a
-    # Consultation available and deducts it from the context.
-    module ConsultationContext
+    # Question available and deducts it from the context.
+    module QuestionContext
       def self.extended(base)
         base.class_eval do
-          include NeedsConsultation
+          include NeedsQuestion
 
           layout "layouts/decidim/consultation"
 
           before_action do
-            authorize! :read, current_consultation
+            authorize! :read, current_cuestion
           end
         end
       end

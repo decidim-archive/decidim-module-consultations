@@ -5,8 +5,6 @@ module Decidim
   class Consultation < ApplicationRecord
     include Decidim::Participable
     include Decidim::Publicable
-    include Decidim::Consultations::OverrideCategorization
-    include Decidim::Consultations::OverrideScopeable
 
     belongs_to :organization,
                foreign_key: "decidim_organization_id",
@@ -16,7 +14,10 @@ module Decidim
                foreign_key: "decidim_highlighted_scope_id",
                class_name: "Decidim::Scope"
 
-    has_many :features, as: :participatory_space, dependent: :restrict_with_error
+    has_many :questions,
+             foreign_key: "decidim_consultation_id",
+             class_name: "Decidim::Consultations::Question",
+             dependent: :destroy
 
     validates :slug, uniqueness: { scope: :organization }
     validates :slug, presence: true, format: { with: Decidim::Consultation.slug_format }
@@ -24,7 +25,12 @@ module Decidim
     mount_uploader :banner_image, Decidim::BannerImageUploader
 
     scope :upcoming, -> { published.where("start_voting_date > ?", Time.now.utc) }
-    scope :active, -> { published.where("start_voting_date <= ?", Time.now.utc) }
+    scope :active, lambda {
+      published
+        .where("start_voting_date <= ?", Time.now.utc)
+        .where("end_voting_date >= ?", Time.now.utc)
+    }
+    scope :finished, -> { published.where("end_voting_date < ?", Time.now.utc) }
     scope :order_by_most_recent, -> { order(created_at: :desc) }
 
     def to_param
@@ -36,7 +42,11 @@ module Decidim
     end
 
     def active?
-      start_voting_date <= Time.now.utc
+      start_voting_date <= Time.now.utc && end_voting_date >= Time.now.utc
+    end
+
+    def finished?
+      end_voting_date < Time.now.utc
     end
 
     def self.order_randomly(seed)

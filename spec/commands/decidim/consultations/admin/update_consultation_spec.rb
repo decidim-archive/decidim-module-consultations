@@ -14,16 +14,17 @@ module Decidim
               title_en: "Foo title",
               title_ca: "Foo title",
               title_es: "Foo title",
-              subtitle_en: consultation.subtitle,
-              subtitle_ca: consultation.subtitle,
-              subtitle_es: consultation.subtitle,
-              description_en: consultation.description,
-              description_ca: consultation.description,
-              description_es: consultation.description,
+              subtitle_en: consultation.subtitle["en"],
+              subtitle_ca: consultation.subtitle["ca"],
+              subtitle_es: consultation.subtitle["es"],
+              description_en: consultation.description["en"],
+              description_ca: consultation.description["ca"],
+              description_es: consultation.description["es"],
               slug: consultation.slug,
               banner_image: consultation.banner_image,
               decidim_highlighted_scope_id: consultation.highlighted_scope.id,
               start_voting_date: consultation.start_voting_date,
+              end_voting_date: consultation.end_voting_date,
               introductory_video_url: consultation.introductory_video_url
             }
           }

@@ -5,8 +5,8 @@ require "spec_helper"
 describe "Admin manages consultation features", type: :feature do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :admin, :confirmed, organization: organization) }
-
-  let!(:consultation) { create(:consultation, organization: organization) }
+  let(:consultation) { create(:consultation, organization: organization) }
+  let!(:question) { create(:question, consultation: consultation) }
 
   before do
     switch_to_host(organization.host)
@@ -15,7 +15,7 @@ describe "Admin manages consultation features", type: :feature do
 
   describe "add a feature" do
     before do
-      visit decidim_admin_consultations.features_path(consultation)
+      visit decidim_admin_consultations.features_path(question)
 
       find("button[data-toggle=add-feature-dropdown]").click
 
@@ -84,11 +84,11 @@ describe "Admin manages consultation features", type: :feature do
     end
 
     let!(:feature) do
-      create(:feature, name: feature_name, participatory_space: consultation)
+      create(:feature, name: feature_name, participatory_space: question)
     end
 
     before do
-      visit decidim_admin_consultations.features_path(consultation)
+      visit decidim_admin_consultations.features_path(question)
     end
 
     it "updates the feature" do
@@ -143,11 +143,11 @@ describe "Admin manages consultation features", type: :feature do
     end
 
     let!(:feature) do
-      create(:feature, name: feature_name, participatory_space: consultation)
+      create(:feature, name: feature_name, participatory_space: question)
     end
 
     before do
-      visit decidim_admin_consultations.features_path(consultation)
+      visit decidim_admin_consultations.features_path(question)
     end
 
     it "removes the feature" do
@@ -161,13 +161,13 @@ describe "Admin manages consultation features", type: :feature do
 
   describe "publish and unpublish a feature" do
     let!(:feature) do
-      create(:feature, participatory_space: consultation, published_at: published_at)
+      create(:feature, participatory_space: question, published_at: published_at)
     end
 
     let(:published_at) { nil }
 
     before do
-      visit decidim_admin_consultations.features_path(consultation)
+      visit decidim_admin_consultations.features_path(question)
     end
 
     context "when the feature is unpublished" do

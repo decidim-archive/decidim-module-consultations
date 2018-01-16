@@ -48,7 +48,7 @@ module Decidim
         def update
           authorize! :update, current_consultation
 
-          @form = form(ConsultationForm)
+          @form = consultation_form
                   .from_params(params.except(:slug), consultation_id: current_consultation.id)
 
           UpdateConsultation.call(current_consultation, @form) do

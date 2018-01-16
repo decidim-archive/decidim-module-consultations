@@ -6,7 +6,7 @@ module Decidim
       # Controller that allows managing the Consultation Feature
       # permissions in the admin panel.
       class FeaturePermissionsController < Decidim::Admin::FeaturePermissionsController
-        include ConsultationAdmin
+        include QuestionAdmin
       end
     end
   end

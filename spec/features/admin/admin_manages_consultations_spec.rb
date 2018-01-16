@@ -20,6 +20,9 @@ describe "Admin manages consultations", type: :feature do
       execute_script("$('#date_field_consultation_start_voting_date').focus()")
       find(".active").click
 
+      execute_script("$('#date_field_consultation_end_voting_date').focus()")
+      find(".active").click
+
       within ".new_consultation" do
         fill_in_i18n(
           :consultation_title,
@@ -67,6 +70,9 @@ describe "Admin manages consultations", type: :feature do
       execute_script("$('#date_field_consultation_start_voting_date').focus()")
       find(".active").click
 
+      execute_script("$('#date_field_consultation_end_voting_date').focus()")
+      find(".active").click
+
       within ".new_consultation" do
         fill_in_i18n(
           :consultation_title,
@@ -100,12 +106,12 @@ describe "Admin manages consultations", type: :feature do
     end
   end
 
-  describe "updating an consultation" do
+  describe "updating a consultation" do
     before do
       click_link translated(consultation.title)
     end
 
-    it "updates an consultation" do
+    it "updates a consultation" do
       fill_in_i18n(
         :consultation_title,
         "#consultation-title-tabs",
@@ -129,12 +135,12 @@ describe "Admin manages consultations", type: :feature do
     end
   end
 
-  describe "updating an consultation with invalid values" do
+  describe "updating a consultation with invalid values" do
     before do
       click_link translated(consultation.title)
     end
 
-    it "updates an consultation" do
+    it "do not updates the consultation" do
       fill_in_i18n(
         :consultation_title,
         "#consultation-title-tabs",
@@ -151,14 +157,14 @@ describe "Admin manages consultations", type: :feature do
     end
   end
 
-  describe "updating an consultation without images" do
+  describe "updating a consultation without images" do
     let!(:consultation3) { create(:consultation, organization: organization) }
 
     before do
       visit decidim_admin_consultations.consultations_path
     end
 
-    it "update an consultation without images does not delete them" do
+    it "update a consultation without images does not delete them" do
       click_link translated(consultation3.title)
 
       within ".edit_consultation" do
@@ -170,14 +176,14 @@ describe "Admin manages consultations", type: :feature do
     end
   end
 
-  describe "deleting an consultation" do
+  describe "deleting a consultation" do
     let!(:consultation2) { create(:consultation, organization: organization) }
 
     before do
       visit decidim_admin_consultations.consultations_path
     end
 
-    it "deletes an consultation" do
+    it "deletes a consultation" do
       click_link translated(consultation2.title)
       accept_confirm { click_link "Destroy" }
 
@@ -190,14 +196,19 @@ describe "Admin manages consultations", type: :feature do
   end
 
   describe "previewing consultations" do
-    let!(:consultation) { create(:consultation, organization: organization) }
+    let!(:consultation) { create(:consultation, :unpublished, organization: organization) }
 
     it "allows the user to preview the unpublished consultation" do
       within find("tr", text: translated(consultation.title)) do
-        click_link "Preview"
-      end
+        preview_window = window_opened_by do
+          click_link "Preview"
+        end
 
-      expect(page).to have_content(translated(consultation.title))
+        within_window(preview_window) do
+          expect(page).to have_i18n_content(consultation.title)
+          expect(page).to have_i18n_content(consultation.description)
+        end
+      end
     end
   end
 
@@ -207,7 +218,7 @@ describe "Admin manages consultations", type: :feature do
     end
   end
 
-  describe "publishing an consultation" do
+  describe "publishing a consultation" do
     let!(:consultation) { create(:consultation, :unpublished, organization: organization) }
 
     before do
@@ -225,7 +236,7 @@ describe "Admin manages consultations", type: :feature do
     end
   end
 
-  describe "unpublishing an consultation" do
+  describe "unpublishing a consultation" do
     let!(:consultation) { create(:consultation, :published, organization: organization) }
 
     before do

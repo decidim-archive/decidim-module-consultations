@@ -12,6 +12,10 @@ module Decidim
           can :read, Consultation do |consultation|
             consultation.published? || user&.admin?
           end
+
+          can :read, Question do |question|
+            question.published? || user&.admin?
+          end
         end
       end
     end
