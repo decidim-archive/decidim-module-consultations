@@ -173,9 +173,11 @@ module Decidim
             end
           end
 
-          context "when in another consultation" do
+          context "when in another organization" do
+            let(:consultation) { create :consultation }
+
             before do
-              create(:question, slug: slug)
+              create(:question, slug: slug, consultation: consultation)
             end
 
             it "is valid" do

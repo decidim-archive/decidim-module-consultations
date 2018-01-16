@@ -219,12 +219,17 @@ describe "Admin manages questions", type: :feature do
   end
 
   describe "previewing questions" do
-    it "allows the user to preview the unpublished question" do
+    it "allows the user to preview the question" do
       within find("tr", text: translated(question.title)) do
-        click_link "Preview"
-      end
+        preview_window = window_opened_by do
+          click_link "Preview"
+        end
 
-      expect(page).to have_content(translated(question.title))
+        within_window(preview_window) do
+          expect(page).to have_i18n_content(question.title)
+          expect(page).to have_i18n_content(question.what_is_decided)
+        end
+      end
     end
   end
 

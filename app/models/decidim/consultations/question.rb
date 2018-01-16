@@ -16,7 +16,9 @@ module Decidim
                  foreign_key: "decidim_consultation_id",
                  class_name: "Decidim::Consultation"
 
-      delegate :organization, to: :consultation
+      belongs_to :organization,
+                 foreign_key: "decidim_organization_id",
+                 class_name: "Decidim::Organization"
 
       has_many :features, as: :participatory_space, dependent: :destroy
 

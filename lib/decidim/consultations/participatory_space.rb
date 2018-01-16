@@ -44,7 +44,8 @@ Decidim.register_participatory_space(:consultations) do |participatory_space|
           promoter_group: Decidim::Faker::Localized.sentence(3),
           participatory_scope: Decidim::Faker::Localized.sentence(3),
           introductory_video_url: "https://www.youtube.com/embed/LakKJZjKkRM",
-          published_at: Time.now.utc
+          published_at: Time.now.utc,
+          organization: organization
         )
       end
     end

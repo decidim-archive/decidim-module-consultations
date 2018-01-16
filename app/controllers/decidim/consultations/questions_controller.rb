@@ -7,6 +7,8 @@ module Decidim
     class QuestionsController < Decidim::ApplicationController
       helper_method :current_question
 
+      helper Decidim::SanitizeHelper
+
       # TODO: Implement public views
       def show
         authorize! :read, current_question
@@ -15,7 +17,7 @@ module Decidim
       private
 
       def current_question
-        @current_cuestion ||= Decidim::Consultations::Question.find_by(id: params[:question_id] || params[:id])
+        @current_cuestion ||= OrganizationQuestions.for(current_organization).find_by(slug: params[:question_slug] || params[:slug])
       end
     end
   end

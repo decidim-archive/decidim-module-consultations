@@ -31,9 +31,9 @@ module Decidim
         private
 
         def slug_uniqueness
-          return unless context
-                        .current_consultation
-                        .questions
+          return unless OrganizationQuestions
+                        .new(current_organization)
+                        .query
                         .where(slug: slug)
                         .where.not(id: context[:question_id]).any?
 

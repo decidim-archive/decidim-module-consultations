@@ -37,6 +37,7 @@ module Decidim
         def create_question
           question = Question.new(
             consultation: form.context.current_consultation,
+            organization: form.context.current_consultation.organization,
             decidim_scope_id: form.decidim_scope_id,
             title: form.title,
             slug: form.slug,

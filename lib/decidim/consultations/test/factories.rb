@@ -51,6 +51,7 @@ FactoryBot.define do
 
   factory :question, class: "Decidim::Consultations::Question" do
     consultation
+    organization { consultation.organization }
     scope { create(:scope, organization: consultation.organization) }
     slug { generate(:question_slug) }
     title { Decidim::Faker::Localized.sentence(3) }
