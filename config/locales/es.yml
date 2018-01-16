@@ -152,5 +152,7 @@ es:
           recent: Mas reciente
       highlighted_questions:
         title: Consultas de %{scope_name}
+      regular_questions:
+        title: Otras consultas
       highlighted_question:
         take_part: Participa

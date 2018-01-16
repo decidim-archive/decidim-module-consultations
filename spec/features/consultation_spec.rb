@@ -34,4 +34,27 @@ describe "Consultation", type: :feature do
       expect(page).to have_i18n_content(question.subtitle)
     end
   end
+
+  context "when regular questions" do
+    let!(:scope) { create(:scope, organization: organization) }
+    let!(:question) { create(:question, :published, consultation: consultation, scope: scope) }
+
+    before do
+      switch_to_host(organization.host)
+      visit decidim_consultations.consultation_path(consultation)
+    end
+
+    it "Shows the regular questions section" do
+      expect(page).to have_content("OTHER CONSULTATIONS")
+    end
+
+    it "shows the scope name" do
+      expect(page).to have_content(scope.name["en"].upcase)
+    end
+
+    it "shows the question details" do
+      expect(page).to have_i18n_content(question.title)
+      expect(page).to have_i18n_content(question.subtitle)
+    end
+  end
 end
