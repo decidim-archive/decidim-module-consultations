@@ -150,3 +150,7 @@ es:
           label: 'Ordenar multiconsultas por:'
           random: Aleatorio
           recent: Mas reciente
+      highlighted_questions:
+        title: Consultas de %{scope_name}
+      highlighted_question:
+        take_part: Participa

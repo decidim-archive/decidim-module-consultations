@@ -150,3 +150,7 @@ en:
           label: 'Sort consultations by:'
           random: Random
           recent: Most recent
+      highlighted_questions:
+        title: Consultations from %{scope_name}
+      highlighted_question:
+        take_part: Take part

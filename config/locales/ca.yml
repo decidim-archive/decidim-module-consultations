@@ -150,3 +150,7 @@ ca:
           label: 'Ordenar mlticonsultes per:'
           random: Aleatori
           recent: Més recent
+      highlighted_questions:
+        title: Consultes de %{scope_name}
+      highlighted_question:
+        take_part: Participa
