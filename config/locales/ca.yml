@@ -30,6 +30,9 @@ ca:
       statistics:
         consultations_count: Multiconsultes
   layouts:
+    admin:
+      question:
+        attachments: Arxius adjunts
     decidim:
       consultation_voting_data:
         start_voting_date: Votació a partir de

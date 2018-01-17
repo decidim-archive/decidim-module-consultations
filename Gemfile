@@ -18,7 +18,6 @@ gem "decidim", "~> 0.8.3"
 
 group :test, :development do
   gem "byebug"
-  gem "capybara", "2.16.1"
   gem "faker"
 end
 

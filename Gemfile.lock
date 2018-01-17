@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    decidim-consultations (0.1.8)
+    decidim-consultations (0.1.11)
       decidim-admin (~> 0.8.3)
+      decidim-comments (~> 0.8.3)
       decidim-core (~> 0.8.3)
       rails (~> 5.1.4)
 

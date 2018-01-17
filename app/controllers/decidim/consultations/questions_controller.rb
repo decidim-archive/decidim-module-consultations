@@ -13,6 +13,7 @@ module Decidim
       helper Decidim::IconHelper
       helper Decidim::WidgetUrlsHelper
       helper Decidim::Comments::CommentsHelper
+      helper Decidim::AttachmentsHelper
 
       helper_method :stats
 

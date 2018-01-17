@@ -10,7 +10,7 @@ describe "Admin manages consultation features", type: :feature do
 
   before do
     switch_to_host(organization.host)
-    login_as user, scope: :user
+    login_as user, scope: :user, run_callbacks: false
   end
 
   describe "add a feature" do
