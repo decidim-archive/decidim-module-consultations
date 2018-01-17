@@ -2,7 +2,7 @@
 
 shared_context "when administrating a consultation" do
   let(:organization) { create(:organization) }
-  let!(:user) { create(:user, :admin, :confirmed, organization: organization) }
+  let(:user) { create(:user, :admin, :confirmed, organization: organization) }
 
   let!(:consultation) { create(:consultation, organization: organization) }
   let!(:question) { create :question, consultation: consultation }

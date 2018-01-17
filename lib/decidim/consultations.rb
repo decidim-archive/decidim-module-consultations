@@ -9,5 +9,10 @@ module Decidim
   # Base module for the consultations engine.
   module Consultations
     include ActiveSupport::Configurable
+
+    # Sets the expiration time for the statistic data.
+    config_accessor :stats_cache_expiration_time do
+      5.minutes
+    end
   end
 end

@@ -227,7 +227,7 @@ describe "Admin manages questions", type: :feature do
 
         within_window(preview_window) do
           expect(page).to have_i18n_content(question.title)
-          expect(page).to have_i18n_content(question.what_is_decided)
+          expect(page).to have_i18n_content(question.question_context)
         end
       end
     end

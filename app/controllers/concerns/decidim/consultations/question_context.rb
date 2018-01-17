@@ -9,7 +9,7 @@ module Decidim
         base.class_eval do
           include NeedsQuestion
 
-          layout "layouts/decidim/consultation"
+          layout "layouts/decidim/question"
 
           before_action do
             authorize! :read, current_cuestion

@@ -22,7 +22,9 @@ module Decidim
         }, constraints: { question_id: /[0-9]+/ }
 
         resources :consultations, only: [:index, :show], param: :slug, path: "consultations" do
-          resources :questions, only: [:index, :show], param: :slug, path: "questions", shallow: true
+          resources :questions, only: [:show], param: :slug, path: "questions", shallow: true do
+            resource :question_widget, only: :show, path: "embed"
+          end
         end
 
         get "/questions/:question_id/f/:feature_id", to: redirect { |params, _request|
@@ -44,6 +46,7 @@ module Decidim
       initializer "decidim_consultations.assets" do |app|
         app.config.assets.precompile += %w(
           decidim_consultations_manifest.css
+          decidim_consultations_manifest.js
         )
       end
 

@@ -36,6 +36,11 @@ en:
       consultation_header:
         consultation_menu_item: Consultation
         unfold: Unfold
+      question_header:
+        back_to_consultation: See all consultations
+      question_features:
+        unfold: Unfold
+        question_menu_item: Information
   decidim:
     admin:
       menu:
@@ -156,3 +161,9 @@ en:
         title: Other consultations
       highlighted_question:
         take_part: Take part
+    questions:
+      statistics:
+        supports_count_title: Adhesions
+        comments_count_title: Comments
+        meetings_count_title: Meetings
+        assistants_count_title: Assistants
