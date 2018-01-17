@@ -28,7 +28,7 @@ Decidim.register_participatory_space(:consultations) do |participatory_space|
       )
 
       4.times do
-        Decidim::Consultations::Question.create!(
+        question = Decidim::Consultations::Question.create!(
           consultation: consultation,
           slug: Faker::Internet.unique.slug(nil, "-"),
           decidim_scope_id: Decidim::Scope.reorder("RANDOM()").first.id,
@@ -46,6 +46,22 @@ Decidim.register_participatory_space(:consultations) do |participatory_space|
           introductory_video_url: "https://www.youtube.com/embed/LakKJZjKkRM",
           published_at: Time.now.utc,
           organization: organization
+        )
+
+        Decidim::Comments::Seed.comments_for(question)
+
+        Decidim::Attachment.create!(
+          title: Decidim::Faker::Localized.sentence(2),
+          description: Decidim::Faker::Localized.sentence(5),
+          file: File.new(File.join(seeds_root, "city.jpeg")),
+          attached_to: question
+        )
+
+        Decidim::Attachment.create!(
+          title: Decidim::Faker::Localized.sentence(2),
+          description: Decidim::Faker::Localized.sentence(5),
+          file: File.new(File.join(seeds_root, "Exampledocument.pdf")),
+          attached_to: question
         )
       end
     end

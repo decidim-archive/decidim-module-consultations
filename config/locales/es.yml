@@ -31,6 +31,9 @@ es:
         consultations_count: Multiconsultas
   layouts:
     decidim:
+      admin:
+        question:
+          attachments: Archivos adjuntos
       consultation_voting_data:
         start_voting_date: Votación a partir de
       consultation_header:

@@ -31,6 +31,9 @@ en:
         consultations_count: Consultations
   layouts:
     decidim:
+      admin:
+        question:
+          attachments: Attachments
       consultation_voting_data:
         start_voting_date: Voting from
       consultation_header:
