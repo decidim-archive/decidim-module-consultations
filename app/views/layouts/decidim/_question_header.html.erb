@@ -1,42 +1,71 @@
-<% if current_consultation.features.any? %>
-  <div class="row column">
-    <div class="process-nav">
-      <button class="process-nav__trigger hide-for-medium"  data-toggle="process-nav-content">
-        <%= icon "caret-bottom", class: "icon--small process-nav__trigger__icon", aria_label: t(".unfold"), role: "img" %>
-        <div class="process-nav__link">
-          <%  if self.try(:current_feature) %>
-            <%= feature_icon(current_feature) %>
-            <%= translated_attribute(current_feature.name) %>
-          <% else %>
-            <%= icon "comment-square" %>
-            <%= t ".consultation_menu_item" %>
+<%- model = Decidim::Consultations::Question %>
+
+<div class="process-header process-header__borderless row column">
+  <div class="row column process-header__main"
+       style="background-image:url(<%= question.banner_image_url %>);">
+    <div class="process-header__container row">
+      <div class="columns mediumlarge-9 process-header__info">
+        <div>
+          <h1 class="text-highlight heading2">
+            <%= translated_attribute(question.consultation.title) %>
+          </h1>
+        </div>
+        <div>
+          <%= link_to decidim_consultations.consultation_path(current_question.consultation) do %>
+          <h2 class="text-highlight heading-small">
+            <%=t ".back_to_consultation" %>
+            <%= icon "media-play" %>
           <% end %>
         </div>
-      </button>
-      <div class="row column process-nav__content is-active" id="process-nav-content" data-toggler=".is-active">
-        <ul>
-          <li class="<%= 'is-active' if is_active_link?(decidim_consultations.consultation_path(current_consultation), :exclusive) %>">
-            <%= active_link_to decidim_consultations.consultation_path(current_consultation),
-                               active: :exclusive,
-                               class: "process-nav__link",
-                                 class_active: "is-active" do %>
-              <%= icon "comment-square" %>
-              <%= t ".consultation_menu_item" %>
-            <% end %>
-          </li>
-
-          <% current_consultation.features.each do |feature| %>
-            <% if feature.published? || feature == self.try(:current_feature) %>
-              <li class="<%= "is-active" if is_active_link?(main_feature_path(feature), :inclusive) %>">
-                <%= active_link_to main_feature_path(feature), class: 'process-nav__link', active: :inclusive, class_active: 'is-active' do %>
-                  <%= feature_icon(feature) %>
-                  <%= translated_attribute(feature.name) %>
-                <% end %>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
       </div>
+      <%= render partial: "layouts/decidim/consultation_voting_data", locals: { consultation: current_question.consultation } %>
     </div>
   </div>
-<% end %>
+
+  <div class="question-header row column">
+    <h2 class="heading1"><%= translated_attribute current_question.title %></h2>
+    <% unless current_question.hashtag.blank? %>
+      <p class="question-hashtag">#<%= current_question.hashtag %></p>
+    <% end %>
+  </div>
+
+  <section  id="question-header-details" class="row section">
+    <article class="card card--full card--process">
+      <div class="row collapse card--process__row">
+        <div class="columns mediumlarge-8 large-6 card--process__column">
+          <div class="video-wrapper">
+            <iframe src="<%= current_question.introductory_video_url %>" frameborder=0>
+            </iframe>
+          </div>
+        </div>
+
+        <div class="columns mediumlarge-8 large-6 card--process__column">
+          <div class="card__content question-header-data">
+            <div class="question-header-data-group">
+              <div class=question-eader-data-group-title>
+                <%= model.human_attribute_name :promoter_group %>
+              </div>
+              <div><%= translated_attribute current_question.promoter_group %></div>
+            </div>
+
+            <div class="question-header-data-group">
+              <div class=question-eader-data-group-title>
+                <%= model.human_attribute_name :scope %>
+              </div>
+              <div><%= translated_attribute current_question.scope.name %></div>
+            </div>
+
+            <div class="question-header-data-group">
+              <div class=question-eader-data-group-title>
+                <%= model.human_attribute_name :participatory_scope %>
+              </div>
+              <div><%= translated_attribute current_question.participatory_scope %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <%= render partial: "layouts/decidim/question_features", locals: { question: current_question} %>
+</div>

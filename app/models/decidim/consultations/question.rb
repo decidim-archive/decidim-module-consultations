@@ -40,6 +40,10 @@ module Decidim
         attributes["hashtag"].to_s.delete("#")
       end
 
+      def banner_image_url
+        banner_image.present? ? banner_image.url : consultation.banner_image.url
+      end
+
       def self.order_randomly(seed)
         transaction do
           connection.execute("SELECT setseed(#{connection.quote(seed)})")
@@ -70,6 +74,10 @@ module Decidim
 
       def mounted_admin_engine
         "decidim_admin_consultations"
+      end
+
+      def self.participatory_space_manifest
+        Decidim.find_participatory_space_manifest(Decidim::Consultation.name.demodulize.underscore.pluralize)
       end
     end
   end

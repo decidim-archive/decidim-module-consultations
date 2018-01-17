@@ -36,6 +36,11 @@ es:
       consultation_header:
         consultation_menu_item: Multiconsula
         unfold: Desplegar
+      question_header:
+        back_to_consultation: Ver todas las
+      question_features:
+        unfold: Desplega
+        question_menu_item: Información
   decidim:
     admin:
       menu:
@@ -156,3 +161,9 @@ es:
         title: Otras consultas
       highlighted_question:
         take_part: Participa
+    questions:
+      statistics:
+        supports_count_title: Adhesiones
+        comments_count_title: Comentarios
+        meetings_count_title: Encuentros
+        assistants_count_title: Asistentes

@@ -1,2 +1,36 @@
-<%= translated_attribute current_question.title %>
-<%= decidim_sanitize translated_attribute current_question.what_is_decided %>
+<% add_decidim_meta_tags({
+  image_url: current_question.banner_image_url,
+  description: translated_attribute(current_question.question_context),
+  title: translated_attribute(current_question.title),
+  url: decidim_consultations.question_url(current_question),
+  twitter_handler: current_organization.twitter_handler
+}) %>
+<% provide :meta_image_url, current_question.banner_image_url %>
+
+<div class=row>
+  <div class="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
+    <div class="card extra definition-data">
+      <div class="definition-data__item">
+        <% if user_signed_in? %>
+          <%= render partial: "decidim/shared/follow_button", locals: { followable: current_question } %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= render partial: "decidim/shared/share_modal" %>
+    <%= embed_modal_for question_question_widget_url(current_question, format: :js) %>
+    <%= render partial: "statistics" %>
+  </div>
+
+  <div class="columns mediumlarge-8 mediumlarge-pull-4">
+    <div class="section">
+      <div class="row column">
+        <%= decidim_sanitize translated_attribute current_question.question_context %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= comments_for current_question if current_question.published? %>
+<%= javascript_include_tag "decidim/consultations/social_share" %>
+<%= stylesheet_link_tag "decidim/consultations/social_share" %>
