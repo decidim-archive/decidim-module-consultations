@@ -7,7 +7,7 @@
           <%= feature_icon(current_feature) %>
           <%= translated_attribute(current_feature.name) %>
         <% else %>
-          <%= icon "comment-square" %>
+          <%= external_icon "decidim/pages/icon.svg" %>
           <%= t ".question_menu_item" %>
         <% end %>
       </div>
@@ -19,17 +19,16 @@
                              active: :exclusive,
                              class: "process-nav__link",
                              class_active: "is-active" do %>
-            <%= icon "comment-square" %>
+            <%= external_icon "decidim/pages/icon.svg" %>
             <%= t ".question_menu_item" %>
           <% end %>
-        </li>
-
+        </li>    
         <li class="<%= 'is-active' if is_active_link?(decidim_consultations.technical_info_question_path(question), :exclusive) %>">
           <%= active_link_to decidim_consultations.technical_info_question_path(question),
                              active: :exclusive,
                              class: "process-nav__link",
                              class_active: "is-active" do %>
-            <%= icon "comment-square" %>
+            <%= external_icon "decidim/pages/icon.svg" %>
             <%= t ".technical_info_menu_item" %>
           <% end %>
         </li>

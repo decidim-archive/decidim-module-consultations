@@ -17,7 +17,6 @@ module Decidim
           resource :publish, controller: "consultation_publications", only: [:create, :destroy]
           resources :questions, param: :slug, except: :show, shallow: true do
             resource :publish, controller: "question_publications", only: [:create, :destroy]
-            # resources :attachments, controller: "question_attachments", shallow: false
           end
         end
 
@@ -31,7 +30,7 @@ module Decidim
             resources :exports, only: :create
           end
 
-          resources :question_attachments #, controller: "question_attachments"
+          resources :question_attachments
         end
 
         scope "/questions/:question_slug/features/:feature_id/manage" do

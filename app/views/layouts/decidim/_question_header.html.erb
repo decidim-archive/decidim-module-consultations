@@ -23,7 +23,9 @@
   <div class="question-header row column">
     <h2 class="heading1"><%= translated_attribute current_question.title %></h2>
     <% unless current_question.hashtag.blank? %>
-      <p class="question-hashtag">#<%= current_question.hashtag %></p>
+    <p class="question-hashtag">
+      <%= link_to "##{current_question.hashtag}", "https://twitter.com/hashtag/#{current_question.hashtag}" %>
+    </p>
     <% end %>
   </div>
 
