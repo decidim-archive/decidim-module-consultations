@@ -1,38 +1,48 @@
-<% add_decidim_meta_tags({
-  image_url: current_question.banner_image_url,
-  description: translated_attribute(current_question.question_context),
-  title: translated_attribute(current_question.title),
-  url: decidim_consultations.question_url(current_question),
-  twitter_handler: current_organization.twitter_handler
-}) %>
-<% provide :meta_image_url, current_question.banner_image_url %>
+<%= content_for :question_header_details do %>
+  <section  id="question-header-details" class="row section">
+    <article class="card card--full card--process">
+      <div class="row collapse card--process__row">
+        <div class="columns mediumlarge-8 large-6 card--process__column">
+          <div class="video-wrapper">
+            <iframe src="<%= current_question.introductory_video_url %>" frameborder=0>
+            </iframe>
+          </div>
+        </div>
 
-<div class=row>
-  <div class="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
-    <div class="card extra definition-data">
-      <div class="definition-data__item">
-        <% if user_signed_in? %>
-          <%= render partial: "decidim/shared/follow_button", locals: { followable: current_question } %>
-        <% end %>
+        <div class="columns mediumlarge-8 large-6 card--process__column">
+          <div class="card__content question-header-data">
+            <div class="question-header-data-group">
+              <div class=question-eader-data-group-title>
+                <%=t "question.promoter_group", scope: "activemodel.attributes" %>
+              </div>
+              <div><%= translated_attribute current_question.promoter_group %></div>
+            </div>
+
+            <div class="question-header-data-group">
+              <div class=question-eader-data-group-title>
+                <%=t "question.scope", scope: "activemodel.attributes" %>
+              </div>
+              <div><%= translated_attribute current_question.scope.name %></div>
+            </div>
+
+            <div class="question-header-data-group">
+              <div class=question-eader-data-group-title>
+                <%=t "question.participatory_scope", scope: "activemodel.attributes" %>                
+              </div>
+              <div><%= translated_attribute current_question.participatory_scope %></div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </article>
+  </section>
+<% end %>
 
-    <%= render partial: "decidim/shared/share_modal" %>
-    <%= embed_modal_for question_question_widget_url(current_question, format: :js) %>
-    <%= render partial: "statistics" %>
-  </div>
-
-  <div class="columns mediumlarge-8 mediumlarge-pull-4">
-    <div class="section">
-      <div class="row column">
-        <%= decidim_sanitize translated_attribute current_question.question_context %>
-      </div>
-    </div>
-
-    <%= attachments_for current_question %>
+<div class="section">
+  <div class="row column">
+    <%= decidim_sanitize translated_attribute current_question.question_context %>
   </div>
 </div>
 
+<%= attachments_for current_question %>
 <%= comments_for current_question if current_question.published? %>
-<%= javascript_include_tag "decidim/consultations/social_share" %>
-<%= stylesheet_link_tag "decidim/consultations/social_share" %>

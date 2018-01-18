@@ -23,6 +23,7 @@ module Decidim
 
         resources :consultations, only: [:index, :show], param: :slug, path: "consultations" do
           resources :questions, only: [:show], param: :slug, path: "questions", shallow: true do
+            get "technical_info", on: :member
             resource :question_widget, only: :show, path: "embed"
           end
         end

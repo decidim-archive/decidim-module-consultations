@@ -5,7 +5,7 @@ module Decidim
     # A controller that holds the logic to show questions in a
     # public layout.
     class QuestionsController < Decidim::ApplicationController
-      layout "layouts/decidim/question", only: :show
+      layout "layouts/decidim/question"
 
       include NeedsQuestion
 
@@ -14,10 +14,15 @@ module Decidim
       helper Decidim::WidgetUrlsHelper
       helper Decidim::Comments::CommentsHelper
       helper Decidim::AttachmentsHelper
+      helper Decidim::FeatureReferenceHelper
 
       helper_method :stats
 
       def show
+        authorize! :read, current_question
+      end
+
+      def technical_info
         authorize! :read, current_question
       end
 
