@@ -9,8 +9,8 @@ ca:
         description: Descripció
         banner_image: Imatge de bàner
         introductory_video_url: URL del vídeo introductori
-        start_voting_date: Inici del periode de votació
-        end_voting_date: Fi del periode de votació
+        start_voting_date: Data d'inici
+        end_voting_date: Data de finalització
         decidim_highlighted_scope_id: Àmbit destacat
       question:
         slug: Nom curt d'URL
@@ -18,6 +18,7 @@ ca:
         subtitle: Subtítol
         promoter_group: Grup promotor
         decidim_scope_id: Àrea municipal
+        scope: Àrea municipal
         participatory_scope: Àmbit participatiu
         what_is_decided: Què es decideix
         question_context: Contexte
@@ -44,6 +45,7 @@ ca:
       question_features:
         unfold: Desplegar
         question_menu_item: Informació
+        technical_info_menu_item: Fitxa tècnica
   decidim:
     admin:
       menu:
@@ -170,3 +172,5 @@ ca:
         comments_count_title: Comentaris
         meetings_count_title: Trobades
         assistants_count_title: Assistents
+      technical_info:
+        technical_data: Datos técnicos

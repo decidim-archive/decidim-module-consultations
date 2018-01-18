@@ -1,17 +1,46 @@
+<% add_decidim_meta_tags({
+  image_url: current_question.banner_image_url,
+  description: translated_attribute(current_question.question_context),
+  title: translated_attribute(current_question.title),
+  url: decidim_consultations.question_url(current_question),
+  twitter_handler: current_organization.twitter_handler
+}) %>
+<% provide :meta_image_url, current_question.banner_image_url %>
+
 <%= render "layouts/decidim/application" do %>
-    <div class="wrapper">
-      <%= render partial: "layouts/decidim/question_header", locals: { question: current_question } %>
-      <%= yield %>
-    </div>
-    <% if content_for? :expanded %>
-      <div class="expanded">
-        <div class="wrapper wrapper--inner">
-          <div class="row">
-            <%= yield :expanded %>
+  <div class="wrapper">
+    <%= render partial: "layouts/decidim/question_header", locals: { question: current_question } %>
+    <div class=row>
+      <div class="columns section view-side mediumlarge-4 mediumlarge-push-8 large-3 large-push-9">
+        <div class="card extra definition-data">
+          <div class="definition-data__item">
+            <% if user_signed_in? %>
+              <%= render partial: "decidim/shared/follow_button", locals: { followable: current_question } %>
+            <% end %>
           </div>
         </div>
+        <%= feature_reference(current_question) %>
+        <%= render partial: "decidim/shared/share_modal" %>
+        <%= embed_modal_for question_question_widget_url(current_question, format: :js) %>
+        <%= render partial: "statistics" %>
       </div>
-    <% end %>
 
+      <div class="columns mediumlarge-8 mediumlarge-pull-4">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <% if content_for? :expanded %>
+    <div class="expanded">
+      <div class="wrapper wrapper--inner">
+        <div class="row">
+          <%= yield :expanded %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= javascript_include_tag "decidim/consultations/social_share" %>
+  <%= stylesheet_link_tag "decidim/consultations/social_share" %>
   <%= stylesheet_link_tag "decidim/consultations/application", media: :all %>
 <% end %>

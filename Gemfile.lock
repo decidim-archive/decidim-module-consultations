@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    decidim-consultations (0.1.11)
+    decidim-consultations (0.1.12)
       decidim-admin (~> 0.8.3)
       decidim-comments (~> 0.8.3)
       decidim-core (~> 0.8.3)
@@ -578,7 +578,6 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  capybara (= 2.16.1)
   decidim (~> 0.8.3)
   decidim-consultations!
   decidim-dev (~> 0.8.3)

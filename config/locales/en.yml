@@ -9,8 +9,8 @@ en:
         description: Description
         banner_image: Banner image
         introductory_video_url: Introductory video URL
-        start_voting_date: Start of the voting period
-        end_voting_date: End of the voting period
+        start_voting_date: Start date
+        end_voting_date: End date
         decidim_highlighted_scope_id: Highlighted scope
       question:
         slug: URL slug
@@ -18,6 +18,7 @@ en:
         subtitle: Subtitle
         promoter_group: Promoter group
         decidim_scope_id: Municipal area
+        scope: Municipal area
         participatory_scope: Participatory scope
         what_is_decided: What is decided
         question_context: Context
@@ -44,6 +45,7 @@ en:
       question_features:
         unfold: Unfold
         question_menu_item: Information
+        technical_info_menu_item: Technical information
   decidim:
     admin:
       menu:
@@ -170,3 +172,5 @@ en:
         comments_count_title: Comments
         meetings_count_title: Meetings
         assistants_count_title: Assistants
+      technical_info:
+        technical_data: Technical data

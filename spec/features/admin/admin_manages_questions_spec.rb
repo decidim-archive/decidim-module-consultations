@@ -207,7 +207,7 @@ describe "Admin manages questions", type: :feature do
       click_link translated(question.title)
     end
 
-    it "deletes the question" do
+    it "deletes the question" do      
       accept_confirm { click_link "Destroy" }
 
       expect(page).to have_admin_callout("successfully")
