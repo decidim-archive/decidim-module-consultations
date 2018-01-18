@@ -22,26 +22,13 @@
             <%= external_icon "decidim/pages/icon.svg" %>
             <%= t ".question_menu_item" %>
           <% end %>
-        </div>
-      </button>
-      <div class="row column process-nav__content is-active" id="process-nav-content" data-toggler=".is-active">
-        <ul>
-          <li class="<%= 'is-active' if is_active_link?(decidim_consultations.question_path(question), :exclusive) %>">
-            <%= active_link_to decidim_consultations.question_path(question),
-                               active: :exclusive,
-                               class: "process-nav__link",
-                               class_active: "is-active" do %>
-              <%= external_icon "decidim/consultations/icon.svg" %>
-              <%= t ".question_menu_item" %>
-            <% end %>
-          </li>
-
+        </li>    
         <li class="<%= 'is-active' if is_active_link?(decidim_consultations.technical_info_question_path(question), :exclusive) %>">
           <%= active_link_to decidim_consultations.technical_info_question_path(question),
                              active: :exclusive,
                              class: "process-nav__link",
                              class_active: "is-active" do %>
-            <%= external_icon "decidim/pages/icon.svg" %> 
+            <%= external_icon "decidim/pages/icon.svg" %>
             <%= t ".technical_info_menu_item" %>
           <% end %>
         </li>

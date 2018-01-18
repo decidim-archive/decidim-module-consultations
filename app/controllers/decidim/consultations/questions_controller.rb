@@ -11,12 +11,9 @@ module Decidim
 
       helper Decidim::SanitizeHelper
       helper Decidim::IconHelper
-      helper Decidim::WidgetUrlsHelper
       helper Decidim::Comments::CommentsHelper
       helper Decidim::AttachmentsHelper
       helper Decidim::FeatureReferenceHelper
-
-      helper_method :stats
 
       def show
         authorize! :read, current_question
@@ -24,12 +21,6 @@ module Decidim
 
       def technical_info
         authorize! :read, current_question
-      end
-
-      private
-
-      def stats
-        @stats ||= QuestionStatsPresenter.new(question: current_question)
       end
     end
   end

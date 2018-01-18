@@ -7,7 +7,9 @@ module Decidim
     module NeedsQuestion
       def self.enhance_controller(instance_or_module)
         instance_or_module.class_eval do
-          helper_method :current_question, :current_consultation
+          helper_method :current_question, :current_consultation, :stats
+
+          helper Decidim::WidgetUrlsHelper
         end
       end
 
@@ -63,6 +65,10 @@ module Decidim
 
         def organization_consultations
           @organization_consultations ||= OrganizationConsultations.new(current_organization).query
+        end
+
+        def stats
+          @stats ||= QuestionStatsPresenter.new(question: current_question)
         end
       end
     end
