@@ -1,3 +1,16 @@
+<%= render partial: "right_column", locals: { question: current_question } %>
+<div class="columns mediumlarge-8 mediumlarge-pull-4">
+  <div class="section">
+    <div class="row column">
+      <%= decidim_sanitize translated_attribute current_question.question_context %>
+    </div>
+  </div>
+
+  <%= attachments_for current_question %>
+</div>
+
+<%= comments_for current_question if current_question.published? %>
+
 <%= content_for :question_header_details do %>
   <section  id="question-header-details" class="row section">
     <article class="card card--full card--process">
@@ -27,7 +40,7 @@
 
             <div class="question-header-data-group">
               <div class=question-eader-data-group-title>
-                <%=t "question.participatory_scope", scope: "activemodel.attributes" %>                
+                <%=t "question.participatory_scope", scope: "activemodel.attributes" %>
               </div>
               <div><%= translated_attribute current_question.participatory_scope %></div>
             </div>
@@ -37,12 +50,3 @@
     </article>
   </section>
 <% end %>
-
-<div class="section">
-  <div class="row column">
-    <%= decidim_sanitize translated_attribute current_question.question_context %>
-  </div>
-</div>
-
-<%= attachments_for current_question %>
-<%= comments_for current_question if current_question.published? %>
