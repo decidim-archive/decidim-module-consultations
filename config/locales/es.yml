@@ -166,6 +166,11 @@ es:
         title: Otras consultas
       highlighted_question:
         take_part: Participa
+      pages:
+        home:
+          active_consultations:
+            active_consultations: Multiconsultas activas
+            see_all_consultations: Ver todas las multiconsultas
     questions:
       statistics:
         supports_count_title: Adhesiones
