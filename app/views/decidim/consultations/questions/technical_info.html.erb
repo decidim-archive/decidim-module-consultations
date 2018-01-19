@@ -1,55 +1,58 @@
-<div class="section">
-  <h4 class=section-heading>
-    <%=t "questions.technical_info.technical_data", scope: "decidim" %>
-  </h4>
-  <div class="row column question-header-data">
-    <div class="question-header-data-group">
-      <div class=question-eader-data-group-title>
-        <%=t "question.promoter_group", scope: "activemodel.attributes" %>
+<%= render partial: "right_column", locals: { question: current_question } %>
+<div class="columns mediumlarge-8 mediumlarge-pull-4">
+  <div class="section">
+    <h4 class=section-heading>
+      <%=t "questions.technical_info.technical_data", scope: "decidim" %>
+    </h4>
+    <div class="row column question-header-data">
+      <div class="question-header-data-group">
+        <div class=question-eader-data-group-title>
+          <%=t "question.promoter_group", scope: "activemodel.attributes" %>
+        </div>
+        <div><%= translated_attribute current_question.promoter_group %></div>
       </div>
-      <div><%= translated_attribute current_question.promoter_group %></div>
-    </div>
 
-    <div class="question-header-data-group">
-      <div class=question-eader-data-group-title>
-        <%=t "question.scope", scope: "activemodel.attributes" %>
+      <div class="question-header-data-group">
+        <div class=question-eader-data-group-title>
+          <%=t "question.scope", scope: "activemodel.attributes" %>
+        </div>
+        <div><%= translated_attribute current_question.scope.name %></div>
       </div>
-      <div><%= translated_attribute current_question.scope.name %></div>
-    </div>
 
-    <div class="question-header-data-group">
-      <div class=question-eader-data-group-title>
-        <%=t "question.participatory_scope", scope: "activemodel.attributes" %>
+      <div class="question-header-data-group">
+        <div class=question-eader-data-group-title>
+          <%=t "question.participatory_scope", scope: "activemodel.attributes" %>
+        </div>
+        <div><%= translated_attribute current_question.participatory_scope %></div>
       </div>
-      <div><%= translated_attribute current_question.participatory_scope %></div>
-    </div>
 
-    <div class="question-header-data-group">
-      <div class=question-eader-data-group-title>
-        <%=t "consultation.start_voting_date", scope: "activemodel.attributes" %>
+      <div class="question-header-data-group">
+        <div class=question-eader-data-group-title>
+          <%=t "consultation.start_voting_date", scope: "activemodel.attributes" %>
+        </div>
+        <div><%=l current_question.start_voting_date, format: :long %></div>
       </div>
-      <div><%=l current_question.start_voting_date, format: :long %></div>
-    </div>
 
-    <div class="question-header-data-group">
-      <div class=question-eader-data-group-title>
-        <%=t "consultation.end_voting_date", scope: "activemodel.attributes" %>
+      <div class="question-header-data-group">
+        <div class=question-eader-data-group-title>
+          <%=t "consultation.end_voting_date", scope: "activemodel.attributes" %>
+        </div>
+        <div><%=l current_question.end_voting_date, format: :long %></div>
       </div>
-      <div><%=l current_question.end_voting_date, format: :long %></div>
     </div>
   </div>
-</div>
 
-<div class="section">
-  <h4 class=section-heading><%=t "question.what_is_decided", scope: "activemodel.attributes" %></h4>
-  <div class="row column">
-    <%= decidim_sanitize translated_attribute current_question.what_is_decided %>
+  <div class="section">
+    <h4 class=section-heading><%=t "question.what_is_decided", scope: "activemodel.attributes" %></h4>
+    <div class="row column">
+      <%= decidim_sanitize translated_attribute current_question.what_is_decided %>
+    </div>
   </div>
-</div>
 
-<div class="section">
-  <h4 class=section-heading><%=t "question.question_context", scope: "activemodel.attributes" %></h4>
-  <div class="row column">
-    <%= decidim_sanitize translated_attribute current_question.question_context %>
+  <div class="section">
+    <h4 class=section-heading><%=t "question.question_context", scope: "activemodel.attributes" %></h4>
+    <div class="row column">
+      <%= decidim_sanitize translated_attribute current_question.question_context %>
+    </div>
   </div>
 </div>
