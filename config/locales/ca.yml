@@ -177,6 +177,9 @@ ca:
           active_consultation:
             take_part: Participa
             button_info: "Votacions: %{date}"
+    question_votes:
+      create:
+        error: Hi ha hagut errors en votar la pregunta
     questions:
       statistics:
         supports_count_title: Adhesions
@@ -185,3 +188,7 @@ ca:
         assistants_count_title: Assistents
       technical_info:
         technical_data: Datos técnicos
+      vote_button:
+        already_voted: Ja li has donat suport
+        vote: Donar suport
+        starting_from: A partir de %{date}

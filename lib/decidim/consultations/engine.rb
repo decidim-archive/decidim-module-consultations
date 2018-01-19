@@ -25,6 +25,7 @@ module Decidim
           resources :questions, only: [:show], param: :slug, path: "questions", shallow: true do
             get "technical_info", on: :member
             resource :question_widget, only: :show, path: "embed"
+            resource :question_votes, only: %i[create destroy], path: "vote"
           end
         end
 
@@ -55,6 +56,7 @@ module Decidim
         Decidim.configure do |config|
           config.abilities += %w(
             Decidim::Consultations::Abilities::EveryoneAbility
+            Decidim::Consultations::Abilities::CurrentUserAbility
           )
         end
       end

@@ -177,6 +177,9 @@ en:
           active_consultation:
             take_part: Take part
             button_info: "Voting: %{date}"
+    question_votes:
+      create:
+        error: There have been errors when voting the question
     questions:
       statistics:
         supports_count_title: Adhesions
@@ -185,3 +188,7 @@ en:
         assistants_count_title: Assistants
       technical_info:
         technical_data: Technical data
+      vote_button:
+        already_voted: Already voted
+        vote: Vote
+        starting_from: Starting from %{date}

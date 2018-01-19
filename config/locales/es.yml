@@ -45,7 +45,7 @@ es:
         consultation_menu_item: Multiconsula
         unfold: Desplegar
       question_header:
-        back_to_consultation: Ver todas las
+        back_to_consultation: Ver todas las consultas
       question_features:
         unfold: Desplega
         question_menu_item: Información
@@ -177,6 +177,9 @@ es:
           active_consultation:
             take_part: Participa
             button_info: "Votaciones: %{date}"
+    question_votes:
+      create:
+        error: Ha habido errores al votar la pregunta
     questions:
       statistics:
         supports_count_title: Adhesiones
@@ -185,3 +188,7 @@ es:
         assistants_count_title: Asistentes
       technical_info:
         technical_data: Dades tècniques
+    vote_button:
+      already_voted: Ya votado
+      vote: Dar apoyo
+      starting_from: A partir de %{date}

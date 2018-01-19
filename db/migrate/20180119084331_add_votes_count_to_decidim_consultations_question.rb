@@ -2,6 +2,6 @@
 
 class AddVotesCountToDecidimConsultationsQuestion < ActiveRecord::Migration[5.1]
   def change
-    add_column :decidim_consultations_questions, :decidim_consultations_votes_count, :integer, null: false, default: 0
+    add_column :decidim_consultations_questions, :votes_count, :integer, null: false, default: 0
   end
 end

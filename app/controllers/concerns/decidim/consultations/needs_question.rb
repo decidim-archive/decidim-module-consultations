@@ -10,17 +10,19 @@ module Decidim
           helper_method :current_question, :current_consultation, :current_participatory_space, :stats
 
           helper Decidim::WidgetUrlsHelper
+          helper Decidim::ActionAuthorizationHelper
         end
       end
 
       def self.extended(base)
         base.extend Decidim::NeedsOrganization, InstanceMethods
+        base.include Decidim::Consultations::ActionAuthorization
 
         enhance_controller(base)
       end
 
       def self.included(base)
-        base.include Decidim::NeedsOrganization, InstanceMethods
+        base.include Decidim::NeedsOrganization, InstanceMethods, Decidim::Consultations::ActionAuthorization
 
         enhance_controller(base)
       end

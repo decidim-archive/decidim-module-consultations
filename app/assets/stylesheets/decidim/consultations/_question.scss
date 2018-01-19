@@ -33,3 +33,14 @@
     margin-bottom: 0;
   }
 }
+
+.question-vote-cabin {
+  margin-bottom: 3em;
+
+  .vote-button-caption {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+  }
+}

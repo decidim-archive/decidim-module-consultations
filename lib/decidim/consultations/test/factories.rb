@@ -81,4 +81,9 @@ FactoryBot.define do
       published_at { Time.current }
     end
   end
+
+  factory :vote, class: "Decidim::Consultations::Vote" do
+    question
+    author { create(:user, organization: question.organization) }
+  end
 end

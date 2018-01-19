@@ -21,6 +21,11 @@ module Decidim
                  class_name: "Decidim::Organization"
 
       has_many :features, as: :participatory_space, dependent: :destroy
+      has_many :votes,
+               foreign_key: "decidim_consultation_question_id",
+               class_name: "Decidim::Consultations::Vote",
+               dependent: :destroy,
+               inverse_of: :question
 
       mount_uploader :banner_image, Decidim::BannerImageUploader
 
@@ -47,11 +52,11 @@ module Decidim
         banner_image.present? ? banner_image.url : consultation.banner_image.url
       end
 
-      def self.order_randomly(seed)
-        transaction do
-          connection.execute("SELECT setseed(#{connection.quote(seed)})")
-          select('"decidim_consultations_questions".*, RANDOM()').order("RANDOM()").load
-        end
+      # Public: Check if the user has voted the proposal.
+      #
+      # Returns Boolean.
+      def voted_by?(user)
+        votes.where(author: user).any?
       end
 
       def scopes_enabled?
@@ -81,6 +86,13 @@ module Decidim
 
       def self.participatory_space_manifest
         Decidim.find_participatory_space_manifest(Decidim::Consultation.name.demodulize.underscore.pluralize)
+      end
+
+      def self.order_randomly(seed)
+        transaction do
+          connection.execute("SELECT setseed(#{connection.quote(seed)})")
+          select('"decidim_consultations_questions".*, RANDOM()').order("RANDOM()").load
+        end
       end
     end
   end
