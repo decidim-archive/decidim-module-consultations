@@ -32,10 +32,6 @@ module Decidim
         it "excludes the inactive consultations" do
           expect(subject).not_to include(*local_inactive_consultations)
         end
-
-        # it "Using sugar syntax method for returns the same result as using the constructor and query methods combined" do
-        #   expect(subject.query).to eq(described_class.for(organization))
-        # end
       end
     end
   end
