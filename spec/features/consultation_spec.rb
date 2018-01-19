@@ -17,6 +17,21 @@ describe "Consultation", type: :feature do
     expect(page).to have_i18n_content(consultation.description)
   end
 
+  context "when the consultation is unpublished" do
+    let!(:consultation) do
+      create(:consultation, :unpublished, organization: organization)
+    end
+
+    before do
+      switch_to_host(organization.host)
+      visit decidim_consultations.consultation_path(consultation)
+    end
+
+    it "redirects to root path" do
+      expect(page).to have_current_path("/")
+    end
+  end
+
   context "when highlighted questions" do
     let!(:question) { create(:question, :published, consultation: consultation, scope: consultation.highlighted_scope) }
 

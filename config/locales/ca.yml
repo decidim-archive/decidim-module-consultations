@@ -166,6 +166,11 @@ ca:
         title: Altres consultes
       highlighted_question:
         take_part: Participa
+      pages:
+        home:
+          active_consultations:
+            active_consultations: Multiconsultes actives
+            see_all_consultations: Veure totes les multiconsultes
     questions:
       statistics:
         supports_count_title: Adhesions

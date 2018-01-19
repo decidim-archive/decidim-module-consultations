@@ -166,6 +166,11 @@ en:
         title: Other consultations
       highlighted_question:
         take_part: Take part
+      pages:
+        home:
+          active_consultations:
+            active_consultations: Active consultations
+            see_all_consultations: See all consultations
     questions:
       statistics:
         supports_count_title: Adhesions

@@ -65,21 +65,19 @@ module Decidim
         end
       end
 
-      # TODO: Define the criteria to select consultations in main page.
-      # initializer "decidim_consultations.view_hooks" do
-      #   Decidim.view_hooks.register(:active_elements, priority: Decidim::ViewHooks::MEDIUM_PRIORITY) do |view_context|
-      #     active_consultations = OrganizationActiveConsultations.for(view_context.current_organization)
-      #
-      #     next unless active_consultations.any?
-      #
-      #     view_context.render(
-      #       partial: "decidim/consultations/pages/home/active_consultations",
-      #       locals: {
-      #         active_consultations: active_consultations
-      #       }
-      #     )
-      #   end
-      # end
+      initializer "decidim_consultations.view_hooks" do
+        Decidim.view_hooks.register(:highlighted_elements, priority: Decidim::ViewHooks::MEDIUM_PRIORITY) do |view_context|
+          active_consultations = OrganizationActiveConsultations.for(view_context.current_organization)
+          next unless active_consultations.any?
+
+          view_context.render(
+            partial: "decidim/consultations/pages/home/active_consultations",
+            locals: {
+              consultations: active_consultations
+            }
+          )
+        end
+      end
 
       initializer "decidim_consultations.menu" do
         Decidim.menu :menu do |menu|
