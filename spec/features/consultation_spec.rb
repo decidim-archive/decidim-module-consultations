@@ -72,4 +72,18 @@ describe "Consultation", type: :feature do
       expect(page).to have_i18n_content(question.subtitle)
     end
   end
+
+  context "when finished consultations" do
+    let!(:finished_consultation) { create :consultation, :finished, :published, organization: organization }
+
+    before do
+      switch_to_host(organization.host)
+      visit decidim_consultations.consultation_path(consultation)
+    end
+
+    it "consultation page contains finished consultations" do
+      expect(page).to have_content("PAST CONSULTATIONS")
+      expect(page).to have_i18n_content(finished_consultation.title)
+    end
+  end
 end

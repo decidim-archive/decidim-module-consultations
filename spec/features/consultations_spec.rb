@@ -50,8 +50,9 @@ describe "Consultations", type: :feature do
     end
   end
 
-  context "when there is only one consultation in the organization" do
-    let!(:consultation) { create(:consultation, :published, organization: organization) }
+  context "when there is only one active consultation in the organization" do
+    let!(:consultation) { create(:consultation, :active, :published, organization: organization) }
+    let!(:finished_consultation) { create :consultation, :finished, :published, organization: organization }
 
     before do
       switch_to_host(organization.host)

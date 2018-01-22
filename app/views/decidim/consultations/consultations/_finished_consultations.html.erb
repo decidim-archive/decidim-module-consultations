@@ -1,0 +1,15 @@
+<% if finished_consultations.any? %>
+  <section id="finished-consultations" class="row section">
+    <h4 class=section-heading>
+      <%= t "consultations.finished_consultations.title", scope: "decidim" %>
+    </h4>
+
+    <div class="row">
+      <div class="columns mediumlarge-12 large-12">
+        <div class="row small-up-1 medium-up-2 card-grid">
+          <%= render finished_consultations %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

@@ -165,6 +165,8 @@ es:
           recent: Mas reciente
       highlighted_questions:
         title: Consultas de %{scope_name}
+      finished_consultations:
+        title: Multiconsultas anteriores
       regular_questions:
         title: Otras consultas
       highlighted_question:
