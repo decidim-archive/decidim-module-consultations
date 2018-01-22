@@ -190,5 +190,6 @@ en:
         technical_data: Technical data
       vote_button:
         already_voted: Already voted
+        already_voted_hover: Unvote
         vote: Vote
         starting_from: Starting from %{date}

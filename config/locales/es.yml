@@ -190,5 +190,6 @@ es:
         technical_data: Dades tècniques
     vote_button:
       already_voted: Ya votado
+      already_voted_hover: Retirar voto
       vote: Dar apoyo
       starting_from: A partir de %{date}

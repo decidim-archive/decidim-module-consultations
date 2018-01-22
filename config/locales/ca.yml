@@ -190,5 +190,6 @@ ca:
         technical_data: Datos técnicos
       vote_button:
         already_voted: Ja li has donat suport
+        already_voted_hover: Retirar suport
         vote: Donar suport
         starting_from: A partir de %{date}
