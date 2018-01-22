@@ -48,7 +48,10 @@ module Decidim
             question_context: form.question_context,
             introductory_video_url: form.introductory_video_url,
             hashtag: form.hashtag,
-            banner_image: form.banner_image
+            banner_image: form.banner_image,
+            origin_scope: form.origin_scope,
+            origin_title: form.origin_title,
+            origin_url: form.origin_url
           )
 
           return question unless question.valid?

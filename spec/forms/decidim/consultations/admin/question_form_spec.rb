@@ -55,6 +55,21 @@ module Decidim
           }
         end
         let(:attachment) { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
+        let(:origin_scope) do
+          {
+            en: "",
+            es: "",
+            ca: ""
+          }
+        end
+        let(:origin_title) do
+          {
+            en: "",
+            es: "",
+            ca: ""
+          }
+        end
+        let(:origin_url) { nil }
         let(:attributes) do
           {
             "question" => {
@@ -75,7 +90,14 @@ module Decidim
               "what_is_decided_es" => what_is_decided[:es],
               "what_is_decided_ca" => what_is_decided[:ca],
               "decidim_scope_id" => scope&.id,
-              "banner_image" => attachment
+              "banner_image" => attachment,
+              "origin_scope_en" => origin_scope[:en],
+              "origin_scope_es" => origin_scope[:es],
+              "origin_scope_ca" => origin_scope[:ca],
+              "origin_title_en" => origin_title[:en],
+              "origin_title_es" => origin_title[:es],
+              "origin_title_ca" => origin_title[:ca],
+              "origin_url" => origin_url
             }
           }
         end
@@ -180,10 +202,38 @@ module Decidim
               create(:question, slug: slug, consultation: consultation)
             end
 
-            it "is valid" do
-              expect(subject).to be_valid
-            end
+            it { is_expected.to be_valid }
           end
+        end
+
+        context "when only origin_url is defined" do
+          let(:origin_url) { "https://www.aspgems.com/" }
+
+          it { is_expected.not_to be_valid }
+        end
+
+        context "when only origin_scope is defined" do
+          let(:origin_scope) do
+            {
+              en: "Origin scope",
+              es: "Origin scope",
+              ca: "Origin scope"
+            }
+          end
+
+          it { is_expected.not_to be_valid }
+        end
+
+        context "when only origin_title is defined" do
+          let(:origin_title) do
+            {
+              en: "Origin title",
+              es: "Origin title",
+              ca: "Origin title"
+            }
+          end
+
+          it { is_expected.not_to be_valid }
         end
       end
     end

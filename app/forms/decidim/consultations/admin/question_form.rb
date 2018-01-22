@@ -15,6 +15,9 @@ module Decidim
         translatable_attribute :question_context, String
         translatable_attribute :subtitle, String
         translatable_attribute :what_is_decided, String
+        translatable_attribute :origin_scope, String
+        translatable_attribute :origin_title, String
+        attribute :origin_url, String
         attribute :slug, String
         attribute :introductory_video_url, String
         attribute :banner_image
@@ -27,6 +30,7 @@ module Decidim
         validates :decidim_scope_id, presence: true
         validates :banner_image, file_size: { less_than_or_equal_to: ->(_record) { Decidim.maximum_attachment_size } }, file_content_type: { allow: ["image/jpeg", "image/png"] }
         validate :slug_uniqueness
+        validates :origin_scope, :origin_title, translatable_presence: true, if: :has_origin_data?
 
         private
 
@@ -38,6 +42,20 @@ module Decidim
                         .where.not(id: context[:question_id]).any?
 
           errors.add(:slug, :taken)
+        end
+
+        def has_origin_data?
+          has_value?(origin_title) || has_value?(origin_scope) || origin_url.present?
+        end
+
+        def has_value?(translatable_attribute)
+          return false if translatable_attribute.nil?
+
+          Decidim.available_locales.each do |locale|
+            return true if translatable_attribute.with_indifferent_access[locale].present?
+          end
+
+          false
         end
       end
     end
