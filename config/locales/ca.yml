@@ -26,6 +26,9 @@ ca:
         introductory_video_url: URL del vídeo introductori
         hashtag: Hashtag
         banner_image: Imatge de bàner
+        origin_scope: Àmbit
+        origin_title: Origen
+        origin_url: URL Origen
   pages:
     home:
       statistics:

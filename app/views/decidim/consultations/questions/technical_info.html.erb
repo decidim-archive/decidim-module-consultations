@@ -5,12 +5,38 @@
       <%=t "questions.technical_info.technical_data", scope: "decidim" %>
     </h4>
     <div class="row column question-header-data">
+      <% unless translated_attribute(current_question.origin_scope).blank? %>
+        <div class="question-header-data-group">
+          <div class=question-eader-data-group-title>
+            <%=t "question.origin_scope", scope: "activemodel.attributes" %>
+          </div>
+          <div><%= translated_attribute current_question.origin_scope %></div>
+        </div>
+      <% end %>
+
       <div class="question-header-data-group">
         <div class=question-eader-data-group-title>
           <%=t "question.promoter_group", scope: "activemodel.attributes" %>
         </div>
         <div><%= translated_attribute current_question.promoter_group %></div>
       </div>
+
+      <% unless translated_attribute(current_question.origin_title).blank? %>
+        <div class="question-header-data-group">
+          <div class=question-eader-data-group-title>
+            <%=t "question.origin_title", scope: "activemodel.attributes" %>
+          </div>
+          <div>
+            <% if current_question.origin_url.blank? %>
+              <%= translated_attribute current_question.origin_title %>
+            <% else %>
+              <%= link_to translated_attribute(current_question.origin_title),
+                         current_question.origin_url,
+                         target: "_blank" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
 
       <div class="question-header-data-group">
         <div class=question-eader-data-group-title>

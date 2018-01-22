@@ -26,6 +26,9 @@ en:
         introductory_video_url: Introductory video URL
         hashtag: Hashtag
         banner_image: Banner image
+        origin_scope: Scope
+        origin_title: Origin
+        origin_url: Origin URL
   pages:
     home:
       statistics:

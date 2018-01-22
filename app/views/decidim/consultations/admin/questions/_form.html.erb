@@ -36,6 +36,18 @@
                              remote_path: decidim.scopes_search_path %>
     </div>
 
+    <div class="row column">
+      <%= form.translated :text_field, :origin_scope %>
+    </div>
+
+    <div class="row column">
+      <%= form.translated :text_field, :origin_title %>
+    </div>
+
+    <div class="row column">
+      <%= form.url_field :origin_url %>
+    </div>
+
     <div class="fow column">
       <%= form.text_field :slug %>
       <p class="help-text">
