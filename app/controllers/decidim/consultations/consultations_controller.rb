@@ -12,7 +12,7 @@ module Decidim
       include Paginable
       include Orderable
 
-      helper_method :collection, :consultations, :filter
+      helper_method :collection, :consultations, :finished_consultations, :filter
 
       helper Decidim::FiltersHelper
       helper Decidim::OrdersHelper
@@ -22,10 +22,7 @@ module Decidim
 
       def index
         authorize! :read, Consultation
-
-        if OrganizationConsultations.for(current_organization).published.count == 1
-          redirect_to consultation_path(OrganizationConsultations.for(current_organization).published.first)
-        end
+        redirect_to consultation_path(active_consultations.first) if active_consultations.count == 1
       end
 
       def show
@@ -33,6 +30,14 @@ module Decidim
       end
 
       private
+
+      def finished_consultations
+        @past_cosultations ||= OrganizationConsultations.for(current_organization).finished.published
+      end
+
+      def active_consultations
+        @active_consultations ||= OrganizationConsultations.for(current_organization).active.published
+      end
 
       def consultations
         @consultations = search.results
