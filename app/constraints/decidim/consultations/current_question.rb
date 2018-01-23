@@ -29,7 +29,7 @@ module Decidim
       end
 
       def detect_current_question(params)
-        Decidim::Consultations::Question.find_by(slug: params[:question_slug])
+        Decidim::Consultations::Question.find_by(slug: params[:question_slug], organization: @organization)
       end
     end
   end

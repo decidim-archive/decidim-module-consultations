@@ -7,7 +7,7 @@ module Decidim
     module NeedsQuestion
       def self.enhance_controller(instance_or_module)
         instance_or_module.class_eval do
-          helper_method :current_question, :current_consultation, :stats
+          helper_method :current_question, :current_consultation, :current_participatory_space, :stats
 
           helper Decidim::WidgetUrlsHelper
         end

@@ -14,9 +14,13 @@ module Decidim
         included do
           include NeedsQuestion
 
-          layout "decidim/admin/question"
+          include Decidim::Admin::ParticipatorySpaceAdminContext
+          participatory_space_admin_layout
 
-          alias_method :current_participatory_space, :current_question
+          def current_participatory_space
+            return current_consultation if params.has_key? :consultation_slug
+            current_question
+          end
         end
       end
     end

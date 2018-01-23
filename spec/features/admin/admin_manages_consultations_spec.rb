@@ -47,7 +47,8 @@ describe "Admin manages consultations", type: :feature do
         )
         fill_in :consultation_slug, with: "slug"
         attach_file :consultation_banner_image, image2_path
-        select2(translated(organization.scopes.first.name), from: :consultation_decidim_highlighted_scope_id)
+
+        scope_pick scopes_picker_find(:consultation_decidim_highlighted_scope_id), organization.scopes.first
 
         find("*[type=submit]").click
       end
@@ -97,7 +98,7 @@ describe "Admin manages consultations", type: :feature do
         )
         fill_in :consultation_slug, with: "slug"
         attach_file :consultation_banner_image, image2_path
-        select2(translated(organization.scopes.first.name), from: :consultation_decidim_highlighted_scope_id)
+        scope_pick scopes_picker_find(:consultation_decidim_highlighted_scope_id), organization.scopes.first
 
         find("*[type=submit]").click
       end
