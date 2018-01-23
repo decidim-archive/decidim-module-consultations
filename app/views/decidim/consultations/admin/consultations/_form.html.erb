@@ -29,9 +29,7 @@
     </div>
 
     <div class="row column">
-      <%= form.scopes_select :decidim_highlighted_scope_id,
-                             prompt: t("decidim.scopes.global"),
-                             remote_path: decidim.scopes_search_path %>
+      <%= scopes_picker_field form, :decidim_highlighted_scope_id %>      
     </div>
 
     <div class="fow column">

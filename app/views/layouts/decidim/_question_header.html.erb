@@ -9,26 +9,26 @@
           </h1>
         </div>
         <div>
-          <%= link_to decidim_consultations.consultation_path(current_question.consultation) do %>
+          <%= link_to decidim_consultations.consultation_path(question.consultation) do %>
           <h2 class="text-highlight heading-small">
             <%=t ".back_to_consultation" %>
             <%= icon "media-play" %>
           <% end %>
         </div>
       </div>
-      <%= render partial: "layouts/decidim/consultation_voting_data", locals: { consultation: current_question.consultation } %>
+      <%= render partial: "layouts/decidim/consultation_voting_data", locals: { consultation: question.consultation } %>
     </div>
   </div>
 
   <div class="question-header row column">
-    <h2 class="heading1"><%= translated_attribute current_question.title %></h2>
-    <% unless current_question.hashtag.blank? %>
+    <h2 class="heading1"><%= translated_attribute question.title %></h2>
+    <% unless question.hashtag.blank? %>
     <p class="question-hashtag">
-      <%= link_to "##{current_question.hashtag}", "https://twitter.com/hashtag/#{current_question.hashtag}" %>
+      <%= link_to "##{question.hashtag}", "https://twitter.com/hashtag/#{question.hashtag}" %>
     </p>
     <% end %>
   </div>
 
   <%= yield :question_header_details if content_for? :question_header_details %>
-  <%= render partial: "layouts/decidim/question_features", locals: { question: current_question} %>
+  <%= render partial: "layouts/decidim/question_features", locals: { question: question} %>
 </div>

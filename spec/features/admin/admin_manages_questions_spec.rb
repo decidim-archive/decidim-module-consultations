@@ -62,7 +62,7 @@ describe "Admin manages questions", type: :feature do
         )
         fill_in :question_slug, with: "slug"
         attach_file :question_banner_image, image2_path
-        select2(translated(organization.scopes.first.name), from: :question_decidim_scope_id)
+        scope_pick scopes_picker_find(:question_decidim_scope_id), organization.scopes.first
 
         find("*[type=submit]").click
       end
@@ -127,7 +127,7 @@ describe "Admin manages questions", type: :feature do
           ca: "Què es decideix"
         )
         attach_file :question_banner_image, image2_path
-        select2(translated(organization.scopes.first.name), from: :question_decidim_scope_id)
+        scope_pick scopes_picker_find(:question_decidim_scope_id), organization.scopes.first
 
         find("*[type=submit]").click
       end
@@ -207,7 +207,7 @@ describe "Admin manages questions", type: :feature do
       click_link translated(question.title)
     end
 
-    it "deletes the question" do      
+    it "deletes the question" do
       accept_confirm { click_link "Destroy" }
 
       expect(page).to have_admin_callout("successfully")

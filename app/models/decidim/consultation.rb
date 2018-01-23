@@ -57,6 +57,15 @@ module Decidim
       questions.published.where.not(decidim_scope_id: decidim_highlighted_scope_id).group_by(&:scope)
     end
 
+    # This method exists with the only purpose of getting rid of whats seems to be an issue in
+    # the new scope picker: This engine is a bit special: consultations and questions are a kind of
+    # nested participatory spaces. When a new question is created the consultation is the participatory space.
+    # Since seems that the scope picker is asking to the current participatory space for its scope
+    # this method is necessary to exist an return nil in order to be able to browse the scope hierarchy
+    def scope
+      nil
+    end
+
     def self.order_randomly(seed)
       transaction do
         connection.execute("SELECT setseed(#{connection.quote(seed)})")

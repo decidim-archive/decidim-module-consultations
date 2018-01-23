@@ -1,8 +1,21 @@
 # frozen_string_literal: true
 
 Decidim.register_participatory_space(:consultations) do |participatory_space|
-  participatory_space.engine = Decidim::Consultations::Engine
-  participatory_space.admin_engine = Decidim::Consultations::AdminEngine
+  participatory_space.context(:public) do |context|
+    context.engine = Decidim::Consultations::Engine
+    context.layout = "layouts/decidim/question"
+    context.helper = "Decidim::Consultations::ConsultationsHelper"
+  end
+
+  participatory_space.context(:admin) do |context|
+    context.engine = Decidim::Consultations::AdminEngine
+    context.layout = "layouts/decidim/admin/question"
+  end
+
+  participatory_space.participatory_spaces do |organization|
+    Decidim::Consultations::Question.where(organization: organization)
+  end
+
   participatory_space.icon = "decidim/consultations/icon.svg"
   participatory_space.model_class_name = "Decidim::Consultations::Question"
 
