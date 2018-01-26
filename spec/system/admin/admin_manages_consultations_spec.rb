@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Admin manages consultations", type: :feature do
+describe "Admin manages consultations", type: :system do
   include_context "when administrating a consultation"
 
   before do

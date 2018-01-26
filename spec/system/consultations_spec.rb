@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Consultations", type: :feature do
+describe "Consultations", type: :system do
   let(:organization) { create(:organization) }
 
   context "when ordering by 'Most recent'" do

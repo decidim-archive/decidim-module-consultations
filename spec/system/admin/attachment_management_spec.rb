@@ -3,7 +3,7 @@
 require "spec_helper"
 require "decidim/admin/test/manage_attachments_examples"
 
-describe "question attachments", type: :feature do
+describe "question attachments", type: :system do
   include_context "when administrating a consultation"
   let(:question) { create(:question, consultation: consultation) }
 

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Question embeds", type: :feature do
+describe "Question embeds", type: :system do
   let(:question) { create(:question) }
 
   context "when visiting the embed page for a question" do

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Consultation", type: :feature do
+describe "Consultation", type: :system do
   let(:organization) { create(:organization) }
   let(:consultation) { create(:consultation, :published, organization: organization) }
 
