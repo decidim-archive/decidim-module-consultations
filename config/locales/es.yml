@@ -12,6 +12,7 @@ es:
         start_voting_date: Fecha de inicio
         end_voting_date: Fecha de finalización
         decidim_highlighted_scope_id: Ámbito destacado
+        enable_highlighted_banner: Destacado en portada
       question:
         slug: Texto corto de URL
         title: Título
@@ -173,9 +174,9 @@ es:
         take_part: Participa
       pages:
         home:
-          active_consultations:
-            active_consultations: Multiconsultas activas
-            see_all_consultations: Ver todas las multiconsultas
+          active_consultation:
+            take_part: Participa
+            button_info: "Votaciones: %{date}"
     questions:
       statistics:
         supports_count_title: Adhesiones

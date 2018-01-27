@@ -12,6 +12,7 @@ en:
         start_voting_date: Start date
         end_voting_date: End date
         decidim_highlighted_scope_id: Highlighted scope
+        enable_highlighted_banner: Highlighted at home
       question:
         slug: URL slug
         title: Title
@@ -173,9 +174,9 @@ en:
         take_part: Take part
       pages:
         home:
-          active_consultations:
-            active_consultations: Active consultations
-            see_all_consultations: See all consultations
+          active_consultation:
+            take_part: Take part
+            button_info: "Voting: %{date}"
     questions:
       statistics:
         supports_count_title: Adhesions

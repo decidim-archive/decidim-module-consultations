@@ -12,6 +12,7 @@ ca:
         start_voting_date: Data d'inici
         end_voting_date: Data de finalització
         decidim_highlighted_scope_id: Àmbit destacat
+        enable_highlighted_banner: Destacat en portada
       question:
         slug: Nom curt d'URL
         title: Títol
@@ -173,9 +174,9 @@ ca:
         take_part: Participa
       pages:
         home:
-          active_consultations:
-            active_consultations: Multiconsultes actives
-            see_all_consultations: Veure totes les multiconsultes
+          active_consultation:
+            take_part: Participa
+            button_info: "Votacions: %{date}"
     questions:
       statistics:
         supports_count_title: Adhesions
