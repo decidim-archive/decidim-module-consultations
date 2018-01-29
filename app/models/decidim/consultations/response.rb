@@ -4,7 +4,7 @@ module Decidim
   module Consultations
     class Response < ApplicationRecord
       belongs_to :question,
-                 foreign_key: "decidim_consultation_question_id",
+                 foreign_key: "decidim_consultations_questions_id",
                  class_name: "Decidim::Consultations::Question",
                  inverse_of: :responses
     end

@@ -29,7 +29,7 @@ module Decidim
                inverse_of: :question
 
       has_many :responses,
-               foreign_key: "decidim_consultation_question_id",
+               foreign_key: "decidim_consultations_questions_id",
                class_name: "Decidim::Consultations::Response",
                inverse_of: :question,
                dependent: :destroy
