@@ -17,6 +17,7 @@ module Decidim
     has_many :questions,
              foreign_key: "decidim_consultation_id",
              class_name: "Decidim::Consultations::Question",
+             inverse_of: :consultation,
              dependent: :destroy
 
     validates :slug, uniqueness: { scope: :organization }

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Question voting", type: :feature do
+describe "Question voting", type: :system do
   let(:organization) { create(:organization) }
   let(:question) { create :question, :published, consultation: consultation }
 

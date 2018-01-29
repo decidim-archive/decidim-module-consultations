@@ -82,6 +82,11 @@ FactoryBot.define do
     end
   end
 
+  factory :response, class: "Decidim::Consultations::Response" do
+    question
+    title { Decidim::Faker::Localized.sentence(3) }
+  end
+
   factory :vote, class: "Decidim::Consultations::Vote" do
     question
     author { create(:user, organization: question.organization) }

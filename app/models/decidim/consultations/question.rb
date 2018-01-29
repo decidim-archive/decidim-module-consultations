@@ -14,7 +14,8 @@ module Decidim
 
       belongs_to :consultation,
                  foreign_key: "decidim_consultation_id",
-                 class_name: "Decidim::Consultation"
+                 class_name: "Decidim::Consultation",
+                 inverse_of: :questions
 
       belongs_to :organization,
                  foreign_key: "decidim_organization_id",
@@ -26,6 +27,12 @@ module Decidim
                class_name: "Decidim::Consultations::Vote",
                dependent: :destroy,
                inverse_of: :question
+
+      has_many :responses,
+               foreign_key: "decidim_consultation_question_id",
+               class_name: "Decidim::Consultations::Response",
+               inverse_of: :question,
+               dependent: :destroy
 
       mount_uploader :banner_image, Decidim::BannerImageUploader
 

@@ -60,6 +60,13 @@ Decidim.register_participatory_space(:consultations) do |participatory_space|
         organization: organization
       )
 
+      2.times do
+        Decidim::Consultations::Response.create(
+          question: question,
+          title: Decidim::Faker::Localized.sentence(3)
+        )
+      end
+
       Decidim::Comments::Seed.comments_for(question)
 
       Decidim::Attachment.create!(
