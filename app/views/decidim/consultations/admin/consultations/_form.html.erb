@@ -29,7 +29,7 @@
     </div>
 
     <div class="row column">
-      <%= scopes_picker_field form, :decidim_highlighted_scope_id %>      
+      <%= scopes_picker_field form, :decidim_highlighted_scope_id %>
     </div>
 
     <div class="fow column">
@@ -39,6 +39,10 @@
              scope: "decidim.admin",
              url: decidim_form_slug_url(:consultations, form.object.slug || consultation_example_slug) %>
       </p>
+    </div>
+
+    <div class="row column">
+      <%= form.check_box :enable_highlighted_banner %>
     </div>
 
     <div class="row">

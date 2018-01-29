@@ -25,7 +25,8 @@ module Decidim
               decidim_highlighted_scope_id: consultation.highlighted_scope.id,
               start_voting_date: consultation.start_voting_date,
               end_voting_date: consultation.end_voting_date,
-              introductory_video_url: consultation.introductory_video_url
+              introductory_video_url: consultation.introductory_video_url,
+              enable_highlighted_banner: true
             }
           }
         end

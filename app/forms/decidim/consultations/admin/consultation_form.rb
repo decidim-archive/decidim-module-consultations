@@ -19,6 +19,7 @@ module Decidim
         attribute :decidim_highlighted_scope_id, Integer
         attribute :start_voting_date, Date
         attribute :end_voting_date, Date
+        attribute :enable_highlighted_banner, Boolean, default: true
 
         validates :slug, presence: true, format: { with: Decidim::Consultation.slug_format }
         validates :title, :subtitle, :description, translatable_presence: true
