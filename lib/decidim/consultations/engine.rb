@@ -66,7 +66,7 @@ module Decidim
       end
 
       initializer "decidim_consultations.view_hooks" do
-        Decidim.view_hooks.register(:highlighted_elements, priority: Decidim::ViewHooks::MEDIUM_PRIORITY) do |view_context|
+        Decidim.view_hooks.register(:highlighted_elements, priority: Decidim::ViewHooks::HIGH_PRIORITY) do |view_context|
           consultations = OrganizationActiveConsultations
                           .for(view_context.current_organization)
                           .where(enable_highlighted_banner: true)
