@@ -56,17 +56,19 @@
                                         data: { disable: true },
                                         class: "card__button button expanded",
                                         id: "endorse_button" do %>
-          <div class="endorse-button-caption"><%= t("questions.endorse_button.endorse", scope: "decidim") %></div>
+          <div class="endorse-button-caption"><%=t "questions.endorse_button.endorse", scope: "decidim" %></div>
         <% end %>
       <% end %>
     <% else %>
-      <%= action_authorized_button_to :endorse,
+      <% if question.consultation.active? %>
+        <%= action_authorized_button_to :endorse,
                                       decidim_consultations.question_question_endorsements_path(question),
                                       class: "card__button button expanded",
                                       data: { disable: true },
-                                      id: "endorse_button" if question.consultation.active? do %>
+                                      id: "endorse_button" do %>
           <div class="endorse-button-caption"><%= t("questions.endorse_button.endorse", scope: "decidim") %></div>
         <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
