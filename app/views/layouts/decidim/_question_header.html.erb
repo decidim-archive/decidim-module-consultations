@@ -30,8 +30,12 @@
   </div>
 
   <%= yield :question_header_details if content_for? :question_header_details %>
-  <div id="question-<%= question.id %>-endorse-button">
-    <%= render partial: "decidim/consultations/questions/endorse_button", locals: { question: question } %>
-  </div>
+  <% if question.external_endorsement %>
+    <iframe src="<%= question.i_frame_url %>"></iframe>
+  <% else %>
+    <div id="question-<%= question.id %>-endorse-button">
+      <%= render partial: "decidim/consultations/questions/endorse_button", locals: { question: question } %>
+    </div>
+  <% end %>
   <%= render partial: "layouts/decidim/question_features", locals: { question: question} %>
 </div>
