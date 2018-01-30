@@ -1,7 +1,7 @@
 <div class="row question-vote-cabin">
   <div class="columns mediumlarge-4 mediumlarge-push-4">
     <% if question.consultation.upcoming? %>
-      <%= action_authorized_button_to :vote,
+      <%= action_authorized_button_to :endorse,
                                     decidim_consultations.question_question_votes_path(question),
                                     remote: true,
                                     data: { disable: true },
@@ -17,7 +17,7 @@
     <% end %>
 
     <% if question.consultation.finished? && signed_in? && question.voted_by?(current_user) %>
-      <%= action_authorized_button_to :unvote,
+      <%= action_authorized_button_to :unendorse,
                                       decidim_consultations.question_question_votes_path(question),
                                       method: :delete,
                                       remote: true,
@@ -29,14 +29,13 @@
     <% end %>
 
     <% if signed_in? && question.consultation.active? %>
-      <% if can? :unvote, question %>
-        <%= action_authorized_button_to :unvote,
+      <% if can? :unendorse, question %>
+        <%= action_authorized_button_to :endorse,
                                         decidim_consultations.question_question_votes_path(question),
                                         method: :delete,
                                         remote: true,
                                         data: {
-                                          disable: true,
-
+                                          disable: true
                                         },
                                         class: "card__button button expanded success",
                                         id: "unvote_button" do %>
@@ -48,8 +47,8 @@
         <% end %>
       <% end %>
 
-      <% if can? :vote, question %>
-        <%= action_authorized_button_to :vote,
+      <% if can? :endorse, question %>
+        <%= action_authorized_button_to :endorse,
                                         decidim_consultations.question_question_votes_path(question),
                                         remote: true,
                                         data: { disable: true },
@@ -59,7 +58,7 @@
         <% end %>
       <% end %>
     <% else %>
-      <%= action_authorized_button_to :vote,
+      <%= action_authorized_button_to :endorse,
                                       decidim_consultations.question_question_votes_path(question),
                                       class: "card__button button expanded",
                                       data: { disable: true },

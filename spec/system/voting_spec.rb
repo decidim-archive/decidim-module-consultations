@@ -61,7 +61,7 @@ describe "Question voting", type: :system do
       end
 
       context "and voted before" do
-        let!(:vote) { create :vote, author: user, question: question }
+        let!(:endorse) { create :endorse, author: user, question: question }
 
         before do
           switch_to_host(organization.host)
@@ -115,7 +115,7 @@ describe "Question voting", type: :system do
       end
 
       context "and voted before" do
-        let!(:vote) { create :vote, author: user, question: question }
+        let!(:endorse) { create :endorse, author: user, question: question }
 
         before do
           switch_to_host(organization.host)

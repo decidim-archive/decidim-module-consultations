@@ -51,7 +51,9 @@ module Decidim
             banner_image: form.banner_image,
             origin_scope: form.origin_scope,
             origin_title: form.origin_title,
-            origin_url: form.origin_url
+            origin_url: form.origin_url,
+            external_voting: form.external_voting,
+            i_frame_url: form.i_frame_url
           )
 
           return question unless question.valid?

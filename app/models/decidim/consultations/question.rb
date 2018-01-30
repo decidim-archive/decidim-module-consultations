@@ -22,9 +22,9 @@ module Decidim
                  class_name: "Decidim::Organization"
 
       has_many :features, as: :participatory_space, dependent: :destroy
-      has_many :votes,
+      has_many :endorsements,
                foreign_key: "decidim_consultation_question_id",
-               class_name: "Decidim::Consultations::Vote",
+               class_name: "Decidim::Consultations::Endorsement",
                dependent: :destroy,
                inverse_of: :question
 
@@ -59,11 +59,11 @@ module Decidim
         banner_image.present? ? banner_image.url : consultation.banner_image.url
       end
 
-      # Public: Check if the user has voted the proposal.
+      # Public: Check if the user has endorsed the question.
       #
       # Returns Boolean.
-      def voted_by?(user)
-        votes.where(author: user).any?
+      def endorsed_by?(user)
+        endorsements.where(author: user).any?
       end
 
       def scopes_enabled?

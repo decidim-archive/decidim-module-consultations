@@ -19,16 +19,16 @@ module Decidim
         end
       end
 
-      describe ".voted_by?" do
+      describe ".endorsed_by?" do
         let(:question) { create(:question) }
-        let!(:vote) { create(:vote, question: question) }
+        let!(:endorsement) { create(:endorsement, question: question) }
 
-        it "returns true when the user has voted" do
-          expect(question).to be_voted_by(vote.author)
+        it "returns true when the user has endorsed the question" do
+          expect(question).to be_endorsed_by(endorsement.author)
         end
 
-        it "returns false when the user has not voted" do
-          expect(question).not_to be_voted_by(create(:user))
+        it "returns false when the user has not endorsed the question" do
+          expect(question).not_to be_endorsed_by(create(:user))
         end
       end
 

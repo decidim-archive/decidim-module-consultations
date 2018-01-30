@@ -4,9 +4,9 @@ module Decidim
   module Consultations
     module Abilities
       module Admin
-        # Defines the abilities related to user able to administer consultations.
+        # Defines the abilities related to user able to administer consultation's questions.
         # Intended to be used with `cancancan`.
-        class ConsultationAdminAbility
+        class QuestionAdminAbility
           include CanCan::Ability
 
           attr_reader :user, :context
@@ -17,8 +17,11 @@ module Decidim
             @user = user
             @context = context
 
-            can :manage, Consultation
-            can :manage, Response
+            can :manage, Question
+            cannot :publish, Question
+            can :publish, Question do |question|
+              question.external_voting || question.responses_count.positive?
+            end
           end
         end
       end

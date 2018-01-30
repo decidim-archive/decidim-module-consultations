@@ -2,14 +2,14 @@
 
 module Decidim
   module Consultations
-    class QuestionVotesController < Decidim::ApplicationController
+    class QuestionEndorsementsController < Decidim::ApplicationController
       include NeedsQuestion
 
       before_action :authenticate_user!
 
       def create
-        authorize! :vote, current_question
-        VoteQuestion.call(current_question, current_user) do
+        authorize! :endorse, current_question
+        EndorseQuestion.call(current_question, current_user) do
           on(:ok) do
             current_question.reload
             render :update_vote_button
@@ -25,7 +25,7 @@ module Decidim
 
       def destroy
         authorize! :unvote, current_question
-        UnvoteQuestion.call(current_question, current_user) do
+        UnendorseQuestion.call(current_question, current_user) do
           on(:ok) do
             current_question.reload
             render :update_vote_button

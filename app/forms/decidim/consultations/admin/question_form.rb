@@ -24,6 +24,8 @@ module Decidim
         attribute :remove_banner_image
         attribute :hashtag, String
         attribute :decidim_scope_id, Integer
+        attribute :external_voting, Boolean, default: false
+        attribute :i_frame_url, String
 
         validates :slug, presence: true, format: { with: Decidim::Consultations::Question.slug_format }
         validates :title, :promoter_group, :participatory_scope, :subtitle, :what_is_decided, translatable_presence: true
@@ -31,6 +33,7 @@ module Decidim
         validates :banner_image, file_size: { less_than_or_equal_to: ->(_record) { Decidim.maximum_attachment_size } }, file_content_type: { allow: ["image/jpeg", "image/png"] }
         validate :slug_uniqueness
         validates :origin_scope, :origin_title, translatable_presence: true, if: :has_origin_data?
+        validates :i_frame_url, presence: true, if: :external_voting
 
         private
 

@@ -30,6 +30,8 @@ ca:
         origin_scope: Àmbit
         origin_title: Origen
         origin_url: URL Origen
+        external_voting: Sistema de ratificació extern
+        i_frame_url: URL iFrame sistema de ratificació extern
   pages:
     home:
       statistics:
@@ -59,11 +61,13 @@ ca:
           questions: Preguntes
         questions_submenu:
           consultation: Consulta
+          responses: Respostes
           info: Informació
           features: Funcionalitats
       titles:
         consultations: Consultes
         questions: Preguntes
+        responses: Respostes
       models:
         consultation:
           name:
@@ -80,6 +84,13 @@ ca:
           fields:
             title: Títol
             published: Publicada
+            created_at: Data de creació
+        response:
+          name:
+            one: Resposta
+            other: Respostes
+          fields:
+            title: Títol
             created_at: Data de creació
       consultations:
         index:
@@ -134,6 +145,22 @@ ca:
         destroy:
           error: S'ha produït un error en despublicar aquesta pregunta.
           success: Pregunta despublicada amb èxit.
+      responses:
+        new:
+          title: Nova resposta
+          create: Crea
+        create:
+          error: S'ha produït un error en crear una nova resposta.
+          success: Resposta creada correctament.
+        edit:
+          update: Actualitzar
+        update:
+          error: S'ha produït un error en actualitzar aquesta resposta.
+          success: La resposta s'ha actualitzat correctament.
+        form:
+          title: Informació general
+        destroy:
+          success: La resposta s'ha eliminat amb èxit.
     menu:
       consultations: Multiconsultes
     consultations:

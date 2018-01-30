@@ -2,8 +2,8 @@
 
 module Decidim
   module Consultations
-    # A command with all the business logic when a user votes a question.
-    class VoteQuestion < Rectify::Command
+    # A command with all the business logic when a user endorses a question.
+    class EndorseQuestion < Rectify::Command
       # Public: Initializes the command.
       #
       # question   - A Decidim::Consultations::Question object.
@@ -20,18 +20,18 @@ module Decidim
       #
       # Returns nothing.
       def call
-        vote = build_vote
-        if vote.save
-          broadcast(:ok, vote)
+        endorsement = build_endorsement
+        if endorsement.save
+          broadcast(:ok, endorsement)
         else
-          broadcast(:invalid, vote)
+          broadcast(:invalid, endorsement)
         end
       end
 
       private
 
-      def build_vote
-        @question.votes.build(author: @current_user)
+      def build_endorsement
+        @question.endorsements.build(author: @current_user)
       end
     end
   end

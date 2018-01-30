@@ -239,7 +239,7 @@ describe "Admin manages questions", type: :system do
     end
   end
 
-  describe "publishing an consultation" do
+  describe "publishing a question" do
     let!(:question) { create(:question, :unpublished, consultation: consultation) }
 
     before do

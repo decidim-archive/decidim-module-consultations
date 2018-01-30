@@ -30,6 +30,8 @@ en:
         origin_scope: Scope
         origin_title: Origin
         origin_url: Origin URL
+        external_voting: External endorsement system
+        i_frame_url: External endorsement system URL
   pages:
     home:
       statistics:
@@ -59,11 +61,13 @@ en:
           questions: Questions
         questions_submenu:
           consultation: Consultation
+          responses: Responses
           info: Information
           features: Features
       titles:
         consultations: Consultations
         questions: Questions
+        responses: Responses
       models:
         consultation:
           name:
@@ -80,6 +84,13 @@ en:
           fields:
             title: Title
             published: Published
+            created_at: Created at
+        response:
+          name:
+            one: Response
+            other: Responses
+          fields:
+            title: Title
             created_at: Created at
       consultations:
         index:
@@ -134,6 +145,22 @@ en:
         destroy:
           error: There was an error unpublishing this question.
           success: Question unpublished successfully.
+      responses:
+        new:
+          title: New response
+          create: Create
+        create:
+          error: There was an error creating a new response.
+          success: Response successfully created.
+        edit:
+          update: Update
+        update:
+          error: There was an error when updating this response.
+          success: Response updated successfully.
+        form:
+          title: General information
+        destroy:
+          success: Response successfully destroyed.
     menu:
       consultations: Consultations
     consultations:

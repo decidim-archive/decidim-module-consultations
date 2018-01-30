@@ -72,6 +72,7 @@ FactoryBot.define do
     published_at { Time.current }
     introductory_video_url "https://www.youtube.com/embed/LakKJZjKkRM"
     banner_image { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
+    external_voting false
 
     trait :unpublished do
       published_at nil
@@ -80,6 +81,11 @@ FactoryBot.define do
     trait :published do
       published_at { Time.current }
     end
+
+    trait :external_voting do
+      external_voting true
+      i_frame_url "http://example.org"
+    end
   end
 
   factory :response, class: "Decidim::Consultations::Response" do
@@ -87,7 +93,7 @@ FactoryBot.define do
     title { Decidim::Faker::Localized.sentence(3) }
   end
 
-  factory :vote, class: "Decidim::Consultations::Vote" do
+  factory :endorsement, class: "Decidim::Consultations::Endorsement" do
     question
     author { create(:user, organization: question.organization) }
   end
