@@ -1,0 +1,6 @@
+(function () {
+  'use strict';
+
+  var endorseButton = $('#question-<%= current_question.id %>-endorse-button');
+  endorseButton.html('<%= j(render partial: "decidim/consultations/questions/endorse_button", locals: { question: current_question }) %>');
+}());

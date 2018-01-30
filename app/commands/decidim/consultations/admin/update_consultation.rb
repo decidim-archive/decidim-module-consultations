@@ -52,8 +52,8 @@ module Decidim
             remove_banner_image: form.remove_banner_image,
             highlighted_scope: form.highlighted_scope,
             introductory_video_url: form.introductory_video_url,
-            start_voting_date: form.start_voting_date,
-            end_voting_date: form.end_voting_date,
+            start_endorsing_date: form.start_endorsing_date,
+            end_endorsing_date: form.end_endorsing_date,
             enable_highlighted_banner: form.enable_highlighted_banner
           }
         end

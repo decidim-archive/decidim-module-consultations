@@ -38,8 +38,8 @@ module Decidim
 
       scope :order_by_most_recent, -> { order(created_at: :desc) }
 
-      delegate :start_voting_date, to: :consultation
-      delegate :end_voting_date, to: :consultation
+      delegate :start_endorsing_date, to: :consultation
+      delegate :end_endorsing_date, to: :consultation
 
       # Public: Overrides the `comments_have_alignment?` Commentable concern method.
       def comments_have_alignment?

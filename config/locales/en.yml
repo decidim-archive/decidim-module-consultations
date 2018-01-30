@@ -9,8 +9,8 @@ en:
         description: Description
         banner_image: Banner image
         introductory_video_url: Introductory video URL
-        start_voting_date: Start date
-        end_voting_date: End date
+        start_endorsing_date: Start date
+        end_endorsing_date: End date
         decidim_highlighted_scope_id: Highlighted scope
         enable_highlighted_banner: Highlighted at home
       question:
@@ -30,7 +30,7 @@ en:
         origin_scope: Scope
         origin_title: Origin
         origin_url: Origin URL
-        external_voting: External endorsement system
+        external_endorsement: External endorsement system
         i_frame_url: External endorsement system URL
   pages:
     home:
@@ -41,8 +41,8 @@ en:
       admin:
         question:
           attachments: Attachments
-      consultation_voting_data:
-        start_voting_date: Voting from
+      consultation_endorsing_data:
+        start_endorsing_date: Endorsing period starts on
       consultation_header:
         consultation_menu_item: Consultation
         unfold: Unfold
@@ -203,10 +203,10 @@ en:
         home:
           active_consultation:
             take_part: Take part
-            button_info: "Voting: %{date}"
-    question_votes:
+            button_info: "Endorsing: %{date}"
+    question_endorsements:
       create:
-        error: There have been errors when voting the question
+        error: There have been errors when endorsing the question
     questions:
       statistics:
         supports_count_title: Adhesions
@@ -215,8 +215,8 @@ en:
         assistants_count_title: Assistants
       technical_info:
         technical_data: Technical data
-      vote_button:
-        already_voted: Already voted
-        already_voted_hover: Unvote
-        vote: Vote
+      endorse_button:
+        already_endorsed: Already endorsed
+        already_endorsed_hover: Revoke endorsement
+        endorse: Endorse
         starting_from: Starting from %{date}

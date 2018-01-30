@@ -9,8 +9,8 @@ es:
         description: Descripción
         banner_image: Imagen de banner
         introductory_video_url: URL del vídeo introductorio
-        start_voting_date: Fecha de inicio
-        end_voting_date: Fecha de finalización
+        start_endorsing_date: Fecha de inicio
+        end_endorsing_date: Fecha de finalización
         decidim_highlighted_scope_id: Ámbito destacado
         enable_highlighted_banner: Destacado en portada
       question:
@@ -30,7 +30,7 @@ es:
         origin_scope: Ámbito
         origin_title: Origen
         origin_url: URL Origen
-        external_voting: Sistema de ratificación externo
+        external_endorsement: Sistema de ratificación externo
         i_frame_url: URL iFrame sistema de ratificación externo
   pages:
     home:
@@ -41,8 +41,8 @@ es:
       admin:
         question:
           attachments: Archivos adjuntos
-      consultation_voting_data:
-        start_voting_date: Votación a partir de
+      consultation_endorsing_data:
+        start_endorsing_date: El periodo de ratificación empieza el
       consultation_header:
         consultation_menu_item: Multiconsula
         unfold: Desplegar
@@ -203,10 +203,10 @@ es:
         home:
           active_consultation:
             take_part: Participa
-            button_info: "Votaciones: %{date}"
-    question_votes:
+            button_info: "Ratificaciónes: %{date}"
+    question_endorsements:
       create:
-        error: Ha habido errores al votar la pregunta
+        error: Ha habido errores al ratificar la pregunta
     questions:
       statistics:
         supports_count_title: Adhesiones
@@ -214,9 +214,9 @@ es:
         meetings_count_title: Encuentros
         assistants_count_title: Asistentes
       technical_info:
-        technical_data: Dades tècniques
-    vote_button:
-      already_voted: Ya votado
-      already_voted_hover: Retirar voto
-      vote: Dar apoyo
-      starting_from: A partir de %{date}
+        technical_data: Datos técnicos
+      endorse_button:
+        already_endorsed: Ya ratificado
+        already_endorsed_hover: Retirar apoyo
+        endorse: Dar apoyo
+        starting_from: A partir de %{date}

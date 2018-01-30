@@ -12,23 +12,23 @@ module Decidim
         EndorseQuestion.call(current_question, current_user) do
           on(:ok) do
             current_question.reload
-            render :update_vote_button
+            render :update_endorse_button
           end
 
           on(:invalid) do
             render json: {
-              error: I18n.t("question_votes.create.error", scope: "decidim.consultations")
+              error: I18n.t("question_endorsements.create.error", scope: "decidim.consultations")
             }, status: 422
           end
         end
       end
 
       def destroy
-        authorize! :unvote, current_question
+        authorize! :unendorse, current_question
         UnendorseQuestion.call(current_question, current_user) do
           on(:ok) do
             current_question.reload
-            render :update_vote_button
+            render :update_endorse_button
           end
         end
       end

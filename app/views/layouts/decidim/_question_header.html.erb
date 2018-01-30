@@ -30,8 +30,8 @@
   </div>
 
   <%= yield :question_header_details if content_for? :question_header_details %>
-  <div id="question-<%= question.id %>-vote-button">
-    <%= render partial: "decidim/consultations/questions/vote_button", locals: { question: question } %>
+  <div id="question-<%= question.id %>-endorse-button">
+    <%= render partial: "decidim/consultations/questions/endorse_button", locals: { question: question } %>
   </div>
   <%= render partial: "layouts/decidim/question_features", locals: { question: question} %>
 </div>

@@ -20,7 +20,7 @@ module Decidim
             can :manage, Question
             cannot :publish, Question
             can :publish, Question do |question|
-              question.external_voting || question.responses_count.positive?
+              question.external_endorsement || question.responses_count.positive?
             end
           end
         end
