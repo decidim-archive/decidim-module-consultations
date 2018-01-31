@@ -32,6 +32,10 @@ en:
         origin_url: Origin URL
         external_endorsement: External endorsement system
         i_frame_url: External endorsement system URL
+    errors:
+      endorsement:
+        decidim_consultations_response_id:
+          not_found: Response not found.
   pages:
     home:
       statistics:
@@ -161,6 +165,7 @@ en:
           title: General information
         destroy:
           success: Response successfully destroyed.
+          error: There was an error when removing the response.
     menu:
       consultations: Consultations
     consultations:
@@ -220,3 +225,13 @@ en:
         already_endorsed_hover: Revoke endorsement
         endorse: Endorse
         starting_from: Starting from %{date}
+      endorse_modal:
+        title: "Consultation: question support"
+        contextual_help:
+          Please, select an option. Keep in mind that once you have confirmed
+          Your support can not be changed.
+      endorse_modal_confirm:
+        title: "Consultation: confirm support"
+        contextual_help: Please confirm the selected option.
+        change: Change
+        confirm: Confirm

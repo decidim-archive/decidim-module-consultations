@@ -60,11 +60,14 @@ module Decidim
         def destroy
           authorize! :destroy, current_response
 
-          current_response.destroy!
-
-          flash[:notice] = I18n.t("responses.destroy.success", scope: "decidim.admin")
-
-          redirect_to responses_path(current_question)
+          current_response.destroy
+          if current_response.valid?
+            flash[:notice] = I18n.t("responses.destroy.success", scope: "decidim.admin")
+            redirect_to responses_path(current_question)
+          else
+            flash.now[:alert] = I18n.t("responses.destroy.error", scope: "decidim.admin")
+            render :edit
+          end
         end
 
         private

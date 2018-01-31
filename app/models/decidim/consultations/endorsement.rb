@@ -12,6 +12,12 @@ module Decidim
                  counter_cache: :endorsements_count,
                  inverse_of: :endorsements
 
+      belongs_to :response,
+                 foreign_key: "decidim_consultations_response_id",
+                 class_name: "Decidim::Consultations::Response",
+                 inverse_of: :endorsements,
+                 optional: true
+
       validates :author, uniqueness: { scope: [:decidim_user_group_id, :question] }
 
       delegate :organization, to: :question

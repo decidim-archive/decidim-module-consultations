@@ -4,12 +4,15 @@ module Decidim
   module Consultations
     class QuestionEndorsementsController < Decidim::ApplicationController
       include NeedsQuestion
+      include Decidim::FormFactory
 
       before_action :authenticate_user!
 
       def create
         authorize! :endorse, current_question
-        EndorseQuestion.call(current_question, current_user) do
+
+        endorse_form = form(EndorseForm).from_params(params, current_question: current_question)
+        EndorseQuestion.call(endorse_form) do
           on(:ok) do
             current_question.reload
             render :update_endorse_button

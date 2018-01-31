@@ -50,12 +50,7 @@
       <% end %>
 
       <% if can? :endorse, question %>
-        <%= action_authorized_button_to :endorse,
-                                        decidim_consultations.question_question_endorsements_path(question),
-                                        remote: true,
-                                        data: { disable: true },
-                                        class: "card__button button expanded",
-                                        id: "endorse_button" do %>
+        <%= link_to "#", class: "card__button button expanded", id: "endorse_button" do %>
           <div class="endorse-button-caption"><%=t "questions.endorse_button.endorse", scope: "decidim" %></div>
         <% end %>
       <% end %>
@@ -73,4 +68,7 @@
   </div>
 </div>
 
+<%= render partial: "decidim/consultations/questions/endorse_modal", locals: { question: question } %>
+<%= render partial: "decidim/consultations/questions/endorse_modal_confirm", locals: { question: question } %>
 <%= javascript_include_tag "decidim/consultations/utils" %>
+<%= javascript_include_tag "decidim/consultations/endorse_dialog" %>

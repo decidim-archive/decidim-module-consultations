@@ -95,6 +95,7 @@ FactoryBot.define do
 
   factory :endorsement, class: "Decidim::Consultations::Endorsement" do
     question
+    response
     author { create(:user, organization: question.organization) }
   end
 end

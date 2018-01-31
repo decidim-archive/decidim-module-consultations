@@ -32,6 +32,10 @@ ca:
         origin_url: URL Origen
         external_endorsement: Sistema de ratificació extern
         i_frame_url: URL iFrame sistema de ratificació extern
+    errors:
+      endorsement:
+        decidim_consultations_response_id:
+          not_found: No s'ha trobat la resposta
   pages:
     home:
       statistics:
@@ -161,6 +165,7 @@ ca:
           title: Informació general
         destroy:
           success: La resposta s'ha eliminat amb èxit.
+          error: S'ha produït un error en eliminar la resposta.
     menu:
       consultations: Multiconsultes
     consultations:
@@ -220,3 +225,13 @@ ca:
         already_endorsed_hover: Retirar suport
         endorse: Donar suport
         starting_from: A partir de %{date}
+      endorse_modal:
+        title: "Multiconsulta: votació de pregunta"
+        contextual_help:
+          Si us plau, selecciona una opció. Tingues en compte que un cop hagis confirmat
+          el teu support, no es podrà canviar.
+      endorse_modal_confirm:
+        title: "Multiconsulta: confirmar suport"
+        contextual_help: Confirmeu l'opció seleccionada.
+        change: Canviar
+        confirm: Confirmar

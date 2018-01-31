@@ -5,12 +5,25 @@ require "spec_helper"
 module Decidim
   module Consultations
     describe EndorseQuestion do
-      let(:subject) { described_class.new(question, user) }
+      let(:subject) { described_class.new(form) }
 
       let(:organization) { create :organization }
       let(:consultation) { create :consultation, organization: organization }
       let(:question) { create :question, consultation: consultation }
       let(:user) { create :user, organization: organization }
+      let(:response) { create :response, question: question }
+      let(:decidim_consultations_response_id) { response.id }
+      let(:attributes) do
+        {
+          decidim_consultations_response_id: decidim_consultations_response_id
+        }
+      end
+
+      let(:form) do
+        EndorseForm
+          .from_params(attributes)
+          .with_context(current_user: user, current_question: question)
+      end
 
       context "when user endorses the question" do
         it "broadcasts ok" do

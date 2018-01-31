@@ -6,11 +6,10 @@ module Decidim
     class EndorseQuestion < Rectify::Command
       # Public: Initializes the command.
       #
-      # question   - A Decidim::Consultations::Question object.
+      # form   - A Decidim::Consultations::EndorseForm object.
       # current_user - The current user.
-      def initialize(question, current_user)
-        @question = question
-        @current_user = current_user
+      def initialize(form)
+        @form = form
       end
 
       # Executes the command. Broadcasts these events:
@@ -30,8 +29,13 @@ module Decidim
 
       private
 
+      attr_reader :form
+
       def build_endorsement
-        @question.endorsements.build(author: @current_user)
+        form.context.current_question.endorsements.build(
+          author: form.context.current_user,
+          response: form.response
+        )
       end
     end
   end
