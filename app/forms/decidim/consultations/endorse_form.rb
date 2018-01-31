@@ -20,7 +20,7 @@ module Decidim
         return unless response.nil?
         errors.add(
           :decidim_consultations_response_id,
-          I18n.t("decidim_consultations_responses_id.not_found", scope: "activemodel.errors.endorsement")
+          I18n.t("decidim_consultations_response_id.not_found", scope: "activemodel.errors.endorsement")
         )
       end
     end

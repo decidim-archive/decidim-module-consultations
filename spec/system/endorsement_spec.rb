@@ -88,7 +88,7 @@ describe "Question endorsement", type: :system do
       end
 
       it "Page contains an endorse button" do
-        expect(page).not_to have_button(id: "endorse_button")
+        expect(page).not_to have_button("ENDORSE")
       end
 
       it "Page do not contains an unendorse button" do
@@ -97,6 +97,8 @@ describe "Question endorsement", type: :system do
     end
 
     context "and authenticated user" do
+      let!(:response) { create :response, question: question }
+
       context "and never endorsed before" do
         before do
           switch_to_host(organization.host)
@@ -105,17 +107,21 @@ describe "Question endorsement", type: :system do
         end
 
         it "Page contains an endorse button" do
-          expect(page).to have_button(id: "endorse_button")
+          expect(page).to have_link(id: "endorse_button")
         end
 
         it "unendorse button appears after voting" do
-          click_button(id: "endorse_button")
+          click_link(id: "endorse_button")
+          click_button translated(response.title)
+          click_button "Confirm"
           expect(page).to have_button(id: "unendorse_button")
         end
       end
 
       context "and endorsed before" do
-        let!(:endorsement) { create :endorsement, author: user, question: question }
+        let!(:endorsement) do
+          create :endorsement, author: user, question: question, response: response
+        end
 
         before do
           switch_to_host(organization.host)
@@ -129,7 +135,7 @@ describe "Question endorsement", type: :system do
 
         it "endorse button appears after unendorsing" do
           click_button(id: "unendorse_button")
-          expect(page).to have_button(id: "endorse_button")
+          expect(page).to have_link(id: "endorse_button")
         end
       end
     end
