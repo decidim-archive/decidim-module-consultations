@@ -9,9 +9,9 @@ module Decidim
                  counter_cache: :responses_count,
                  inverse_of: :responses
 
-      has_many :endorsements,
+      has_many :votes,
                foreign_key: "decidim_consultations_response_id",
-               class_name: "Decidim::Consultations::Endorsement",
+               class_name: "Decidim::Consultations::Vote",
                inverse_of: :response,
                dependent: :restrict_with_error
     end

@@ -16,7 +16,7 @@
           <% end %>
         </div>
       </div>
-      <%= render partial: "layouts/decidim/consultation_endorsing_data", locals: { consultation: question.consultation } %>
+      <%= render partial: "layouts/decidim/consultation_voting_data", locals: { consultation: question.consultation } %>
     </div>
   </div>
 
@@ -30,11 +30,11 @@
   </div>
 
   <%= yield :question_header_details if content_for? :question_header_details %>
-  <% if question.external_endorsement %>
+  <% if question.external_voting %>
     <iframe src="<%= question.i_frame_url %>"></iframe>
   <% else %>
-    <div id="question-<%= question.id %>-endorse-button">
-      <%= render partial: "decidim/consultations/questions/endorse_button", locals: { question: question } %>
+    <div id="question-<%= question.id %>-vote-button">
+      <%= render partial: "decidim/consultations/questions/vote_button", locals: { question: question } %>
     </div>
   <% end %>
   <%= render partial: "layouts/decidim/question_features", locals: { question: question} %>

@@ -4,31 +4,31 @@ require "spec_helper"
 
 module Decidim
   module Consultations
-    describe UnendorseQuestion do
+    describe UnvoteQuestion do
       let(:subject) { described_class.new(question, user) }
 
       let(:organization) { create :organization }
       let(:consultation) { create :consultation, organization: organization }
       let(:question) { create :question, consultation: consultation }
       let(:user) { create :user, organization: organization }
-      let!(:endorsement) { create :endorsement, author: user, question: question }
+      let!(:vote) { create :vote, author: user, question: question }
 
-      context "when user unendorses the question" do
+      context "when user unvotes the question" do
         it "broadcasts ok" do
           expect { subject.call }.to broadcast :ok
         end
 
-        it "removes the endorsement" do
+        it "removes the vote" do
           expect do
             subject.call
-          end.to change { Endorsement.count }.by(-1)
+          end.to change { Vote.count }.by(-1)
         end
 
-        it "decreases the endorsement counter by one" do
+        it "decreases the votes counter by one" do
           expect do
             subject.call
             question.reload
-          end.to change { question.endorsements_count }.by(-1)
+          end.to change { question.votes_count }.by(-1)
         end
       end
     end

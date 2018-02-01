@@ -2,8 +2,8 @@
 
 module Decidim
   module Consultations
-    # A command with all the business logic when a user unendorses a question.
-    class UnendorseQuestion < Rectify::Command
+    # A command with all the business logic when a user unvotes a question.
+    class UnvoteQuestion < Rectify::Command
       # Public: Initializes the command.
       #
       # question   - A Decidim::Consultations::Question object.
@@ -20,15 +20,15 @@ module Decidim
       #
       # Returns nothing.
       def call
-        destroy_endorsement
+        destroy_vote
         broadcast(:ok, @question)
       end
 
       private
 
-      def destroy_endorsement
+      def destroy_vote
         @question
-          .endorsements
+          .votes
           .where(author: @current_user)
           .destroy_all
       end

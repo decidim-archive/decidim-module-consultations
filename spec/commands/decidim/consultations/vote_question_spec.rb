@@ -4,7 +4,7 @@ require "spec_helper"
 
 module Decidim
   module Consultations
-    describe EndorseQuestion do
+    describe VoteQuestion do
       let(:subject) { described_class.new(form) }
 
       let(:organization) { create :organization }
@@ -20,32 +20,32 @@ module Decidim
       end
 
       let(:form) do
-        EndorseForm
+        VoteForm
           .from_params(attributes)
           .with_context(current_user: user, current_question: question)
       end
 
-      context "when user endorses the question" do
+      context "when user votes the question" do
         it "broadcasts ok" do
           expect { subject.call }.to broadcast :ok
         end
 
-        it "creates an endorsement" do
+        it "creates a vote" do
           expect do
             subject.call
-          end.to change { Endorsement.count }.by(1)
+          end.to change { Vote.count }.by(1)
         end
 
-        it "increases the endorsement counter by one" do
+        it "increases the votes counter by one" do
           expect do
             subject.call
             question.reload
-          end.to change { question.endorsements_count }.by(1)
+          end.to change { question.votes_count }.by(1)
         end
       end
 
-      context "when user tries to endorse twice" do
-        let!(:endorse) { create :endorsement, author: user, question: question }
+      context "when user tries to vote twice" do
+        let!(:vote) { create :vote, author: user, question: question }
 
         it "broadcasts invalid" do
           expect { subject.call }.to broadcast(:invalid)

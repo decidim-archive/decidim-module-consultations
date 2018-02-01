@@ -2,11 +2,11 @@
 
 module Decidim
   module Consultations
-    # A command with all the business logic when a user endorses a question.
-    class EndorseQuestion < Rectify::Command
+    # A command with all the business logic when a user votes a question.
+    class VoteQuestion < Rectify::Command
       # Public: Initializes the command.
       #
-      # form   - A Decidim::Consultations::EndorseForm object.
+      # form   - A Decidim::Consultations::VoteForm object.
       # current_user - The current user.
       def initialize(form)
         @form = form
@@ -19,11 +19,11 @@ module Decidim
       #
       # Returns nothing.
       def call
-        endorsement = build_endorsement
-        if endorsement.save
-          broadcast(:ok, endorsement)
+        vote = build_vote
+        if vote.save
+          broadcast(:ok, vote)
         else
-          broadcast(:invalid, endorsement)
+          broadcast(:invalid, vote)
         end
       end
 
@@ -31,8 +31,8 @@ module Decidim
 
       attr_reader :form
 
-      def build_endorsement
-        form.context.current_question.endorsements.build(
+      def build_vote
+        form.context.current_question.votes.build(
           author: form.context.current_user,
           response: form.response
         )

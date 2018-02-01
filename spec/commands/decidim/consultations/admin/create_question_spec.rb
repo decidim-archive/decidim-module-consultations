@@ -24,7 +24,7 @@ module Decidim
               what_is_decided_en: "What is decided",
               decidim_scope_id: scope.id,
               banner_image: attachment,
-              external_endorsement: false
+              external_voting: false
             }
           }
         end

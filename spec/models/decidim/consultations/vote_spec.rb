@@ -4,10 +4,10 @@ require "spec_helper"
 
 module Decidim
   module Consultations
-    describe Endorsement do
-      subject { endorsement }
+    describe Vote do
+      subject { vote }
 
-      let(:endorsement) { build :endorsement }
+      let(:vote) { build :vote }
 
       it { is_expected.to be_valid }
     end

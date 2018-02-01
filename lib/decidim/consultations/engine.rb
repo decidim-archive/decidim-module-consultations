@@ -25,7 +25,7 @@ module Decidim
           resources :questions, only: [:show], param: :slug, path: "questions", shallow: true do
             get "technical_info", on: :member
             resource :question_widget, only: :show, path: "embed"
-            resource :question_endorsements, only: [:create, :destroy], path: "endorsement"
+            resource :question_votes, only: [:create, :destroy], path: "vote"
           end
         end
 
