@@ -1,0 +1,74 @@
+<div class="row question-endorsement-cabin">
+  <div class="columns mediumlarge-4 mediumlarge-push-4">
+    <% if question.consultation.upcoming? %>
+      <%= action_authorized_button_to :endorse,
+                                    decidim_consultations.question_question_endorsements_path(question),
+                                    remote: true,
+                                    data: { disable: true },
+                                    class: "card__button button expanded disabled",
+                                    id: "endorse_button" do %>
+        <div class="endorse-button-caption"><%= t("questions.endorse_button.endorse", scope: "decidim") %></div>
+        <div>
+          <%=t "questions.endorse_button.starting_from",
+               scope: "decidim",
+               date: l(question.start_endorsing_date) %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if question.consultation.finished? && signed_in? && question.endorsed_by?(current_user) %>
+      <%= action_authorized_button_to :unendorse,
+                                      decidim_consultations.question_question_endorsements_path(question),
+                                      method: :delete,
+                                      remote: true,
+                                      data: { disable: true },
+                                      class: "card__button button expanded success disabled",
+                                      id: "unendorse_button" do %>
+        <div class="endorse-button-caption">
+          <%= t("questions.endorse_button.already_endorsed", scope: "decidim") %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if signed_in? && question.consultation.active? %>
+      <% if can? :unendorse, question %>
+        <%= action_authorized_button_to :endorse,
+                                        decidim_consultations.question_question_endorsements_path(question),
+                                        method: :delete,
+                                        remote: true,
+                                        data: {
+                                          disable: true
+                                        },
+                                        class: "card__button button expanded success",
+                                        id: "unendorse_button" do %>
+          <div class="endorse-button-caption"
+               data-original="<%= t('questions.endorse_button.already_endorsed', scope: 'decidim') %>"
+               data-replace="<%= t('questions.endorse_button.already_endorsed_hover', scope: 'decidim') %>">
+            <%= t("questions.endorse_button.already_endorsed", scope: "decidim") %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if can? :endorse, question %>
+        <%= link_to "#", class: "card__button button expanded", id: "endorse_button" do %>
+          <div class="endorse-button-caption"><%=t "questions.endorse_button.endorse", scope: "decidim" %></div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% if question.consultation.active? %>
+        <%= action_authorized_button_to :endorse,
+                                      decidim_consultations.question_question_endorsements_path(question),
+                                      class: "card__button button expanded",
+                                      data: { disable: true },
+                                      id: "endorse_button" do %>
+          <div class="endorse-button-caption"><%= t("questions.endorse_button.endorse", scope: "decidim") %></div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= render partial: "decidim/consultations/questions/endorse_modal", locals: { question: question } %>
+<%= render partial: "decidim/consultations/questions/endorse_modal_confirm", locals: { question: question } %>
+<%= javascript_include_tag "decidim/consultations/utils" %>
+<%= javascript_include_tag "decidim/consultations/endorse_dialog" %>

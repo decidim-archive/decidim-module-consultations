@@ -18,7 +18,7 @@ module Decidim
             @context = context
 
             can :manage, Consultation
-            can :manage, Question
+            can :manage, Response
           end
         end
       end

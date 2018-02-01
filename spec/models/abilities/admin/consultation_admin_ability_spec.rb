@@ -9,44 +9,22 @@ module Decidim
         describe ConsultationAdminAbility do
           subject { described_class.new(user, {}) }
 
-          context "when managing consultations" do
-            context "when admin user" do
-              let(:user) { build(:user, :admin) }
+          context "when admin user" do
+            let(:user) { build(:user, :admin) }
 
-              it { is_expected.to be_able_to(:manage, Decidim::Consultation) }
-            end
-
-            context "when regular user" do
-              let(:user) { build(:user) }
-
-              it { is_expected.not_to be_able_to(:manage, Decidim::Consultation) }
-            end
-
-            context "when guest user" do
-              let(:user) { nil }
-
-              it { is_expected.not_to be_able_to(:manage, Decidim::Consultation) }
-            end
+            it { is_expected.to be_able_to(:manage, Decidim::Consultation) }
           end
 
-          context "when managing questions" do
-            context "when admin user" do
-              let(:user) { build(:user, :admin) }
+          context "when regular user" do
+            let(:user) { build(:user) }
 
-              it { is_expected.to be_able_to(:manage, Decidim::Consultations::Question) }
-            end
+            it { is_expected.not_to be_able_to(:manage, Decidim::Consultation) }
+          end
 
-            context "when regular user" do
-              let(:user) { build(:user) }
+          context "when guest user" do
+            let(:user) { nil }
 
-              it { is_expected.not_to be_able_to(:manage, Decidim::Consultations::Question) }
-            end
-
-            context "when guest user" do
-              let(:user) { nil }
-
-              it { is_expected.not_to be_able_to(:manage, Decidim::Consultations::Question) }
-            end
+            it { is_expected.not_to be_able_to(:manage, Decidim::Consultation) }
           end
         end
       end

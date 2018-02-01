@@ -23,8 +23,8 @@ module Decidim
               slug: consultation.slug,
               banner_image: consultation.banner_image,
               decidim_highlighted_scope_id: consultation.highlighted_scope.id,
-              start_voting_date: consultation.start_voting_date,
-              end_voting_date: consultation.end_voting_date,
+              start_endorsing_date: consultation.start_endorsing_date,
+              end_endorsing_date: consultation.end_endorsing_date,
               introductory_video_url: consultation.introductory_video_url,
               enable_highlighted_banner: true
             }

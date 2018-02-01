@@ -70,6 +70,8 @@ module Decidim
           }
         end
         let(:origin_url) { nil }
+        let(:external_endorsement) { false }
+        let(:i_frame_url) { nil }
         let(:attributes) do
           {
             "question" => {
@@ -97,7 +99,9 @@ module Decidim
               "origin_title_en" => origin_title[:en],
               "origin_title_es" => origin_title[:es],
               "origin_title_ca" => origin_title[:ca],
-              "origin_url" => origin_url
+              "origin_url" => origin_url,
+              "external_endorsement" => external_endorsement,
+              "i_frame_url" => i_frame_url
             }
           }
         end
@@ -234,6 +238,16 @@ module Decidim
           end
 
           it { is_expected.not_to be_valid }
+        end
+
+        context "when external_endorsement is enabled" do
+          let(:external_endorsement) { true }
+
+          context "and i_frame_url is nil" do
+            let(:i_frame_url) { nil }
+
+            it { is_expected.to be_invalid }
+          end
         end
       end
     end

@@ -31,7 +31,7 @@
     </div>
 
     <div class="row column">
-      <%= scopes_picker_field form, :decidim_scope_id %>      
+      <%= scopes_picker_field form, :decidim_scope_id %>
     </div>
 
     <div class="row column">
@@ -53,6 +53,14 @@
              scope: "decidim.admin",
              url: decidim_form_slug_url(:questions, form.object.slug || question_example_slug) %>
       </p>
+    </div>
+
+    <div class="row column">
+      <%= form.check_box :external_endorsement %>
+    </div>
+
+    <div class="row column">
+      <%= form.url_field :i_frame_url %>
     </div>
 
     <div class="row">

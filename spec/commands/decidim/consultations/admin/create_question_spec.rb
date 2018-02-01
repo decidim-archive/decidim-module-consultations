@@ -23,7 +23,8 @@ module Decidim
               participatory_scope_en: "Participatory scope",
               what_is_decided_en: "What is decided",
               decidim_scope_id: scope.id,
-              banner_image: attachment
+              banner_image: attachment,
+              external_endorsement: false
             }
           }
         end

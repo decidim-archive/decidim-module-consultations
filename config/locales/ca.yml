@@ -9,8 +9,8 @@ ca:
         description: Descripció
         banner_image: Imatge de bàner
         introductory_video_url: URL del vídeo introductori
-        start_voting_date: Data d'inici
-        end_voting_date: Data de finalització
+        start_endorsing_date: Data d'inici
+        end_endorsing_date: Data de finalització
         decidim_highlighted_scope_id: Àmbit destacat
         enable_highlighted_banner: Destacat en portada
       question:
@@ -30,6 +30,12 @@ ca:
         origin_scope: Àmbit
         origin_title: Origen
         origin_url: URL Origen
+        external_endorsement: Sistema de ratificació extern
+        i_frame_url: URL iFrame sistema de ratificació extern
+    errors:
+      endorsement:
+        decidim_consultations_response_id:
+          not_found: No s'ha trobat la resposta
   pages:
     home:
       statistics:
@@ -39,8 +45,8 @@ ca:
       question:
         attachments: Arxius adjunts
     decidim:
-      consultation_voting_data:
-        start_voting_date: Votació a partir de
+      consultation_endorsing_data:
+        start_endorsing_date: El període de ratificació comença el
       consultation_header:
         consultation_menu_item: Multiconsula
         unfold: Desplegar
@@ -59,11 +65,13 @@ ca:
           questions: Preguntes
         questions_submenu:
           consultation: Consulta
+          responses: Respostes
           info: Informació
           features: Funcionalitats
       titles:
         consultations: Consultes
         questions: Preguntes
+        responses: Respostes
       models:
         consultation:
           name:
@@ -80,6 +88,13 @@ ca:
           fields:
             title: Títol
             published: Publicada
+            created_at: Data de creació
+        response:
+          name:
+            one: Resposta
+            other: Respostes
+          fields:
+            title: Títol
             created_at: Data de creació
       consultations:
         index:
@@ -134,6 +149,23 @@ ca:
         destroy:
           error: S'ha produït un error en despublicar aquesta pregunta.
           success: Pregunta despublicada amb èxit.
+      responses:
+        new:
+          title: Nova resposta
+          create: Crea
+        create:
+          error: S'ha produït un error en crear una nova resposta.
+          success: Resposta creada correctament.
+        edit:
+          update: Actualitzar
+        update:
+          error: S'ha produït un error en actualitzar aquesta resposta.
+          success: La resposta s'ha actualitzat correctament.
+        form:
+          title: Informació general
+        destroy:
+          success: La resposta s'ha eliminat amb èxit.
+          error: S'ha produït un error en eliminar la resposta.
     menu:
       consultations: Multiconsultes
     consultations:
@@ -176,7 +208,10 @@ ca:
         home:
           active_consultation:
             take_part: Participa
-            button_info: "Votacions: %{date}"
+            button_info: "Ratificacións: %{date}"
+    question_endorsements:
+      create:
+        error: Hi ha hagut errors en ratificar la pregunta
     questions:
       statistics:
         supports_count_title: Adhesions
@@ -184,4 +219,19 @@ ca:
         meetings_count_title: Trobades
         assistants_count_title: Assistents
       technical_info:
-        technical_data: Datos técnicos
+        technical_data: Dades tècniques
+      endorse_button:
+        already_endorsed: Ja li has donat suport
+        already_endorsed_hover: Retirar suport
+        endorse: Donar suport
+        starting_from: A partir de %{date}
+      endorse_modal:
+        title: "Multiconsulta: votació de pregunta"
+        contextual_help:
+          Si us plau, selecciona una opció. Tingues en compte que un cop hagis confirmat
+          el teu support, no es podrà canviar.
+      endorse_modal_confirm:
+        title: "Multiconsulta: confirmar suport"
+        contextual_help: Confirmeu l'opció seleccionada.
+        change: Canviar
+        confirm: Confirmar

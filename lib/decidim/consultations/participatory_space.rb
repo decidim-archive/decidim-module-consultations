@@ -31,8 +31,8 @@ Decidim.register_participatory_space(:consultations) do |participatory_space|
         Decidim::Faker::Localized.paragraph(3)
       end,
       published_at: Time.now.utc,
-      start_voting_date: Time.zone.today,
-      end_voting_date: Time.zone.today + 1.month,
+      start_endorsing_date: Time.zone.today,
+      end_endorsing_date: Time.zone.today + 1.month,
       banner_image: File.new(File.join(seeds_root, "city2.jpeg")),
       introductory_video_url: "https://www.youtube.com/embed/LakKJZjKkRM",
       decidim_highlighted_scope_id: Decidim::Scope.reorder("RANDOM()").first.id,
@@ -59,6 +59,13 @@ Decidim.register_participatory_space(:consultations) do |participatory_space|
         published_at: Time.now.utc,
         organization: organization
       )
+
+      2.times do
+        Decidim::Consultations::Response.create(
+          question: question,
+          title: Decidim::Faker::Localized.sentence(3)
+        )
+      end
 
       Decidim::Comments::Seed.comments_for(question)
 

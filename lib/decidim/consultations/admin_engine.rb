@@ -31,6 +31,7 @@ module Decidim
           end
 
           resources :question_attachments
+          resources :responses, except: :show
         end
 
         scope "/questions/:question_slug/features/:feature_id/manage" do
@@ -54,6 +55,8 @@ module Decidim
         Decidim.configure do |config|
           config.admin_abilities += %w[
             Decidim::Consultations::Abilities::Admin::ConsultationAdminAbility
+            Decidim::Consultations::Abilities::Admin::QuestionAdminAbility
+            Decidim::Consultations::Abilities::Admin::ResponseAdminAbility
           ]
         end
       end

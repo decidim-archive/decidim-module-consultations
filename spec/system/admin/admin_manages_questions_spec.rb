@@ -5,18 +5,13 @@ require "spec_helper"
 describe "Admin manages questions", type: :system do
   include_context "when administrating a consultation"
 
-  before do
-    switch_to_host(organization.host)
-    login_as user, scope: :user, run_callbacks: false
-    visit decidim_admin_consultations.consultation_questions_path(consultation)
-  end
-
   describe "creating a question" do
-    before do
-      click_link("New")
-    end
-
     it "creates a new question" do
+      switch_to_host(organization.host)
+      login_as user, scope: :user, run_callbacks: false
+      visit decidim_admin_consultations.consultation_questions_path(consultation)
+      click_link("New")
+
       within ".new_question" do
         fill_in_i18n(
           :question_title,
@@ -77,11 +72,12 @@ describe "Admin manages questions", type: :system do
   end
 
   describe "trying to create a question with invalid data" do
-    before do
-      click_link("New")
-    end
-
     it "fails to create a new question" do
+      switch_to_host(organization.host)
+      login_as user, scope: :user, run_callbacks: false
+      visit decidim_admin_consultations.consultation_questions_path(consultation)
+      click_link("New")
+
       within ".new_question" do
         fill_in :question_slug, with: "slug"
         fill_in_i18n(
@@ -137,11 +133,12 @@ describe "Admin manages questions", type: :system do
   end
 
   describe "updating a question" do
-    before do
-      click_link translated(question.title)
-    end
-
     it "updates a question" do
+      switch_to_host(organization.host)
+      login_as user, scope: :user, run_callbacks: false
+      visit decidim_admin_consultations.consultation_questions_path(consultation)
+      click_link translated(question.title)
+
       fill_in_i18n(
         :question_title,
         "#question-title-tabs",
@@ -166,11 +163,12 @@ describe "Admin manages questions", type: :system do
   end
 
   describe "updating a question with invalid values" do
-    before do
-      click_link translated(question.title)
-    end
-
     it "do not updates the question" do
+      switch_to_host(organization.host)
+      login_as user, scope: :user, run_callbacks: false
+      visit decidim_admin_consultations.consultation_questions_path(consultation)
+      click_link translated(question.title)
+
       fill_in_i18n(
         :question_title,
         "#question-title-tabs",
@@ -188,11 +186,12 @@ describe "Admin manages questions", type: :system do
   end
 
   describe "updating an question without images" do
-    before do
-      click_link translated(question.title)
-    end
-
     it "update a question without images does not deletes them" do
+      switch_to_host(organization.host)
+      login_as user, scope: :user, run_callbacks: false
+      visit decidim_admin_consultations.consultation_questions_path(consultation)
+      click_link translated(question.title)
+
       within ".edit_question" do
         find("*[type=submit]").click
       end
@@ -203,11 +202,11 @@ describe "Admin manages questions", type: :system do
   end
 
   describe "deleting a question" do
-    before do
-      click_link translated(question.title)
-    end
-
     it "deletes the question" do
+      switch_to_host(organization.host)
+      login_as user, scope: :user, run_callbacks: false
+      visit decidim_admin_consultations.consultation_questions_path(consultation)
+      click_link translated(question.title)
       accept_confirm { click_link "Destroy" }
 
       expect(page).to have_admin_callout("successfully")
@@ -220,6 +219,10 @@ describe "Admin manages questions", type: :system do
 
   describe "previewing questions" do
     it "allows the user to preview the question" do
+      switch_to_host(organization.host)
+      login_as user, scope: :user, run_callbacks: false
+      visit decidim_admin_consultations.consultation_questions_path(consultation)
+
       within find("tr", text: translated(question.title)) do
         preview_window = window_opened_by do
           click_link "Preview"
@@ -235,18 +238,23 @@ describe "Admin manages questions", type: :system do
 
   describe "viewing a missing question" do
     it_behaves_like "a 404 page" do
+      before do
+        switch_to_host(organization.host)
+        login_as user, scope: :user, run_callbacks: false
+      end
+
       let(:target_path) { decidim_admin_consultations.question_path(99_999_999) }
     end
   end
 
-  describe "publishing an consultation" do
+  describe "publishing a question" do
     let!(:question) { create(:question, :unpublished, consultation: consultation) }
 
-    before do
-      click_link translated(question.title)
-    end
-
     it "publishes the question" do
+      switch_to_host(organization.host)
+      login_as user, scope: :user, run_callbacks: false
+      visit decidim_admin_consultations.consultation_questions_path(consultation)
+      click_link translated(question.title)
       click_link "Publish"
       expect(page).to have_content("published successfully")
       expect(page).to have_content("Unpublish")
@@ -260,11 +268,11 @@ describe "Admin manages questions", type: :system do
   describe "unpublishing a question" do
     let!(:question) { create(:question, :published, consultation: consultation) }
 
-    before do
-      click_link translated(question.title)
-    end
-
     it "unpublishes the question" do
+      switch_to_host(organization.host)
+      login_as user, scope: :user, run_callbacks: false
+      visit decidim_admin_consultations.consultation_questions_path(consultation)
+      click_link translated(question.title)
       click_link "Unpublish"
       expect(page).to have_content("unpublished successfully")
       expect(page).to have_content("Publish")

@@ -14,20 +14,32 @@ module Decidim
 
       belongs_to :consultation,
                  foreign_key: "decidim_consultation_id",
-                 class_name: "Decidim::Consultation"
+                 class_name: "Decidim::Consultation",
+                 inverse_of: :questions
 
       belongs_to :organization,
                  foreign_key: "decidim_organization_id",
                  class_name: "Decidim::Organization"
 
       has_many :features, as: :participatory_space, dependent: :destroy
+      has_many :endorsements,
+               foreign_key: "decidim_consultation_question_id",
+               class_name: "Decidim::Consultations::Endorsement",
+               dependent: :destroy,
+               inverse_of: :question
+
+      has_many :responses,
+               foreign_key: "decidim_consultations_questions_id",
+               class_name: "Decidim::Consultations::Response",
+               inverse_of: :question,
+               dependent: :destroy
 
       mount_uploader :banner_image, Decidim::BannerImageUploader
 
       scope :order_by_most_recent, -> { order(created_at: :desc) }
 
-      delegate :start_voting_date, to: :consultation
-      delegate :end_voting_date, to: :consultation
+      delegate :start_endorsing_date, to: :consultation
+      delegate :end_endorsing_date, to: :consultation
 
       # Public: Overrides the `comments_have_alignment?` Commentable concern method.
       def comments_have_alignment?
@@ -47,11 +59,11 @@ module Decidim
         banner_image.present? ? banner_image.url : consultation.banner_image.url
       end
 
-      def self.order_randomly(seed)
-        transaction do
-          connection.execute("SELECT setseed(#{connection.quote(seed)})")
-          select('"decidim_consultations_questions".*, RANDOM()').order("RANDOM()").load
-        end
+      # Public: Check if the user has endorsed the question.
+      #
+      # Returns Boolean.
+      def endorsed_by?(user)
+        endorsements.where(author: user).any?
       end
 
       def scopes_enabled?
@@ -81,6 +93,13 @@ module Decidim
 
       def self.participatory_space_manifest
         Decidim.find_participatory_space_manifest(Decidim::Consultation.name.demodulize.underscore.pluralize)
+      end
+
+      def self.order_randomly(seed)
+        transaction do
+          connection.execute("SELECT setseed(#{connection.quote(seed)})")
+          select('"decidim_consultations_questions".*, RANDOM()').order("RANDOM()").load
+        end
       end
     end
   end

@@ -141,7 +141,7 @@ GIT
 PATH
   remote: .
   specs:
-    decidim-consultations (0.2.1)
+    decidim-consultations (0.2.2)
       decidim-admin (>= 0.9.0.pre, < 0.10.0)
       decidim-comments (>= 0.9.0.pre, < 0.10.0)
       decidim-core (>= 0.9.0.pre, < 0.10.0)

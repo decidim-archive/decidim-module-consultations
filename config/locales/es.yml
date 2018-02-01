@@ -9,8 +9,8 @@ es:
         description: Descripción
         banner_image: Imagen de banner
         introductory_video_url: URL del vídeo introductorio
-        start_voting_date: Fecha de inicio
-        end_voting_date: Fecha de finalización
+        start_endorsing_date: Fecha de inicio
+        end_endorsing_date: Fecha de finalización
         decidim_highlighted_scope_id: Ámbito destacado
         enable_highlighted_banner: Destacado en portada
       question:
@@ -30,6 +30,12 @@ es:
         origin_scope: Ámbito
         origin_title: Origen
         origin_url: URL Origen
+        external_endorsement: Sistema de ratificación externo
+        i_frame_url: URL iFrame sistema de ratificación externo
+    errors:
+      endorsement:
+        decidim_consultations_response_id:
+          not_found: No se ha encontrado la respuesta
   pages:
     home:
       statistics:
@@ -39,13 +45,13 @@ es:
       admin:
         question:
           attachments: Archivos adjuntos
-      consultation_voting_data:
-        start_voting_date: Votación a partir de
+      consultation_endorsing_data:
+        start_endorsing_date: El periodo de ratificación empieza el
       consultation_header:
         consultation_menu_item: Multiconsula
         unfold: Desplegar
       question_header:
-        back_to_consultation: Ver todas las
+        back_to_consultation: Ver todas las consultas
       question_features:
         unfold: Desplega
         question_menu_item: Información
@@ -59,11 +65,13 @@ es:
           questions: Preguntas
         questions_submenu:
           consultation: Consulta
+          responses: Respuestas
           info: Información
           features: Funcionalidades
       titles:
         consultations: Consultas
         questions: Preguntes
+        responses: Respuestas
       models:
         consultation:
           name:
@@ -80,6 +88,13 @@ es:
           fields:
             title: Título
             published: Publicada
+            created_at: Fecha de creación
+        response:
+          name:
+            one: Respuesta
+            other: Respuestas
+          fields:
+            title: Título
             created_at: Fecha de creación
       consultations:
         index:
@@ -134,6 +149,23 @@ es:
         destroy:
           error: Se produjo un error al despublicar esta pregunta.
           success: Pregunta despublicada con éxito.
+      responses:
+        new:
+          title: Nueva respuesta
+          create: Crear
+        create:
+          error: Se produjo un error al crear una nueva respuesta.
+          success: Respuesta creada correctamente.
+        edit:
+          update: Actualizar
+        update:
+          error: Se ha producido un error al actualizar esta respuesta.
+          success: La respuesta se ha actualizado correctamente.
+        form:
+          title: Información general
+        destroy:
+          success: Respuesta destruida correctamente.
+          error: Se ha producido un error al eliminar la respuesta.
     menu:
       consultations: Multiconsultas
     consultations:
@@ -176,7 +208,10 @@ es:
         home:
           active_consultation:
             take_part: Participa
-            button_info: "Votaciones: %{date}"
+            button_info: "Ratificaciónes: %{date}"
+    question_endorsements:
+      create:
+        error: Ha habido errores al ratificar la pregunta
     questions:
       statistics:
         supports_count_title: Adhesiones
@@ -184,4 +219,19 @@ es:
         meetings_count_title: Encuentros
         assistants_count_title: Asistentes
       technical_info:
-        technical_data: Dades tècniques
+        technical_data: Datos técnicos
+      endorse_button:
+        already_endorsed: Ya ratificado
+        already_endorsed_hover: Retirar apoyo
+        endorse: Dar apoyo
+        starting_from: A partir de %{date}
+      endorse_modal:
+        title: "Multiconsulta: votación de pregunta"
+        contextual_help:
+          Por favor, selecciona una opción. Ten en cuenta que una vez hayas confirmado
+          tu apoyo, no se podrá cambiar.
+      endorse_modal_confirm:
+        title: "Multiconsulta: confirmar apoyo"
+        contextual_help: Por favor, confirma la opción seleccionada.
+        change: Cambiar
+        confirm: Confirmar
