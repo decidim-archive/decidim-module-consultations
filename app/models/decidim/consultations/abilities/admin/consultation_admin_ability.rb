@@ -18,7 +18,14 @@ module Decidim
             @context = context
 
             can :manage, Consultation
-            can :manage, Response
+
+            cannot :publish_results, Consultation
+            can :publish_results, Consultation do |consultation|
+              consultation.finished? && !consultation.results_published?
+            end
+
+            cannot :unpublish_results, Consultation
+            can :unpublish_results, Consultation, &:results_published?
           end
         end
       end

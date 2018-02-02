@@ -25,6 +25,7 @@ FactoryBot.define do
     introductory_video_url "https://www.youtube.com/embed/LakKJZjKkRM"
     decidim_highlighted_scope_id { create(:scope, organization: organization).id }
     enable_highlighted_banner true
+    results_published_at nil
 
     trait :unpublished do
       published_at nil
@@ -32,6 +33,14 @@ FactoryBot.define do
 
     trait :published do
       published_at { Time.current }
+    end
+
+    trait :unpublished_results do
+      results_published_at nil
+    end
+
+    trait :published_results do
+      results_published_at { Time.current }
     end
 
     trait :upcoming do

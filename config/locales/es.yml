@@ -58,6 +58,9 @@ es:
         technical_info_menu_item: Ficha técnica
   decidim:
     admin:
+      actions:
+        publish_results: Publica los resultados
+        unpublish_results: Despublicar los resultados
       menu:
         consultations: Consultas
         consultations_submenu:
@@ -123,6 +126,13 @@ es:
         destroy:
           error: Se produjo un error al despublicar esta consulta.
           success: Consulta despublicada con éxito.
+      consultation_results_publications:
+        create:
+          error: Se produjo un error al publicar los resultados de esta consulta.
+          success: Resultados publicados con éxito.
+        destroy:
+          error: Se produjo un error al despublicar los resultados de esta consulta.
+          success: Resultados despublicados con éxito.
       questions:
         index:
           not_published: No publicado

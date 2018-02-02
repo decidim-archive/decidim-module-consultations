@@ -17,6 +17,20 @@
       <% end %>
     <% end %>
 
+    <% if can? :publish_results, current_consultation %>
+      <%= link_to t("actions.publish_results", scope: "decidim.admin"),
+                  consultation_publish_results_path(current_consultation),
+                  method: :post,
+                  class: "button hollow" %>
+    <% end %>
+
+    <% if can? :unpublish_results, current_consultation %>
+      <%= link_to t("actions.unpublish_results", scope: "decidim.admin"),
+                  consultation_publish_results_path(current_consultation),
+                  method: :delete,
+                  class: "button muted" %>
+    <% end %>
+
     <% if can? :destroy, current_consultation %>
       <%= link_to t("decidim.admin.actions.destroy"),
                   current_consultation,

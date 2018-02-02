@@ -58,6 +58,9 @@ en:
         technical_info_menu_item: Technical information
   decidim:
     admin:
+      actions:
+        publish_results: Publish results
+        unpublish_results: Unpublish results
       menu:
         consultations: Consultations
         consultations_submenu:
@@ -123,6 +126,13 @@ en:
         destroy:
           error: There was an error unpublishing this consultation.
           success: Consultation unpublished successfully.
+      consultation_results_publications:
+        create:
+          error: There was an error publishing the results for this consultation.
+          success: Consultation results published successfully.
+        destroy:
+          error: There was an error unpublishing the results for this consultation.
+          success: Consultation results unpublished successfully.
       questions:
         index:
           not_published: Not published
