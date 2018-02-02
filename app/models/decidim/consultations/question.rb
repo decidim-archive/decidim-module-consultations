@@ -41,6 +41,7 @@ module Decidim
 
       delegate :start_voting_date, to: :consultation
       delegate :end_voting_date, to: :consultation
+      delegate :results_published?, to: :consultation
 
       # Public: Overrides the `comments_have_alignment?` Commentable concern method.
       def comments_have_alignment?

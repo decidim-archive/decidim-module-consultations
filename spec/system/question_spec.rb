@@ -35,4 +35,19 @@ describe "Question", type: :system do
       expect(page).to have_i18n_content(question.what_is_decided)
     end
   end
+
+  context "when finished consultations" do
+    context "and published results" do
+      let(:consultation) { create :consultation, :finished, :published, :published_results, organization: organization }
+
+      before do
+        switch_to_host(organization.host)
+        visit decidim_consultations.question_path(question)
+      end
+
+      it "Has the results" do
+        expect(page).to have_content("RESULTS")
+      end
+    end
+  end
 end

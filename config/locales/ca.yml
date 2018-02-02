@@ -152,6 +152,7 @@ ca:
           success: La pregunta s'ha actualitzat correctament.
         destroy:
           success: La pregunta s'ha eliminat amb èxit.
+
       question_publications:
         create:
           error: S'ha produït un error en publicar aquesta pregunta.
@@ -245,3 +246,5 @@ ca:
         contextual_help: Confirmeu l'opció seleccionada.
         change: Canviar
         confirm: Confirmar
+      results:
+        title: Resultats

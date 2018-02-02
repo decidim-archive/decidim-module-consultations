@@ -7,7 +7,8 @@ module Decidim
     module NeedsQuestion
       def self.enhance_controller(instance_or_module)
         instance_or_module.class_eval do
-          helper_method :current_question, :current_consultation, :current_participatory_space, :stats
+          helper_method :current_question, :current_consultation, :current_participatory_space, :stats,
+                        :sorted_results
 
           helper Decidim::WidgetUrlsHelper
           helper Decidim::ActionAuthorizationHelper
@@ -34,6 +35,11 @@ module Decidim
         # Returns the current Question.
         def current_question
           @current_question ||= detect_question
+        end
+
+        # Sorted results for the given question.
+        def sorted_results
+          current_question.responses.order(votes_count: :desc)
         end
 
         # Public: Finds the current Consultation given this controller's

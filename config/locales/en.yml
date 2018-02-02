@@ -245,3 +245,5 @@ en:
         contextual_help: Please confirm the selected option.
         change: Change
         confirm: Confirm
+      results:
+        title: Results
