@@ -17,10 +17,10 @@ describe "Admin manages consultations", type: :system do
     end
 
     it "creates a new consultation" do
-      execute_script("$('#date_field_consultation_start_endorsing_date').focus()")
+      execute_script("$('#date_field_consultation_start_voting_date').focus()")
       find(".active").click
 
-      execute_script("$('#date_field_consultation_end_endorsing_date').focus()")
+      execute_script("$('#date_field_consultation_end_voting_date').focus()")
       find(".active").click
 
       within ".new_consultation" do
@@ -68,10 +68,10 @@ describe "Admin manages consultations", type: :system do
     end
 
     it "fails to create a new consultation" do
-      execute_script("$('#date_field_consultation_start_endorsing_date').focus()")
+      execute_script("$('#date_field_consultation_start_voting_date').focus()")
       find(".active").click
 
-      execute_script("$('#date_field_consultation_end_endorsing_date').focus()")
+      execute_script("$('#date_field_consultation_end_voting_date').focus()")
       find(".active").click
 
       within ".new_consultation" do

@@ -2,8 +2,8 @@
 
 module Decidim
   module Consultations
-    class EndorseForm < Form
-      mimic :endorsement
+    class VoteForm < Form
+      mimic :vote
 
       attribute :decidim_consultations_response_id, Integer
 
@@ -20,7 +20,7 @@ module Decidim
         return unless response.nil?
         errors.add(
           :decidim_consultations_response_id,
-          I18n.t("decidim_consultations_response_id.not_found", scope: "activemodel.errors.endorsement")
+          I18n.t("decidim_consultations_response_id.not_found", scope: "activemodel.errors.vote")
         )
       end
     end

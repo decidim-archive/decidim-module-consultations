@@ -32,8 +32,8 @@ module Decidim
           }
         end
         let(:slug) { "slug" }
-        let(:start_endorsing_date) { Time.zone.today }
-        let(:end_endorsing_date) { Time.zone.today + 1.month }
+        let(:start_voting_date) { Time.zone.today }
+        let(:end_voting_date) { Time.zone.today + 1.month }
         let(:attachment) { Decidim::Dev.test_file("city2.jpeg", "image/jpeg") }
 
         let(:attributes) do
@@ -51,8 +51,8 @@ module Decidim
               "banner_image" => attachment,
               "slug" => slug,
               "decidim_highlighted_scope_id" => scope&.id,
-              "start_endorsing_date" => start_endorsing_date,
-              "end_endorsing_date" => end_endorsing_date,
+              "start_voting_date" => start_voting_date,
+              "end_voting_date" => end_voting_date,
               "enable_highlighted_banner" => true
             }
           }
@@ -146,29 +146,29 @@ module Decidim
           end
         end
 
-        describe "start_endorsing_date" do
+        describe "start_voting_date" do
           context "when it is missing" do
-            let(:start_endorsing_date) { nil }
+            let(:start_voting_date) { nil }
 
             it { is_expected.to be_invalid }
           end
 
-          context "when it is after end_endorsing_date" do
-            let(:start_endorsing_date) { end_endorsing_date + 1.day }
+          context "when it is after end_voting_date" do
+            let(:start_voting_date) { end_voting_date + 1.day }
 
             it { is_expected.to be_invalid }
           end
         end
 
-        describe "end_endorsing_date" do
+        describe "end_voting_date" do
           context "when it is missing" do
-            let(:end_endorsing_date) { nil }
+            let(:end_voting_date) { nil }
 
             it { is_expected.to be_invalid }
           end
 
-          context "when it is before start_endorsing_date" do
-            let(:end_endorsing_date) { start_endorsing_date - 1.day }
+          context "when it is before start_voting_date" do
+            let(:end_voting_date) { start_voting_date - 1.day }
 
             it { is_expected.to be_invalid }
           end

@@ -14,30 +14,30 @@ module Decidim
 
           @user = user
 
-          can :endorse, Question do |question|
-            can_endorse?(question)
+          can :vote, Question do |question|
+            can_vote?(question)
           end
 
-          can :unendorse, Question do |question|
-            can_unendorse?(question)
+          can :unvote, Question do |question|
+            can_unvote?(question)
           end
         end
 
         private
 
-        def can_endorse?(question)
+        def can_vote?(question)
           question.organization.id == user.organization.id &&
             question.consultation.active? &&
             question.consultation.published? &&
             question.published? &&
-            !question.endorsed_by?(user)
+            !question.voted_by?(user)
         end
 
-        def can_unendorse?(question)
+        def can_unvote?(question)
           question.consultation.active? &&
             question.consultation.published? &&
             question.published? &&
-            question.endorsed_by?(user)
+            question.voted_by?(user)
         end
       end
     end

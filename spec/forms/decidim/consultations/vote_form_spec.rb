@@ -4,7 +4,7 @@ require "spec_helper"
 
 module Decidim
   module Consultations
-    describe EndorseForm do
+    describe VoteForm do
       subject { described_class.from_params(attributes) }
 
       let(:response) { create :response }

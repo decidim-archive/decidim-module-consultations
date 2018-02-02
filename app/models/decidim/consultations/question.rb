@@ -22,9 +22,9 @@ module Decidim
                  class_name: "Decidim::Organization"
 
       has_many :features, as: :participatory_space, dependent: :destroy
-      has_many :endorsements,
+      has_many :votes,
                foreign_key: "decidim_consultation_question_id",
-               class_name: "Decidim::Consultations::Endorsement",
+               class_name: "Decidim::Consultations::Vote",
                dependent: :destroy,
                inverse_of: :question
 
@@ -38,8 +38,8 @@ module Decidim
 
       scope :order_by_most_recent, -> { order(created_at: :desc) }
 
-      delegate :start_endorsing_date, to: :consultation
-      delegate :end_endorsing_date, to: :consultation
+      delegate :start_voting_date, to: :consultation
+      delegate :end_voting_date, to: :consultation
 
       # Public: Overrides the `comments_have_alignment?` Commentable concern method.
       def comments_have_alignment?
@@ -59,11 +59,11 @@ module Decidim
         banner_image.present? ? banner_image.url : consultation.banner_image.url
       end
 
-      # Public: Check if the user has endorsed the question.
+      # Public: Check if the user has voted the question.
       #
       # Returns Boolean.
-      def endorsed_by?(user)
-        endorsements.where(author: user).any?
+      def voted_by?(user)
+        votes.where(author: user).any?
       end
 
       def scopes_enabled?

@@ -15,12 +15,12 @@ module Decidim
             it { is_expected.to be_able_to(:manage, Decidim::Consultations::Question) }
 
             context "and external voting system" do
-              let(:question) { create :question, :unpublished, :external_endorsement }
+              let(:question) { create :question, :unpublished, :external_voting }
 
               it { is_expected.to be_able_to :publish, question }
             end
 
-            context "and endorsement in decidim" do
+            context "and unpublished question" do
               let(:question) { create :question, :unpublished }
 
               context "and no responses defined" do

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Question endorsement", type: :system do
+describe "Question vote", type: :system do
   let(:organization) { create(:organization) }
   let(:question) { create :question, :published, consultation: consultation }
 
@@ -14,13 +14,13 @@ describe "Question endorsement", type: :system do
       visit decidim_consultations.question_path(question)
     end
 
-    it "Page contains a disabled endorse button" do
-      expect(page).to have_button(id: "endorse_button")
-      expect(page).to have_css("#endorse_button.disabled")
+    it "Page contains a disabled vote button" do
+      expect(page).to have_button(id: "vote_button")
+      expect(page).to have_css("#vote_button.disabled")
     end
 
-    it "Shows when the endorsement period starts" do
-      expect(page).to have_content("Starting from #{I18n.l(question.start_endorsing_date)}")
+    it "Shows when the voting period starts" do
+      expect(page).to have_content("Starting from #{I18n.l(question.start_voting_date)}")
     end
   end
 
@@ -34,34 +34,34 @@ describe "Question endorsement", type: :system do
         visit decidim_consultations.question_path(question)
       end
 
-      it "Page do not contains an endorse button" do
-        expect(page).not_to have_button(id: "endorse_button")
+      it "Page do not contains an vote button" do
+        expect(page).not_to have_button(id: "vote_button")
       end
 
-      it "Page do not contains an unendorse button" do
-        expect(page).not_to have_button(id: "unendorse_button")
+      it "Page do not contains an unvote button" do
+        expect(page).not_to have_button(id: "unvote_button")
       end
     end
 
     context "and authenticated user" do
-      context "and never endorsed before" do
+      context "and never voted before" do
         before do
           switch_to_host(organization.host)
           login_as user, scope: :user, run_callbacks: false
           visit decidim_consultations.question_path(question)
         end
 
-        it "Page do not contains an endorse button" do
-          expect(page).not_to have_button(id: "endorse_button")
+        it "Page do not contains an vote button" do
+          expect(page).not_to have_button(id: "vote_button")
         end
 
-        it "Page do not contains an unendorse button" do
-          expect(page).not_to have_button(id: "unendorse_button")
+        it "Page do not contains an unvote button" do
+          expect(page).not_to have_button(id: "unvote_button")
         end
       end
 
-      context "and endorsed before" do
-        let!(:endorsement) { create :endorsement, author: user, question: question }
+      context "and voted before" do
+        let!(:vote) { create :vote, author: user, question: question }
 
         before do
           switch_to_host(organization.host)
@@ -69,9 +69,9 @@ describe "Question endorsement", type: :system do
           visit decidim_consultations.question_path(question)
         end
 
-        it "has a disabled unendorse button" do
-          expect(page).to have_button(id: "unendorse_button")
-          expect(page).to have_css("#unendorse_button.disabled")
+        it "has a disabled unvote button" do
+          expect(page).to have_button(id: "unvote_button")
+          expect(page).to have_css("#unvote_button.disabled")
         end
       end
     end
@@ -87,40 +87,40 @@ describe "Question endorsement", type: :system do
         visit decidim_consultations.question_path(question)
       end
 
-      it "Page contains an endorse button" do
-        expect(page).not_to have_button("ENDORSE")
+      it "Page contains a vote button" do
+        expect(page).not_to have_link(id: "vote_button")
       end
 
-      it "Page do not contains an unendorse button" do
-        expect(page).not_to have_button(id: "unendorse_button")
+      it "Page do not contains an unvote button" do
+        expect(page).not_to have_button(id: "unvote_button")
       end
     end
 
     context "and authenticated user" do
       let!(:response) { create :response, question: question }
 
-      context "and never endorsed before" do
+      context "and never voted before" do
         before do
           switch_to_host(organization.host)
           login_as user, scope: :user, run_callbacks: false
           visit decidim_consultations.question_path(question)
         end
 
-        it "Page contains an endorse button" do
-          expect(page).to have_link(id: "endorse_button")
+        it "Page contains a vote button" do
+          expect(page).to have_link(id: "vote_button")
         end
 
-        it "unendorse button appears after voting" do
-          click_link(id: "endorse_button")
+        it "unvote button appears after voting" do
+          click_link(id: "vote_button")
           click_button translated(response.title)
           click_button "Confirm"
-          expect(page).to have_button(id: "unendorse_button")
+          expect(page).to have_button(id: "unvote_button")
         end
       end
 
-      context "and endorsed before" do
-        let!(:endorsement) do
-          create :endorsement, author: user, question: question, response: response
+      context "and voted before" do
+        let!(:vote) do
+          create :vote, author: user, question: question, response: response
         end
 
         before do
@@ -129,13 +129,13 @@ describe "Question endorsement", type: :system do
           visit decidim_consultations.question_path(question)
         end
 
-        it "contains an unendorse button" do
-          expect(page).to have_button(id: "unendorse_button")
+        it "contains an unvote button" do
+          expect(page).to have_button(id: "unvote_button")
         end
 
-        it "endorse button appears after unendorsing" do
-          click_button(id: "unendorse_button")
-          expect(page).to have_link(id: "endorse_button")
+        it "vote button appears after unvoting" do
+          click_button(id: "unvote_button")
+          expect(page).to have_link(id: "vote_button")
         end
       end
     end

@@ -9,8 +9,8 @@ es:
         description: Descripción
         banner_image: Imagen de banner
         introductory_video_url: URL del vídeo introductorio
-        start_endorsing_date: Fecha de inicio
-        end_endorsing_date: Fecha de finalización
+        start_voting_date: Fecha de inicio
+        end_voting_date: Fecha de finalización
         decidim_highlighted_scope_id: Ámbito destacado
         enable_highlighted_banner: Destacado en portada
       question:
@@ -30,10 +30,10 @@ es:
         origin_scope: Ámbito
         origin_title: Origen
         origin_url: URL Origen
-        external_endorsement: Sistema de ratificación externo
-        i_frame_url: URL iFrame sistema de ratificación externo
+        external_voting: Sistema de votación externo
+        i_frame_url: URL iFrame sistema de votación externo
     errors:
-      endorsement:
+      vote:
         decidim_consultations_response_id:
           not_found: No se ha encontrado la respuesta
   pages:
@@ -45,8 +45,8 @@ es:
       admin:
         question:
           attachments: Archivos adjuntos
-      consultation_endorsing_data:
-        start_endorsing_date: El periodo de ratificación empieza el
+      consultation_voting_data:
+        start_voting_date: El periodo de votación empieza el
       consultation_header:
         consultation_menu_item: Multiconsula
         unfold: Desplegar
@@ -209,9 +209,9 @@ es:
           active_consultation:
             take_part: Participa
             button_info: "Ratificaciónes: %{date}"
-    question_endorsements:
+    question_votes:
       create:
-        error: Ha habido errores al ratificar la pregunta
+        error: Ha habido errores al votar la pregunta
     questions:
       statistics:
         supports_count_title: Adhesiones
@@ -220,17 +220,17 @@ es:
         assistants_count_title: Asistentes
       technical_info:
         technical_data: Datos técnicos
-      endorse_button:
-        already_endorsed: Ya ratificado
-        already_endorsed_hover: Retirar apoyo
-        endorse: Dar apoyo
+      vote_button:
+        already_voted: Ya votado
+        already_voted_hover: Retirar apoyo
+        vote: Votar
         starting_from: A partir de %{date}
-      endorse_modal:
+      vote_modal:
         title: "Multiconsulta: votación de pregunta"
         contextual_help:
           Por favor, selecciona una opción. Ten en cuenta que una vez hayas confirmado
           tu apoyo, no se podrá cambiar.
-      endorse_modal_confirm:
+      vote_modal_confirm:
         title: "Multiconsulta: confirmar apoyo"
         contextual_help: Por favor, confirma la opción seleccionada.
         change: Cambiar

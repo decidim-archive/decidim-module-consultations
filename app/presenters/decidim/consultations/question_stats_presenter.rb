@@ -7,7 +7,7 @@ module Decidim
       attribute :question, Decidim::Consultations::Question
 
       def supports_count
-        question.endorsements_count
+        question.votes_count
       end
 
       def comments_count

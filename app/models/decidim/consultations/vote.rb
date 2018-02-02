@@ -2,20 +2,20 @@
 
 module Decidim
   module Consultations
-    # The data store for question's endorsements in the Decidim::Consultations component.
-    class Endorsement < ApplicationRecord
+    # The data store for question's votes in the Decidim::Consultations component.
+    class Vote < ApplicationRecord
       include Authorable
 
       belongs_to :question,
                  foreign_key: "decidim_consultation_question_id",
                  class_name: "Decidim::Consultations::Question",
-                 counter_cache: :endorsements_count,
-                 inverse_of: :endorsements
+                 counter_cache: :votes_count,
+                 inverse_of: :votes
 
       belongs_to :response,
                  foreign_key: "decidim_consultations_response_id",
                  class_name: "Decidim::Consultations::Response",
-                 inverse_of: :endorsements,
+                 inverse_of: :votes,
                  optional: true
 
       validates :author, uniqueness: { scope: [:decidim_user_group_id, :question] }
