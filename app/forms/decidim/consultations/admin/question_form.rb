@@ -19,7 +19,8 @@ module Decidim
         translatable_attribute :origin_title, String
         attribute :origin_url, String
         attribute :slug, String
-        attribute :introductory_video_url, String
+        attribute :remove_hero_image
+        attribute :hero_image
         attribute :banner_image
         attribute :remove_banner_image
         attribute :hashtag, String
@@ -30,6 +31,7 @@ module Decidim
         validates :slug, presence: true, format: { with: Decidim::Consultations::Question.slug_format }
         validates :title, :promoter_group, :participatory_scope, :subtitle, :what_is_decided, translatable_presence: true
         validates :decidim_scope_id, presence: true
+        validates :hero_image, file_size: { less_than_or_equal_to: ->(_record) { Decidim.maximum_attachment_size } }, file_content_type: { allow: ["image/jpeg", "image/png"] }
         validates :banner_image, file_size: { less_than_or_equal_to: ->(_record) { Decidim.maximum_attachment_size } }, file_content_type: { allow: ["image/jpeg", "image/png"] }
         validate :slug_uniqueness
         validates :origin_scope, :origin_title, translatable_presence: true, if: :has_origin_data?

@@ -56,7 +56,8 @@ describe "Admin manages questions", type: :system do
           ca: "Què es decideix"
         )
         fill_in :question_slug, with: "slug"
-        attach_file :question_banner_image, image2_path
+        attach_file :question_hero_image, image2_path
+        attach_file :question_banner_image, image1_path
         scope_pick scopes_picker_find(:question_decidim_scope_id), organization.scopes.first
 
         find("*[type=submit]").click
@@ -122,7 +123,8 @@ describe "Admin manages questions", type: :system do
           es: "Qué se decide",
           ca: "Què es decideix"
         )
-        attach_file :question_banner_image, image2_path
+        attach_file :question_banner_image, image1_path
+        attach_file :question_hero_image, image2_path
         scope_pick scopes_picker_find(:question_decidim_scope_id), organization.scopes.first
 
         find("*[type=submit]").click
@@ -198,6 +200,7 @@ describe "Admin manages questions", type: :system do
 
       expect(page).to have_admin_callout("successfully")
       expect(page).to have_css("img[src*='#{question.banner_image.url}']")
+      expect(page).to have_css("img[src*='#{question.hero_image.url}']")
     end
   end
 

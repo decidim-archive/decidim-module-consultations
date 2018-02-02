@@ -12,7 +12,8 @@ module Decidim
         let(:consultation) { create(:consultation, organization: organization) }
         let(:scope) { create(:scope, organization: organization) }
         let(:errors) { double.as_null_object }
-        let(:attachment) { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
+        let(:banner_image) { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
+        let(:hero_image) { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
         let(:params) do
           {
             question: {
@@ -23,7 +24,8 @@ module Decidim
               participatory_scope_en: "Participatory scope",
               what_is_decided_en: "What is decided",
               decidim_scope_id: scope.id,
-              banner_image: attachment,
+              banner_image: banner_image,
+              hero_image: hero_image,
               external_voting: false
             }
           }
@@ -53,7 +55,8 @@ module Decidim
               persisted?: false,
               valid?: false,
               errors: {
-                banner_image: "Image too big"
+                banner_image: "Image too big",
+                hero_image: "Image too big"
               }
             ).as_null_object
           end
@@ -66,9 +69,14 @@ module Decidim
             expect { subject.call }.to broadcast(:invalid)
           end
 
-          it "adds errors to the form" do
+          it "adds banner image related errors to the form" do
             subject.call
             expect(form.errors).to have_key :banner_image
+          end
+
+          it "adds hero image related errors to the form" do
+            subject.call
+            expect(form.errors).to have_key :hero_image
           end
         end
 
