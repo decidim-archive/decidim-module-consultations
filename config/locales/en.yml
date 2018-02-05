@@ -212,8 +212,12 @@ en:
         title: Past consultations
       regular_questions:
         title: Other consultations
-      highlighted_question:
+      question:
         take_part: Take part
+        view_results: View results
+        votes_out_of:
+          one: vote out of
+          other: votes out of
       pages:
         home:
           active_consultation:

@@ -213,8 +213,12 @@ ca:
         title: Multiconsultes anteriors
       regular_questions:
         title: Altres consultes
-      highlighted_question:
+      question:
         take_part: Participa
+        view_results: Veure els resultats
+        votes_out_of:
+          one: vot de
+          other: vots de
       pages:
         home:
           active_consultation:
