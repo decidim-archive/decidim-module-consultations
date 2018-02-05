@@ -28,6 +28,7 @@ module Decidim
           if question.valid?
             broadcast(:ok, question)
           else
+            form.errors.add(:hero_image, question.errors[:hero_image]) if question.errors.include? :hero_image
             form.errors.add(:banner_image, question.errors[:banner_image]) if question.errors.include? :banner_image
             broadcast(:invalid)
           end
@@ -52,8 +53,9 @@ module Decidim
             promoter_group: form.promoter_group,
             participatory_scope: form.participatory_scope,
             question_context: form.question_context,
-            introductory_video_url: form.introductory_video_url,
             hashtag: form.hashtag,
+            hero_image: form.hero_image,
+            remove_hero_image: form.remove_hero_image,
             banner_image: form.banner_image,
             remove_banner_image: form.remove_banner_image,
             origin_scope: form.origin_scope,

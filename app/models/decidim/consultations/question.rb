@@ -34,6 +34,7 @@ module Decidim
                inverse_of: :question,
                dependent: :destroy
 
+      mount_uploader :hero_image, Decidim::HeroImageUploader
       mount_uploader :banner_image, Decidim::BannerImageUploader
 
       scope :order_by_most_recent, -> { order(created_at: :desc) }

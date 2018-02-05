@@ -70,8 +70,8 @@ FactoryBot.define do
     question_context { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
     what_is_decided { Decidim::Faker::Localized.wrapped("<p>", "</p>") { Decidim::Faker::Localized.sentence(4) } }
     published_at { Time.current }
-    introductory_video_url "https://www.youtube.com/embed/LakKJZjKkRM"
-    banner_image { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
+    hero_image { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
+    banner_image { Decidim::Dev.test_file("city2.jpeg", "image/jpeg") }
     external_voting false
 
     trait :unpublished do

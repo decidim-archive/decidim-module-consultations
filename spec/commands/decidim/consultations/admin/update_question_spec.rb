@@ -31,9 +31,9 @@ module Decidim
               question_context_ca: question.question_context["ca"],
               question_context_es: question.question_context["es"],
               banner_image: question.banner_image,
+              hero_image: question.hero_image,
               hashtag: question.hashtag,
-              decidim_scope_id: question.scope.id,
-              introductory_video_url: question.introductory_video_url
+              decidim_scope_id: question.scope.id
             }
           }
         end
@@ -68,6 +68,7 @@ module Decidim
             expect(form).to receive(:invalid?).and_return(false)
             expect(question).to receive(:valid?).at_least(:once).and_return(false)
             question.errors.add(:banner_image, "Image too big")
+            question.errors.add(:hero_image, "Image too big")
           end
 
           it "broadcasts invalid" do
@@ -78,6 +79,7 @@ module Decidim
             command.call
 
             expect(form.errors[:banner_image]).not_to be_empty
+            expect(form.errors[:hero_image]).not_to be_empty
           end
         end
 
