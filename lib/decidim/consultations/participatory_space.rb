@@ -119,7 +119,7 @@ Decidim.register_participatory_space(:consultations) do |participatory_space|
         banner_image: File.new(File.join(seeds_root, "city.jpeg")),
         promoter_group: Decidim::Faker::Localized.sentence(3),
         participatory_scope: Decidim::Faker::Localized.sentence(3),
-        introductory_video_url: "https://www.youtube.com/embed/LakKJZjKkRM",
+        hero_image: File.new(File.join(seeds_root, "city.jpeg")),
         published_at: Time.now.utc,
         organization: organization
       )
