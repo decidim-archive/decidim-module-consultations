@@ -74,7 +74,7 @@ describe "Consultation", type: :system do
   end
 
   context "when finished consultations" do
-    let!(:finished_consultation) { create :consultation, :finished, :published, organization: organization }
+    let!(:finished_consultation) { create :consultation, :finished, :published, :published_results, organization: organization }
 
     before do
       switch_to_host(organization.host)

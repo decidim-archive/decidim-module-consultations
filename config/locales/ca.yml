@@ -58,6 +58,9 @@ ca:
         technical_info_menu_item: Fitxa tècnica
   decidim:
     admin:
+      actions:
+        publish_results: Publicar els resultats
+        unpublish_results: Despublicar els resultats
       menu:
         consultations: Consultes
         consultations_submenu:
@@ -123,6 +126,13 @@ ca:
         destroy:
           error: S'ha produït un error en despublicar aquesta consulta.
           success: Consulta despublicada amb èxit.
+      consultation_results_publications:
+        create:
+          error: S'ha produït un error en publicar els resultats d'aquesta consulta.
+          success: Resultats publicats amb èxit.
+        destroy:
+          error: S'ha produït un error en despublicar els resultats d'aquesta consulta.
+          success: Resultats despublicats amb èxit.
       questions:
         index:
           not_published: No publicada
@@ -142,6 +152,7 @@ ca:
           success: La pregunta s'ha actualitzat correctament.
         destroy:
           success: La pregunta s'ha eliminat amb èxit.
+
       question_publications:
         create:
           error: S'ha produït un error en publicar aquesta pregunta.
@@ -235,3 +246,5 @@ ca:
         contextual_help: Confirmeu l'opció seleccionada.
         change: Canviar
         confirm: Confirmar
+      results:
+        title: Resultats
