@@ -212,8 +212,12 @@ es:
         title: Multiconsultas anteriores
       regular_questions:
         title: Otras consultas
-      highlighted_question:
+      question:
         take_part: Participa
+        view_results: Ver resultados
+        votes_out_of:
+          one: voto de
+          other: votos de
       pages:
         home:
           active_consultation:

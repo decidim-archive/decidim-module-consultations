@@ -12,10 +12,23 @@
     <div class="columns mediumlarge-4 large-4 card--process__column">
       <div class="card--full__image" style="background-image: url(<%= question.banner_image_url %>)">
         <div class="card__content row collapse">
-          <div class="large-6 large-offset-3 columns">
-            <%= link_to t("consultations.highlighted_question.take_part", scope: "decidim"),
-                        decidim_consultations.question_path(question),
-                        class: "button expanded button--sc" %>
+          <div class="large-12 columns">
+            <% if question.results_published? %>
+              <%= link_to decidim_consultations.question_path(question),
+                          class: "button expanded button--sc" do %>
+                <%=t "consultations.question.view_results", scope: "decidim" %>
+                <span class="button__info"><%= translated_attribute question.most_voted_response.title %></span>
+                <span class="button__info">
+                  <%= question.most_voted_response.votes_count %>
+                  <%=t "consultations.question.votes_out_of", scope: "decidim", count: question.most_voted_response.votes_count %>
+                  <%= question.total_votes %>
+                </span>
+              <% end %>
+            <% else %>
+              <%= link_to t("consultations.question.take_part", scope: "decidim"),
+                          decidim_consultations.question_path(question),
+                          class: "button expanded button--sc" %>
+            <% end %>
           </div>
         </div>
       </div>

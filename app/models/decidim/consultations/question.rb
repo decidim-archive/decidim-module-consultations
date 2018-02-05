@@ -43,6 +43,14 @@ module Decidim
       delegate :end_voting_date, to: :consultation
       delegate :results_published?, to: :consultation
 
+      def most_voted_response
+        @most_voted_response ||= responses.order(votes_count: :desc).first
+      end
+
+      def total_votes
+        @total_votes ||= responses.sum(&:votes_count)
+      end
+
       # Public: Overrides the `comments_have_alignment?` Commentable concern method.
       def comments_have_alignment?
         true
