@@ -1,18 +1,16 @@
 <% add_decidim_meta_tags({
-  image_url: current_participatory_space.banner_image_url,
+  image_url: current_participatory_space.hero_image_url,
   description: translated_attribute(current_participatory_space.question_context),
   title: translated_attribute(current_participatory_space.title),
   url: decidim_consultations.question_url(current_participatory_space),
   twitter_handler: current_organization.twitter_handler
 }) %>
-<% provide :meta_image_url, current_participatory_space.banner_image_url %>
+<% provide :meta_image_url, current_participatory_space.hero_image_url %>
 
 <%= render "layouts/decidim/application" do %>
   <div class="wrapper">
     <%= render partial: "layouts/decidim/question_header", locals: { question: current_participatory_space } %>
-    <div class=row>
-      <%= yield %>
-    </div>
+    <%= yield %>
   </div>
   <% if content_for? :expanded %>
     <div class="expanded">

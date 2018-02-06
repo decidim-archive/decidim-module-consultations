@@ -1,59 +1,39 @@
-<%= render partial: "right_column", locals: { question: current_question } %>
-<div class="columns mediumlarge-8 mediumlarge-pull-4">
-  <div class="section">
-    <div class="row column">
-      <%= decidim_sanitize translated_attribute current_question.question_context %>
-    </div>
-  </div>
+<div class="row column">
+  <div class="row">
+    <div class="columns medium-7 mediumlarge-8">
+      <div class="section">
+        <%= decidim_sanitize translated_attribute current_question.question_context %>
+      </div>
 
-  <%= attachments_for current_question %>
+      <%= attachments_for current_question %>
+    </div>
+
+    <%= render partial: "right_column", locals: { question: current_question } %>
+  </div>
 </div>
 
 <%= comments_for current_question if current_question.published? %>
 
 <%= content_for :question_header_details do %>
-  <section  id="question-header-details" class="row section">
-    <article class="card card--full card--process">
-      <div class="row collapse card--process__row">
-        <div class="columns mediumlarge-8 large-6 card--process__column">          
-          <div class="card--full__image" style="background-image:url(<%= current_question.hero_image&.url %>)">
-          </div>
-        </div>
+  <div id="question-header-details" class="row consultations-home-intro">
+    <div class="columns medium-5">
+      <img src="<%= current_question.hero_image&.url %>">
+    </div>
 
-        <div class="columns mediumlarge-8 large-6 card--process__column">
-          <div class="card__content question-header-data">
-            <% unless translated_attribute(current_question.origin_scope).blank? %>
-              <div class="question-header-data-group">
-                <div class=question-eader-data-group-title>
-                  <%=t "question.origin_scope", scope: "activemodel.attributes" %>
-                </div>
-                <div><%= translated_attribute current_question.origin_scope %></div>
-              </div>
-            <% end %>
+    <div class="columns medium-5">
+      <% unless translated_attribute(current_question.origin_scope).blank? %>
+        <h4 class="heading6"><%=t "question.origin_scope", scope: "activemodel.attributes" %></h4>
+        <p><%= translated_attribute current_question.origin_scope %></p>
+      <% end %>
 
-            <div class="question-header-data-group">
-              <div class=question-eader-data-group-title>
-                <%=t "question.promoter_group", scope: "activemodel.attributes" %>
-              </div>
-              <div><%= translated_attribute current_question.promoter_group %></div>
-            </div>
+      <h4 class="heading6"><%=t "question.promoter_group", scope: "activemodel.attributes" %></h4>
+      <p><%= translated_attribute current_question.promoter_group %></p>
 
-            <div class="question-header-data-group">
-              <div class=question-eader-data-group-title>
-                <%=t "question.scope", scope: "activemodel.attributes" %>
-              </div>
-              <div><%= translated_attribute current_question.scope.name %></div>
-            </div>
+      <h4 class="heading6"><%=t "question.scope", scope: "activemodel.attributes" %></h4>
+      <p><%= translated_attribute current_question.scope.name %></p>
 
-            <div class="question-header-data-group">
-              <div class=question-eader-data-group-title>
-                <%=t "question.participatory_scope", scope: "activemodel.attributes" %>
-              </div>
-              <div><%= translated_attribute current_question.participatory_scope %></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-  </section>
+      <h4 class="heading6"><%=t "question.participatory_scope", scope: "activemodel.attributes" %></h4>
+      <p><%= translated_attribute current_question.participatory_scope %></p>
+    </div>
+  </div>
 <% end %>

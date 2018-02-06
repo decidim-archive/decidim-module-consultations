@@ -46,7 +46,7 @@ en:
         question:
           attachments: Attachments
       consultation_voting_data:
-        start_voting_date: Voting period starts on
+        start_voting_date: Voting from
       consultation_header:
         consultation_menu_item: Consultation
         unfold: Unfold
@@ -181,6 +181,8 @@ en:
     consultations:
       index:
         title: Consultations
+      show:
+        see_finished_consultations: See previous consultations
       count:
         title:
           one: "%{count} consultation"
@@ -198,9 +200,11 @@ en:
         upcoming: Upcoming
         finished: Finished
       consultation:
-        check: Check
-      consultation_badge:
-        upcoming: Upcoming
+        start_voting_date: Voting from
+        view_results: View results
+      finished:
+        past_consultations: Past consultations
+        active_consultations: Active consultations
       consultations:
         orders:
           label: 'Sort consultations by:'
@@ -208,8 +212,6 @@ en:
           recent: Most recent
       highlighted_questions:
         title: Consultations from %{scope_name}
-      finished_consultations:
-        title: Past consultations
       regular_questions:
         title: Other consultations
       question:

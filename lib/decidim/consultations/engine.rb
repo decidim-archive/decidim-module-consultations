@@ -22,6 +22,8 @@ module Decidim
         }, constraints: { question_id: /[0-9]+/ }
 
         resources :consultations, only: [:index, :show], param: :slug, path: "consultations" do
+          get "finished", on: :collection
+
           resources :questions, only: [:show], param: :slug, path: "questions", shallow: true do
             get "technical_info", on: :member
             resource :question_widget, only: :show, path: "embed"

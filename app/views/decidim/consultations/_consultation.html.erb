@@ -1,22 +1,32 @@
-<div class="column">
-  <article class="card card--consultation">
-    <div class="card__content">
-      <div class="card__header">
-        <%= link_to consultation do%>
-          <h5 class="card__title"><%= translated_attribute consultation.title %></h5>
-        <% end %>
-      </div>
-      <%= render partial: 'decidim/consultations/consultations/consultation_badge', locals: { consultation: consultation } %>
-      <%= decidim_sanitize html_truncate(translated_attribute(consultation.description), length: 100, separator: '...') %>
-    </div>
+<%= link_to consultation_path(consultation), class: "consultations-banner" do %>
+  <div class="consultations-header consultations-home-banner row column">
+    <div class="row column consultations-header__main"
+         style="background-image:url(<%= consultation.banner_image.url %>);">
+      <div class="consultations-header__container row">
+        <div class="columns mediumlarge-9 consultations-header__info">
+          <div>
+            <h1 class="heading2 text-highlight"><%= translated_attribute consultation.title %></h1>
+            <p class="text-highlight"><%= translated_attribute consultation.subtitle %></p>
+          </div>
+        </div>
 
-    <div class="card__footer">
-      <div class="card__support">
-        <div class="card__support__data"></div>
-        <%= link_to t("consultations.consultation.check", scope: "decidim"),
-                    consultation,
-                    class: 'card__button button small secondary' %>
+        <div class="columns mediumlarge-3">
+          <div class="consultations-header__extra">
+            <div>
+              <% if consultation.active? %>
+                <span class="consultations-header__extra-title"><%=t ".start_voting_date" %></span>
+                <span class="consultations-header__extra-date">
+                  <%=l consultation.start_voting_date %>
+                </span>
+              <% end %>
+
+              <% if consultation.finished? %>
+                <span class="button consultations-banner__action"><%=t ".view_results" %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </article>
-</div>
+  </div>
+<% end %>

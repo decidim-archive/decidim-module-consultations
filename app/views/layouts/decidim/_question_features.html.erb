@@ -1,5 +1,5 @@
 <div class="row column">
-  <div class="process-nav">
+  <div class="process-nav consultations-nav">
     <button class="process-nav__trigger hide-for-medium"  data-toggle="process-nav-content">
       <%= icon "caret-bottom", class: "icon--small process-nav__trigger__icon", aria_label: t(".unfold"), role: "img" %>
       <div class="process-nav__link">
@@ -22,7 +22,7 @@
             <%= external_icon "decidim/pages/icon.svg" %>
             <%= t ".question_menu_item" %>
           <% end %>
-        </li>    
+        </li>
         <li class="<%= 'is-active' if is_active_link?(decidim_consultations.technical_info_question_path(question), :exclusive) %>">
           <%= active_link_to decidim_consultations.technical_info_question_path(question),
                              active: :exclusive,
