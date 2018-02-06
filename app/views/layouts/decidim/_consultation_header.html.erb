@@ -1,17 +1,13 @@
-<div class="process-header process-header__borderless row column">
-  <div class="row column process-header__main"
+<div class="consultations-header consultations-home-banner row column">
+  <div class="row column consultations-header__main"
        style="background-image:url(<%= current_consultation.banner_image.url %>);">
-    <div class="process-header__container row">
-      <div class="columns mediumlarge-9 process-header__info">
+    <div class="consultations-header__container row">
+      <div class="columns mediumlarge-9 consultations-header__info">
         <div>
-          <h1 class="text-highlight heading2">
+          <h1 class="heading2 text-highlight">
             <%= translated_attribute(current_consultation.title) %>
           </h1>
-        </div>
-        <div>
-          <h2 class="text-highlight heading-small">
-            <%= translated_attribute current_consultation.subtitle %>
-          </h2>
+          <p class="text-highlight"><%= translated_attribute current_consultation.subtitle %></p>
         </div>
       </div>
       <%= render partial: "layouts/decidim/consultation_voting_data", locals: { consultation: current_consultation } %>
