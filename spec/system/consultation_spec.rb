@@ -82,8 +82,7 @@ describe "Consultation", type: :system do
     end
 
     it "consultation page contains finished consultations" do
-      expect(page).to have_content("PAST CONSULTATIONS")
-      expect(page).to have_i18n_content(finished_consultation.title)
+      expect(page).to have_content("SEE PREVIOUS CONSULTATIONS")
     end
   end
 end
