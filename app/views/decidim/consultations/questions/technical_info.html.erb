@@ -1,32 +1,22 @@
-<%= render partial: "right_column", locals: { question: current_question } %>
-<div class="columns mediumlarge-8 mediumlarge-pull-4">
-  <div class="section">
-    <h4 class=section-heading>
-      <%=t "questions.technical_info.technical_data", scope: "decidim" %>
-    </h4>
-    <div class="row column question-header-data">
-      <% unless translated_attribute(current_question.origin_scope).blank? %>
-        <div class="question-header-data-group">
-          <div class=question-eader-data-group-title>
-            <%=t "question.origin_scope", scope: "activemodel.attributes" %>
-          </div>
-          <div><%= translated_attribute current_question.origin_scope %></div>
-        </div>
-      <% end %>
+<div class="row column">
+  <div class="row">
+    <div class="columns medium-7 mediumlarge-8">
+      <div class="section">
+        <h2 class=section-heading>
+          <%=t "questions.technical_info.technical_data", scope: "decidim" %>
+        </h2>
 
-      <div class="question-header-data-group">
-        <div class=question-eader-data-group-title>
-          <%=t "question.promoter_group", scope: "activemodel.attributes" %>
-        </div>
-        <div><%= translated_attribute current_question.promoter_group %></div>
-      </div>
+        <% unless translated_attribute(current_question.origin_scope).blank? %>
+          <h3 class="heading6"><%=t "question.origin_scope", scope: "activemodel.attributes" %></h3>
+          <p><%= translated_attribute current_question.origin_scope %></p>
+        <% end %>
 
-      <% unless translated_attribute(current_question.origin_title).blank? %>
-        <div class="question-header-data-group">
-          <div class=question-eader-data-group-title>
-            <%=t "question.origin_title", scope: "activemodel.attributes" %>
-          </div>
-          <div>
+        <h3 class="heading6"><%=t "question.promoter_group", scope: "activemodel.attributes" %></h3>
+        <p><%= translated_attribute current_question.promoter_group %></p>
+
+        <% unless translated_attribute(current_question.origin_title).blank? %>
+          <h3 class="heading6"><%=t "question.origin_title", scope: "activemodel.attributes" %></h3>
+          <p>
             <% if current_question.origin_url.blank? %>
               <%= translated_attribute current_question.origin_title %>
             <% else %>
@@ -34,51 +24,35 @@
                          current_question.origin_url,
                          target: "_blank" %>
             <% end %>
-          </div>
-        </div>
-      <% end %>
+          </p>
+        <% end %>
 
-      <div class="question-header-data-group">
-        <div class=question-eader-data-group-title>
-          <%=t "question.scope", scope: "activemodel.attributes" %>
-        </div>
-        <div><%= translated_attribute current_question.scope.name %></div>
+        <h3 class="heading6"><%=t "question.scope", scope: "activemodel.attributes" %></h3>
+        <p><%= translated_attribute current_question.scope.name %></p>
+
+        <h3 class="heading6"><%=t "question.participatory_scope", scope: "activemodel.attributes" %></h3>
+        <p><%= translated_attribute current_question.participatory_scope %></p>
+
+        <h3 class="heading6"><%=t "consultation.start_voting_date", scope: "activemodel.attributes" %></h3>
+        <p><%=l current_question.start_voting_date, format: :long %></p>
+
+        <h3 class="heading6"><%=t "consultation.end_voting_date", scope: "activemodel.attributes" %></h3>
+        <p><%=l current_question.end_voting_date, format: :long %></p>
       </div>
 
-      <div class="question-header-data-group">
-        <div class=question-eader-data-group-title>
-          <%=t "question.participatory_scope", scope: "activemodel.attributes" %>
-        </div>
-        <div><%= translated_attribute current_question.participatory_scope %></div>
+      <div class="section">
+        <h2 class=section-heading><%=t "question.what_is_decided", scope: "activemodel.attributes" %></h2>
+        <p><%= decidim_sanitize translated_attribute current_question.what_is_decided %></p>
       </div>
 
-      <div class="question-header-data-group">
-        <div class=question-eader-data-group-title>
-          <%=t "consultation.start_voting_date", scope: "activemodel.attributes" %>
-        </div>
-        <div><%=l current_question.start_voting_date, format: :long %></div>
+      <div class="section">
+        <h2 class=section-heading><%=t "question.question_context", scope: "activemodel.attributes" %></h2>
+        <p><%= decidim_sanitize translated_attribute current_question.question_context %></p>
       </div>
 
-      <div class="question-header-data-group">
-        <div class=question-eader-data-group-title>
-          <%=t "consultation.end_voting_date", scope: "activemodel.attributes" %>
-        </div>
-        <div><%=l current_question.end_voting_date, format: :long %></div>
-      </div>
+      <%= attachments_for current_question %>
     </div>
-  </div>
 
-  <div class="section">
-    <h4 class=section-heading><%=t "question.what_is_decided", scope: "activemodel.attributes" %></h4>
-    <div class="row column">
-      <%= decidim_sanitize translated_attribute current_question.what_is_decided %>
-    </div>
-  </div>
-
-  <div class="section">
-    <h4 class=section-heading><%=t "question.question_context", scope: "activemodel.attributes" %></h4>
-    <div class="row column">
-      <%= decidim_sanitize translated_attribute current_question.question_context %>
-    </div>
+    <%= render partial: "right_column", locals: { question: current_question } %>
   </div>
 </div>
