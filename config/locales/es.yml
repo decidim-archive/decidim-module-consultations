@@ -181,6 +181,8 @@ es:
     consultations:
       index:
         title: Multiconsultas
+      show:
+        see_finished_consultations: Ver consultas anteriores
       count:
         title:
           one: "%{count} multiconsulta"
@@ -198,9 +200,11 @@ es:
         upcoming: Próximas
         finished: Finalizadas
       consultation:
-        check: Ver
-      consultation_badge:
-        upcoming: Próximamente
+        start_voting_date: Votación a partir de
+        view_results: Ver resultados
+      finished:
+        past_consultations: Multiconsultas anteriores
+        active_consultations: Multiconsultas activas
       consultations:
         orders:
           label: 'Ordenar multiconsultas por:'
@@ -208,8 +212,6 @@ es:
           recent: Mas reciente
       highlighted_questions:
         title: Consultas de %{scope_name}
-      finished_consultations:
-        title: Multiconsultas anteriores
       regular_questions:
         title: Otras consultas
       question:

@@ -12,7 +12,7 @@ module Decidim
       include Paginable
       include Orderable
 
-      helper_method :collection, :consultations, :finished_consultations, :filter
+      helper_method :collection, :consultations, :finished_consultations, :active_consultations, :filter
 
       helper Decidim::FiltersHelper
       helper Decidim::OrdersHelper
@@ -27,6 +27,11 @@ module Decidim
 
       def show
         authorize! :read, current_consultation
+      end
+
+      def finished
+        authorize! :read, Consultation
+        render layout: "layouts/decidim/consultation_choose"
       end
 
       private

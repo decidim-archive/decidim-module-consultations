@@ -182,6 +182,8 @@ ca:
     consultations:
       index:
         title: Multiconsultes
+      show:
+        see_finished_consultations: Veure consultes anteriors
       count:
         title:
           one: "%{count} multiconsulta"
@@ -199,9 +201,11 @@ ca:
         upcoming: Properes
         finished: Finalitzades
       consultation:
-        check: Veure
-      consultation_badge:
-        upcoming: Pròximament
+        start_voting_date: Votació a partir de
+        view_results: Veure resultats
+      finished:
+        past_consultations: Multiconsultes anteriors
+        active_consultations: Multiconsultes actives
       consultations:
         orders:
           label: 'Ordenar mlticonsultes per:'
@@ -209,8 +213,6 @@ ca:
           recent: Més recent
       highlighted_questions:
         title: Consultes de %{scope_name}
-      finished_consultations:
-        title: Multiconsultes anteriors
       regular_questions:
         title: Altres consultes
       question:
