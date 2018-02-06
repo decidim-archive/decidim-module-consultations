@@ -1,11 +1,11 @@
 <% if consultation.regular_questions.any? %>
-  <section  id="regular-questions" class="row section">
-    <h4 class=section-heading>
+  <section id="regular-questions" class="row section">
+    <h2 class=section-heading>
       <%= t "consultations.regular_questions.title", scope: "decidim"  %>
-    </h4>
+    </h2>
 
     <% consultation.regular_questions.each do |scope_id, questions| %>
-      <h5 class="question-group-heading"><%= translated_attribute questions.first.scope.name %></h5>
+      <h3 class="heading6"><%= translated_attribute questions.first.scope.name %></h3>
       <% questions.each do |question| %>
         <%= render partial: "question", locals: { question: question } %>
       <% end %>
