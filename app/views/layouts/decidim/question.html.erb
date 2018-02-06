@@ -1,12 +1,3 @@
-<% add_decidim_meta_tags({
-  image_url: current_participatory_space.hero_image_url,
-  description: translated_attribute(current_participatory_space.question_context),
-  title: translated_attribute(current_participatory_space.title),
-  url: decidim_consultations.question_url(current_participatory_space),
-  twitter_handler: current_organization.twitter_handler
-}) %>
-<% provide :meta_image_url, current_participatory_space.hero_image_url %>
-
 <%= render "layouts/decidim/application" do %>
   <div class="wrapper">
     <%= render partial: "layouts/decidim/question_header", locals: { question: current_participatory_space } %>
@@ -21,6 +12,7 @@
       </div>
     </div>
   <% end %>
+
 
   <%= javascript_include_tag "decidim/consultations/social_share" %>
   <%= stylesheet_link_tag "decidim/consultations/social_share" %>
