@@ -1,12 +1,15 @@
-<%= render partial: "right_column", locals: { question: current_question } %>
-<div class="columns mediumlarge-8 mediumlarge-pull-4">
-  <div class="section">
-    <div class="row column">
-      <%= decidim_sanitize translated_attribute current_question.question_context %>
-    </div>
-  </div>
+<div class="row column">
+  <div class="row">
+    <div class="columns medium-7 mediumlarge-8">
+      <div class="section">
+        <%= decidim_sanitize translated_attribute current_question.question_context %>
+      </div>
 
-  <%= attachments_for current_question %>
+      <%= attachments_for current_question %>
+    </div>
+
+    <%= render partial: "right_column", locals: { question: current_question } %>
+  </div>
 </div>
 
 <%= comments_for current_question if current_question.published? %>

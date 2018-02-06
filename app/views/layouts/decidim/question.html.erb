@@ -10,9 +10,7 @@
 <%= render "layouts/decidim/application" do %>
   <div class="wrapper">
     <%= render partial: "layouts/decidim/question_header", locals: { question: current_participatory_space } %>
-    <div class=row>
-      <%= yield %>
-    </div>
+    <%= yield %>
   </div>
   <% if content_for? :expanded %>
     <div class="expanded">
