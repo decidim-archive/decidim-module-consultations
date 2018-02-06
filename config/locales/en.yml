@@ -46,7 +46,7 @@ en:
         question:
           attachments: Attachments
       consultation_voting_data:
-        start_voting_date: Voting period starts on
+        start_voting_date: Voting from
       consultation_header:
         consultation_menu_item: Consultation
         unfold: Unfold
