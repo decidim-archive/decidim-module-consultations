@@ -16,8 +16,7 @@ module Decidim
                  foreign_key: "decidim_consultations_response_id",
                  class_name: "Decidim::Consultations::Response",
                  inverse_of: :votes,
-                 counter_cache: :votes_count,
-                 optional: true
+                 counter_cache: :votes_count
 
       validates :author, uniqueness: { scope: [:decidim_user_group_id, :question] }
 

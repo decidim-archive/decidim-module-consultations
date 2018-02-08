@@ -42,6 +42,13 @@ module Decidim
             question.reload
           end.to change { question.votes_count }.by(1)
         end
+
+        it "increases the response counter by one" do
+          expect do
+            subject.call
+            response.reload
+          end.to change { response.votes_count }.by(1)
+        end
       end
 
       context "when user tries to vote twice" do
