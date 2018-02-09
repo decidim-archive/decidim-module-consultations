@@ -189,6 +189,8 @@ ca:
         title:
           one: "%{count} multiconsulta"
           other: "%{count} multiconsultes"
+      consultation_card:
+        view_results: Veure els resultats
       filters_small_view:
         filter: Filtra
         unfold: Desplegar

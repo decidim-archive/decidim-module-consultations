@@ -44,7 +44,7 @@ describe "Consultations", type: :system do
         expect(page).to have_selector("ul[data-dropdown-menu$=dropdown-menu]", text: "Random")
       end
 
-      expect(page).to have_selector(".consultations-banner", count: 2)
+      expect(page).to have_selector(".card--process", count: 2)
       expect(page).to have_content(translated(consultations.first.title))
       expect(page).to have_content(translated(consultations.last.title))
     end
