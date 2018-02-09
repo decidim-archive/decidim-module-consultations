@@ -10,7 +10,6 @@ module Decidim
       include Decidim::Comments::Commentable
       include Decidim::Followable
       include Decidim::HasAttachments
-      include Decidim::Consultations::OverrideCategorization
 
       belongs_to :consultation,
                  foreign_key: "decidim_consultation_id",
@@ -33,6 +32,12 @@ module Decidim
                class_name: "Decidim::Consultations::Response",
                inverse_of: :question,
                dependent: :destroy
+
+      has_many :categories,
+               foreign_key: "decidim_participatory_space_id",
+               foreign_type: "decidim_participatory_space_type",
+               dependent: :destroy,
+               as: :participatory_space
 
       mount_uploader :hero_image, Decidim::HeroImageUploader
       mount_uploader :banner_image, Decidim::BannerImageUploader
