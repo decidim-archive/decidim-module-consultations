@@ -188,6 +188,8 @@ es:
         title:
           one: "%{count} multiconsulta"
           other: "%{count} multiconsultas"
+      consultation_card:
+        view_results: Ver los resultados
       filters_small_view:
         filter: Filtrar
         unfold: Desplegar

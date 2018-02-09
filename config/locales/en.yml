@@ -188,6 +188,8 @@ en:
         title:
           one: "%{count} consultation"
           other: "%{count} consultations"
+      consultation_card:
+        view_results: View results
       filters_small_view:
         filter: Filter
         unfold: Unfold
