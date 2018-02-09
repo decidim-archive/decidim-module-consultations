@@ -69,23 +69,6 @@ module Decidim
         end
       end
 
-      # TODO: Redesign active consultation partial.
-      # initializer "decidim_consultations.view_hooks" do
-      #   Decidim.view_hooks.register(:highlighted_elements, priority: Decidim::ViewHooks::HIGH_PRIORITY) do |view_context|
-      #     consultations = OrganizationActiveConsultations
-      #                     .for(view_context.current_organization)
-      #                     .where(enable_highlighted_banner: true)
-      #     next unless consultations.any?
-      #
-      #     view_context.render(
-      #       partial: "decidim/consultations/pages/home/active_consultation",
-      #       locals: {
-      #         consultation: consultations.first
-      #       }
-      #     )
-      #   end
-      # end
-
       initializer "decidim_consultations.menu" do
         Decidim.menu :menu do |menu|
           menu.item I18n.t("menu.consultations", scope: "decidim"),

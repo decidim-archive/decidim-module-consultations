@@ -43,6 +43,11 @@ module Decidim
       delegate :end_voting_date, to: :consultation
       delegate :results_published?, to: :consultation
 
+      # Sorted results for the given question.
+      def sorted_results
+        responses.order(votes_count: :desc)
+      end
+
       def most_voted_response
         @most_voted_response ||= responses.order(votes_count: :desc).first
       end
