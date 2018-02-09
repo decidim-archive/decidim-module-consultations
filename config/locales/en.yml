@@ -220,11 +220,6 @@ en:
         votes_out_of:
           one: vote out of
           other: votes out of
-      pages:
-        home:
-          active_consultation:
-            take_part: Take part
-            button_info: "Voting: %{date}"
     question_votes:
       create:
         error: There have been errors when voting the question

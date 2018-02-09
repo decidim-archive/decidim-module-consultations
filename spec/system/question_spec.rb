@@ -39,6 +39,8 @@ describe "Question", type: :system do
   context "when finished consultations" do
     context "and published results" do
       let(:consultation) { create :consultation, :finished, :published, :published_results, organization: organization }
+      let(:response) { create :response, question: question }
+      let!(:vote) { create :vote, question: question, response: response }
 
       before do
         switch_to_host(organization.host)
@@ -47,6 +49,8 @@ describe "Question", type: :system do
 
       it "Has the results" do
         expect(page).to have_content("RESULTS")
+        expect(page).to have_i18n_content(response.title)
+        expect(page).to have_content(response.votes_count)
       end
     end
   end

@@ -37,11 +37,6 @@ module Decidim
           @current_question ||= detect_question
         end
 
-        # Sorted results for the given question.
-        def sorted_results
-          current_question.responses.order(votes_count: :desc)
-        end
-
         # Public: Finds the current Consultation given this controller's
         # context.
         #

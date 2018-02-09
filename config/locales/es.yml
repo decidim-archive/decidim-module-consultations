@@ -220,11 +220,6 @@ es:
         votes_out_of:
           one: voto de
           other: votos de
-      pages:
-        home:
-          active_consultation:
-            take_part: Participa
-            button_info: "Ratificaciónes: %{date}"
     question_votes:
       create:
         error: Ha habido errores al votar la pregunta

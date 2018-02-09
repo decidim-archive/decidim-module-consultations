@@ -221,11 +221,6 @@ ca:
         votes_out_of:
           one: vot de
           other: vots de
-      pages:
-        home:
-          active_consultation:
-            take_part: Participa
-            button_info: "Ratificacións: %{date}"
     question_votes:
       create:
         error: Hi ha hagut errors en votar la pregunta
