@@ -7,7 +7,7 @@
     </h2>
 
     <% consultation.highlighted_questions.each do |question| %>
-      <%= render partial: "question", locals: { question: question } %>
+      <%= render partial: "decidim/consultations/consultations/question", locals: { question: question } %>
     <% end %>
   </div>
 <% end %>

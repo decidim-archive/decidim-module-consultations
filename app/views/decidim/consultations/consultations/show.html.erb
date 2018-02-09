@@ -1,15 +1,4 @@
-<div class="row section" id="consultation-details">
-  <div class="columns medium-6 large-5 large-push-1">
-    <p class="lead"><%= decidim_sanitize translated_attribute current_consultation.description %></p>
-  </div>
-  <div class="columns medium-6 large-5 large-pull-1">
-    <div class="embed-container">
-      <iframe src="<%= current_consultation.introductory_video_url %>" frameborder=0 allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-</div>
-
+<%= render partial: "consultation_details", locals: { consultation: current_consultation } %>
 <%= render partial: "highlighted_questions", locals: { consultation: current_consultation } %>
 <%= render partial: "regular_questions", locals: { consultation: current_consultation } %>
 
