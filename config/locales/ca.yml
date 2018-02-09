@@ -44,6 +44,7 @@ ca:
     admin:
       question:
         attachments: Arxius adjunts
+        categories: Categories
     decidim:
       consultation_vote_data:
         start_voting_date: El període de votació comença el

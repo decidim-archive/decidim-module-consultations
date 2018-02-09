@@ -22,6 +22,7 @@ module Decidim
         end
 
         scope "/questions/:question_slug" do
+          resources :categories
           resources :features do
             resource :permissions, controller: "feature_permissions"
             member do
