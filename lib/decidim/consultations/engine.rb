@@ -23,6 +23,7 @@ module Decidim
 
         resources :consultations, only: [:index, :show], param: :slug, path: "consultations" do
           get "finished", on: :collection
+          resource :consultation_widget, only: :show, path: "embed"
 
           resources :questions, only: [:show], param: :slug, path: "questions", shallow: true do
             get "technical_info", on: :member

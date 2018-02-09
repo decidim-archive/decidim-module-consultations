@@ -19,6 +19,7 @@ module Decidim
       helper Decidim::SanitizeHelper
       helper Decidim::PaginateHelper
       helper Decidim::IconHelper
+      helper Decidim::WidgetUrlsHelper
 
       def index
         authorize! :read, Consultation
