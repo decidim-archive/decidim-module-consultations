@@ -12,7 +12,6 @@ en:
         start_voting_date: Start date
         end_voting_date: End date
         decidim_highlighted_scope_id: Highlighted scope
-        enable_highlighted_banner: Highlighted at home
       question:
         slug: URL slug
         title: Title

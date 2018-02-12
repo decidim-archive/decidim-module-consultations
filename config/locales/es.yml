@@ -12,7 +12,6 @@ es:
         start_voting_date: Fecha de inicio
         end_voting_date: Fecha de finalización
         decidim_highlighted_scope_id: Ámbito destacado
-        enable_highlighted_banner: Destacado en portada
       question:
         slug: Texto corto de URL
         title: Título

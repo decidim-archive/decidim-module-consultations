@@ -24,7 +24,6 @@ FactoryBot.define do
     end_voting_date { Time.zone.today + 1.month }
     introductory_video_url "https://www.youtube.com/embed/LakKJZjKkRM"
     decidim_highlighted_scope_id { create(:scope, organization: organization).id }
-    enable_highlighted_banner true
     results_published_at nil
 
     trait :unpublished do
@@ -56,14 +55,6 @@ FactoryBot.define do
     trait :finished do
       start_voting_date { Time.zone.today - 7.days - 1.month }
       end_voting_date { Time.zone.today - 7.days }
-    end
-
-    trait :banner_disabled do
-      enable_highlighted_banner false
-    end
-
-    trait :banner_enabled do
-      enable_highlighted_banner true
     end
   end
 

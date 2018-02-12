@@ -16,7 +16,7 @@ module Decidim
         # GET /admin/consultations/new
         def new
           authorize! :new, Consultation
-          @form = consultation_form.instance(enable_highlighted_banner: true)
+          @form = consultation_form.instance
         end
 
         # POST /admin/consultations
