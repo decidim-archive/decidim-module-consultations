@@ -12,7 +12,6 @@ ca:
         start_voting_date: Data d'inici
         end_voting_date: Data de finalització
         decidim_highlighted_scope_id: Àmbit destacat
-        enable_highlighted_banner: Destacat en portada
       question:
         slug: Nom curt d'URL
         title: Títol

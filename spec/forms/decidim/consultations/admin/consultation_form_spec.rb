@@ -52,8 +52,7 @@ module Decidim
               "slug" => slug,
               "decidim_highlighted_scope_id" => scope&.id,
               "start_voting_date" => start_voting_date,
-              "end_voting_date" => end_voting_date,
-              "enable_highlighted_banner" => true
+              "end_voting_date" => end_voting_date
             }
           }
         end
