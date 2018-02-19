@@ -73,6 +73,7 @@ module Decidim
         let(:origin_url) { nil }
         let(:external_voting) { false }
         let(:i_frame_url) { nil }
+        let(:order) { 1 }
         let(:attributes) do
           {
             "question" => {
@@ -103,7 +104,8 @@ module Decidim
               "origin_title_ca" => origin_title[:ca],
               "origin_url" => origin_url,
               "external_voting" => external_voting,
-              "i_frame_url" => i_frame_url
+              "i_frame_url" => i_frame_url,
+              "order": order
             }
           }
         end
@@ -126,7 +128,7 @@ module Decidim
             it { is_expected.not_to be_valid }
           end
 
-          context "it hasn't the expected type" do
+          context "and it hasn't the expected type" do
             let(:banner_image) { Decidim::Dev.test_file("Exampledocument.pdf", "application/pdf") }
 
             it { is_expected.not_to be_valid }
@@ -143,7 +145,7 @@ module Decidim
             it { is_expected.not_to be_valid }
           end
 
-          context "it hasn't the expected type" do
+          context "and it hasn't the expected type" do
             let(:hero_image) { Decidim::Dev.test_file("Exampledocument.pdf", "application/pdf") }
 
             it { is_expected.not_to be_valid }
@@ -269,6 +271,12 @@ module Decidim
 
             it { is_expected.to be_invalid }
           end
+        end
+
+        context "when order is nil" do
+          let(:order) { nil }
+
+          it { is_expected.to be_valid }
         end
       end
     end

@@ -27,6 +27,7 @@ module Decidim
         attribute :decidim_scope_id, Integer
         attribute :external_voting, Boolean, default: false
         attribute :i_frame_url, String
+        attribute :order, Integer
 
         validates :slug, presence: true, format: { with: Decidim::Consultations::Question.slug_format }
         validates :title, :promoter_group, :participatory_scope, :subtitle, :what_is_decided, translatable_presence: true
@@ -36,6 +37,7 @@ module Decidim
         validate :slug_uniqueness
         validates :origin_scope, :origin_title, translatable_presence: true, if: :has_origin_data?
         validates :i_frame_url, presence: true, if: :external_voting
+        validates :order, numericality: { only_integer: true, allow_nil: true, allow_blank: true }
 
         private
 

@@ -42,7 +42,7 @@ module Decidim
       mount_uploader :hero_image, Decidim::HeroImageUploader
       mount_uploader :banner_image, Decidim::BannerImageUploader
 
-      scope :order_by_most_recent, -> { order(created_at: :desc) }
+      default_scope { order(order: :asc) }
 
       delegate :start_voting_date, to: :consultation
       delegate :end_voting_date, to: :consultation

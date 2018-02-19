@@ -73,6 +73,9 @@ FactoryBot.define do
     hero_image { Decidim::Dev.test_file("city.jpeg", "image/jpeg") }
     banner_image { Decidim::Dev.test_file("city2.jpeg", "image/jpeg") }
     external_voting false
+    sequence :order do |n|
+      n
+    end
 
     trait :unpublished do
       published_at nil
