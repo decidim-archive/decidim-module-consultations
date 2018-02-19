@@ -33,7 +33,8 @@ module Decidim
               banner_image: question.banner_image,
               hero_image: question.hero_image,
               hashtag: question.hashtag,
-              decidim_scope_id: question.scope.id
+              decidim_scope_id: question.scope.id,
+              order: question.order
             }
           }
         end

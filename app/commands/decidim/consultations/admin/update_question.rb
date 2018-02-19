@@ -62,7 +62,8 @@ module Decidim
             origin_title: form.origin_title,
             origin_url: form.origin_url,
             external_voting: form.external_voting,
-            i_frame_url: form.i_frame_url
+            i_frame_url: form.i_frame_url,
+            order: form.order
           }
         end
       end

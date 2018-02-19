@@ -26,7 +26,8 @@ module Decidim
               decidim_scope_id: scope.id,
               banner_image: banner_image,
               hero_image: hero_image,
-              external_voting: false
+              external_voting: false,
+              order: 1
             }
           }
         end
