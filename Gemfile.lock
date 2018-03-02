@@ -583,11 +583,14 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  decidim-comments
   decidim-consultations!
   decidim-dev (~> 0.9.0)
+  decidim-verifications
   faker
   letter_opener_web
   puma
+  social-share-button
 
 RUBY VERSION
    ruby 2.5.0p0
