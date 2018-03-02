@@ -15,6 +15,7 @@ gemspec
 # your gem to rubygems.org.
 gem "decidim-comments"
 gem "decidim-verifications"
+gem "searchlight"
 gem "social-share-button"
 
 group :test, :development do

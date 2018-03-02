@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "decidim-admin", "~> #{s.version}"
   s.add_dependency "decidim-comments", "~> #{s.version}"
   s.add_dependency "decidim-core", "~> #{s.version}"
+  s.add_dependency "searchlight"
 
   s.add_development_dependency "decidim-dev", "~> #{s.version}"
 end
