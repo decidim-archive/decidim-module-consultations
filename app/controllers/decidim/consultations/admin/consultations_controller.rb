@@ -5,7 +5,7 @@ module Decidim
     module Admin
       # Controller in charge of managing consultation related requests
       class ConsultationsController < Decidim::Consultations::Admin::ApplicationController
-        helper_method :current_consultation
+        helper_method :current_consultation, :current_participatory_space
 
         # GET /admin/consultations
         def index
@@ -80,6 +80,8 @@ module Decidim
             collection.where(id: params[:slug])
           ).first
         end
+
+        alias current_participatory_space current_consultation
 
         def collection
           @collection ||= OrganizationConsultations.new(current_user.organization).query
