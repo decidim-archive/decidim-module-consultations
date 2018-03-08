@@ -8,6 +8,7 @@ describe "question attachments", type: :system do
   let(:question) { create(:question, consultation: consultation) }
 
   let(:attached_to) { question }
+  let(:attachment_collection) { create(:attachment_collection, collection_for: question) }
 
   before do
     switch_to_host(organization.host)

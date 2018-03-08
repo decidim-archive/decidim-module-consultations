@@ -13,7 +13,7 @@ module Decidim
       helper Decidim::IconHelper
       helper Decidim::Comments::CommentsHelper
       helper Decidim::AttachmentsHelper
-      helper Decidim::FeatureReferenceHelper
+      helper Decidim::ResourceReferenceHelper
 
       def show
         authorize! :read, current_question

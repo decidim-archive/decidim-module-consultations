@@ -10,6 +10,7 @@ module Decidim
       include Decidim::Comments::Commentable
       include Decidim::Followable
       include Decidim::HasAttachments
+      include Decidim::HasAttachmentCollections
 
       belongs_to :consultation,
                  foreign_key: "decidim_consultation_id",
