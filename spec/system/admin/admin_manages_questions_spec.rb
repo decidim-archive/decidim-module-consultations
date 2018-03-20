@@ -13,7 +13,7 @@ describe "Admin manages questions", type: :system do
       click_link("New")
 
       within ".new_question" do
-        fill_in_i18n(
+        fill_in_i18n_editor(
           :question_title,
           "#question-title-tabs",
           en: "My question",
@@ -82,13 +82,6 @@ describe "Admin manages questions", type: :system do
       within ".new_question" do
         fill_in :question_slug, with: "slug"
         fill_in_i18n(
-          :question_title,
-          "#question-title-tabs",
-          en: "",
-          es: "",
-          ca: ""
-        )
-        fill_in_i18n(
           :question_subtitle,
           "#question-subtitle-tabs",
           en: "Subtitle",
@@ -141,7 +134,7 @@ describe "Admin manages questions", type: :system do
       visit decidim_admin_consultations.consultation_questions_path(consultation)
       click_link translated(question.title)
 
-      fill_in_i18n(
+      fill_in_i18n_editor(
         :question_title,
         "#question-title-tabs",
         en: "My new title",
@@ -157,7 +150,7 @@ describe "Admin manages questions", type: :system do
       expect(page).to have_admin_callout("successfully")
 
       within ".container" do
-        expect(page).to have_selector("input[value='My new title']")
+        expect(page).to have_i18n_content("My new title")
         expect(page).not_to have_css("img[src*='#{image2_filename}']")
         expect(page).to have_css("img[src*='#{image3_filename}']")
       end
@@ -172,8 +165,8 @@ describe "Admin manages questions", type: :system do
       click_link translated(question.title)
 
       fill_in_i18n(
-        :question_title,
-        "#question-title-tabs",
+        :question_subtitle,
+        "#question-subtitle-tabs",
         en: "",
         es: "",
         ca: ""
