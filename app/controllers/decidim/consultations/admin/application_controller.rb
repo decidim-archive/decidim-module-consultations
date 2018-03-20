@@ -6,6 +6,8 @@ module Decidim
       # The main admin application controller for consultations
       class ApplicationController < Decidim::Admin::ApplicationController
         layout "decidim/admin/consultations"
+
+        helper Decidim::SanitizeHelper
       end
     end
   end
