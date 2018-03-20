@@ -16,6 +16,7 @@ module Decidim
         attribute :banner_image
         attribute :remove_banner_image
         attribute :introductory_video_url, String
+        attribute :introductory_image, String
         attribute :decidim_highlighted_scope_id, Integer
         attribute :start_voting_date, Date
         attribute :end_voting_date, Date
@@ -28,6 +29,7 @@ module Decidim
         validate :slug_uniqueness
 
         validates :banner_image, file_size: { less_than_or_equal_to: ->(_record) { Decidim.maximum_attachment_size } }, file_content_type: { allow: ["image/jpeg", "image/png"] }
+        validates :introductory_image, file_size: { less_than_or_equal_to: ->(_record) { Decidim.maximum_attachment_size } }, file_content_type: { allow: ["image/jpeg", "image/png"] }
 
         def highlighted_scope
           @scope ||= current_organization.scopes.where(id: decidim_highlighted_scope_id).first
