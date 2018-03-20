@@ -25,6 +25,7 @@ module Decidim
     validates :slug, presence: true, format: { with: Decidim::Consultation.slug_format }
 
     mount_uploader :banner_image, Decidim::BannerImageUploader
+    mount_uploader :introductory_image, Decidim::BannerImageUploader
 
     scope :upcoming, -> { published.where("start_voting_date > ?", Time.now.utc) }
     scope :active, lambda {

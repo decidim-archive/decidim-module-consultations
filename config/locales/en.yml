@@ -9,6 +9,7 @@ en:
         description: Description
         banner_image: Banner image
         introductory_video_url: Introductory video URL
+        introductory_image: Introductory image
         start_voting_date: Start date
         end_voting_date: End date
         decidim_highlighted_scope_id: Highlighted scope

@@ -9,6 +9,7 @@ es:
         description: Descripción
         banner_image: Imagen de banner
         introductory_video_url: URL del vídeo introductorio
+        introductory_image: Imagen introductoria
         start_voting_date: Fecha de inicio
         end_voting_date: Fecha de finalización
         decidim_highlighted_scope_id: Ámbito destacado
