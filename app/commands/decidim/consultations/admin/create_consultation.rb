@@ -27,6 +27,7 @@ module Decidim
             broadcast(:ok, consultation)
           else
             form.errors.add(:banner_image, consultation.errors[:banner_image]) if consultation.errors.include? :banner_image
+            form.errors.add(:introductory_image, consultation.errors[:introductory_image]) if consultation.errors.include? :introductory_image
             broadcast(:invalid)
           end
         end
@@ -46,7 +47,8 @@ module Decidim
             highlighted_scope: form.highlighted_scope,
             introductory_video_url: form.introductory_video_url,
             start_voting_date: form.start_voting_date,
-            end_voting_date: form.end_voting_date
+            end_voting_date: form.end_voting_date,
+            introductory_image: form.introductory_image
           )
 
           return consultation unless consultation.valid?

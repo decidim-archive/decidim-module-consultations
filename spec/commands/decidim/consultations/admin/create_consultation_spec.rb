@@ -28,6 +28,7 @@ module Decidim
             end_voting_date: end_voting_date,
             introductory_video_url: nil,
             current_organization: organization,
+            introductory_image: nil,
             errors: errors
           )
         end

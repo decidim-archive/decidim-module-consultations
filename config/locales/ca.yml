@@ -9,6 +9,7 @@ ca:
         description: Descripció
         banner_image: Imatge de bàner
         introductory_video_url: URL del vídeo introductori
+        introductory_image: Imatge introductoria
         start_voting_date: Data d'inici
         end_voting_date: Data de finalització
         decidim_highlighted_scope_id: Àmbit destacat
