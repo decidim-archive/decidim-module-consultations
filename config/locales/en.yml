@@ -55,8 +55,7 @@ en:
         back_to_consultation: See all consultations
       question_features:
         unfold: Unfold
-        question_menu_item: Information
-        technical_info_menu_item: Technical information
+        question_menu_item: The question
   decidim:
     admin:
       actions:
@@ -251,3 +250,5 @@ en:
         confirm: Confirm
       results:
         title: Results
+      show:
+        read_more: Read more

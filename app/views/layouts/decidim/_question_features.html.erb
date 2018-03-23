@@ -23,16 +23,6 @@
             <%= t ".question_menu_item" %>
           <% end %>
         </li>
-        <li class="<%= 'is-active' if is_active_link?(decidim_consultations.technical_info_question_path(question), :exclusive) %>">
-          <%= active_link_to decidim_consultations.technical_info_question_path(question),
-                             active: :exclusive,
-                             class: "process-nav__link",
-                             class_active: "is-active" do %>
-            <%= external_icon "decidim/pages/icon.svg" %>
-            <%= t ".technical_info_menu_item" %>
-          <% end %>
-        </li>
-
         <% question.features.each do |feature| %>
           <% if feature.published? || feature == self.try(:current_feature) %>
             <li class="<%= "is-active" if is_active_link?(main_feature_path(feature), :inclusive) %>">

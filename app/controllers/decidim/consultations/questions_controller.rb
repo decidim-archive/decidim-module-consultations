@@ -18,10 +18,6 @@ module Decidim
       def show
         authorize! :read, current_question
       end
-
-      def technical_info
-        authorize! :read, current_question
-      end
     end
   end
 end
