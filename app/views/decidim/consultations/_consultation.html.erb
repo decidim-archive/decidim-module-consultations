@@ -14,14 +14,14 @@
           <div class="consultations-header__extra">
             <div>
               <% if consultation.active? %>
-                <span class="consultations-header__extra-title"><%=t ".start_voting_date" %></span>
+                <span class="consultations-header__extra-title"><%= t ".start_voting_date" %></span>
                 <span class="consultations-header__extra-date">
-                  <%=l consultation.start_voting_date %>
+                  <%= l consultation.start_voting_date %>
                 </span>
               <% end %>
 
               <% if consultation.finished? %>
-                <span class="button consultations-banner__action"><%=t ".view_results" %></span>
+                <span class="button consultations-banner__action"><%= t ".view_results" %></span>
               <% end %>
             </div>
           </div>

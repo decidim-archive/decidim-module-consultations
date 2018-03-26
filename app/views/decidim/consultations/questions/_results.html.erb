@@ -1,6 +1,6 @@
 <% if question.sorted_results.any? %>
   <div class=row>
-    <h2 class=section-heading><%=t "questions.results.title", scope: "decidim" %></h2>
+    <h2 class=section-heading><%= t "questions.results.title", scope: "decidim" %></h2>
     <div class="card card--list">
       <% question.sorted_results.each do |response| %>
         <div class=card--list__item>

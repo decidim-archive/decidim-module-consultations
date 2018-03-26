@@ -18,13 +18,8 @@ describe "Question", type: :system do
       expect(page).to have_i18n_content(question.scope.name)
       expect(page).to have_i18n_content(question.participatory_scope)
       expect(page).to have_i18n_content(question.question_context)
-    end
-  end
 
-  context "when shows question information" do
-    before do
-      switch_to_host(organization.host)
-      visit decidim_consultations.technical_info_question_path(question)
+      expect(page).not_to have_i18n_content(question.what_is_decided)
     end
 
     it "Shows the technical data" do
@@ -32,6 +27,9 @@ describe "Question", type: :system do
       expect(page).to have_i18n_content(question.scope.name)
       expect(page).to have_i18n_content(question.participatory_scope)
       expect(page).to have_i18n_content(question.question_context)
+
+      click_button("Read more")
+
       expect(page).to have_i18n_content(question.what_is_decided)
     end
   end

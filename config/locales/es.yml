@@ -55,8 +55,7 @@ es:
         back_to_consultation: Ver todas las consultas
       question_features:
         unfold: Desplega
-        question_menu_item: Información
-        technical_info_menu_item: Ficha técnica
+        question_menu_item: La pregunta
   decidim:
     admin:
       actions:
@@ -251,3 +250,5 @@ es:
         confirm: Confirmar
       results:
         title: Resultados
+      show:
+        read_more: Leer mas

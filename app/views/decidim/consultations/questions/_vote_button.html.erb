@@ -9,7 +9,7 @@
                                     id: "vote_button" do %>
         <div class="vote-button-caption"><%= t("questions.vote_button.vote", scope: "decidim") %></div>
         <div>
-          <%=t "questions.vote_button.starting_from",
+          <%= t "questions.vote_button.starting_from",
                scope: "decidim",
                date: l(question.start_voting_date) %>
         </div>
@@ -51,7 +51,7 @@
 
       <% if can? :vote, question %>
         <%= link_to "#", class: "card__button button expanded", id: "vote_button" do %>
-          <div class="vote-button-caption"><%=t "questions.vote_button.vote", scope: "decidim" %></div>
+          <div class="vote-button-caption"><%= t "questions.vote_button.vote", scope: "decidim" %></div>
         <% end %>
       <% end %>
     <% else %>

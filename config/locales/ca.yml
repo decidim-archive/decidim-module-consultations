@@ -55,8 +55,7 @@ ca:
         back_to_consultation: Veure totes les consultes
       question_features:
         unfold: Desplegar
-        question_menu_item: Informació
-        technical_info_menu_item: Fitxa tècnica
+        question_menu_item: La pregunta
   decidim:
     admin:
       actions:
@@ -252,3 +251,5 @@ ca:
         confirm: Confirmar
       results:
         title: Resultats
+      show:
+        read_more: Llegir mes
