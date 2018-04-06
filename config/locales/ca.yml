@@ -3,122 +3,48 @@ ca:
   activemodel:
     attributes:
       consultation:
-        slug: Nom curt d'URL
-        title: Títol
-        subtitle: Subtítol
-        description: Descripció
         banner_image: Imatge de bàner
-        introductory_video_url: URL del vídeo introductori
-        introductory_image: Imatge introductoria
-        start_voting_date: Data d'inici
-        end_voting_date: Data de finalització
         decidim_highlighted_scope_id: Àmbit destacat
-      question:
+        description: Descripció
+        end_voting_date: Data de finalització
+        introductory_image: Imatge introductoria
+        introductory_video_url: URL del vídeo introductori
         slug: Nom curt d'URL
-        title: Títol
+        start_voting_date: Data d'inici
         subtitle: Subtítol
-        promoter_group: Grup promotor
-        decidim_scope_id: Àrea municipal
-        scope: Àrea municipal
-        participatory_scope: Àmbit participatiu
-        what_is_decided: Què es decideix
-        question_context: Contexte
-        reference: Referència
-        hero_image: Imatge de portada
-        hashtag: Hashtag
+        title: Títol
+      question:
         banner_image: Imatge de bàner
+        decidim_scope_id: Àrea municipal
+        external_voting: Sistema de votació extern
+        hashtag: Hashtag
+        hero_image: Imatge de portada
+        i_frame_url: URL iFrame sistema de votació extern
         origin_scope: Àmbit
         origin_title: Origen
         origin_url: URL Origen
-        external_voting: Sistema de votació extern
-        i_frame_url: URL iFrame sistema de votació extern
+        participatory_scope: Àmbit participatiu
+        promoter_group: Grup promotor
+        question_context: Contexte
+        reference: Referència
+        scope: Àrea municipal
+        slug: Nom curt d'URL
+        subtitle: Subtítol
+        title: Títol
+        vote: Sistema de votació extern
+        what_is_decided: Què es decideix
     errors:
       vote:
         decidim_consultations_response_id:
           not_found: No s'ha trobat la resposta
-  pages:
-    home:
-      statistics:
-        consultations_count: Multiconsultes
-  layouts:
-    admin:
-      question:
-        attachments: Arxius adjunts
-        categories: Categories
-    decidim:
-      consultation_vote_data:
-        start_voting_date: El període de votació comença el
-      consultation_header:
-        consultation_menu_item: Multiconsula
-        unfold: Desplegar
-      question_header:
-        back_to_consultation: Veure totes les consultes
-      question_features:
-        unfold: Desplegar
-        question_menu_item: La pregunta
+  consultations:
+    count:
+      title: Consultes
   decidim:
     admin:
       actions:
         publish_results: Publicar els resultats
         unpublish_results: Despublicar els resultats
-      menu:
-        consultations: Consultes
-        consultations_submenu:
-          info: Informació
-          questions: Preguntes
-        questions_submenu:
-          consultation: Consulta
-          responses: Respostes
-          info: Informació
-          features: Funcionalitats
-      titles:
-        consultations: Consultes
-        questions: Preguntes
-        responses: Respostes
-      models:
-        consultation:
-          name:
-            one: Consulta
-            other: Consultes
-          fields:
-            title: Títol
-            published: Publicada
-            created_at: Data de creació
-        question:
-          name:
-            one: Pregunta
-            other: Preguntes
-          fields:
-            title: Títol
-            published: Publicada
-            created_at: Data de creació
-        response:
-          name:
-            one: Resposta
-            other: Respostes
-          fields:
-            title: Títol
-            created_at: Data de creació
-      consultations:
-        index:
-          not_published: No publicada
-          published: Publicat
-        new:
-          title: Nova consulta
-          create: Crea
-        edit:
-          update: Actualitzar
-        update:
-          error: S'ha produït un error en actualitzar aquesta consulta.
-          success: La consulta s'ha actualitzat correctament.
-        form:
-          title: Informació general
-          slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquesta consulta. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
-        create:
-          error: S'ha produït un error en crear una nova consulta.
-          success: Consulta creada correctament.
-        destroy:
-          success: La consulta s'ha eliminat amb èxit.
       consultation_publications:
         create:
           error: S'ha produït un error en publicar aquesta consulta.
@@ -133,26 +59,62 @@ ca:
         destroy:
           error: S'ha produït un error en despublicar els resultats d'aquesta consulta.
           success: Resultats despublicats amb èxit.
-      questions:
+      consultations:
+        create:
+          error: S'ha produït un error en crear una nova consulta.
+          success: Consulta creada correctament.
+        destroy:
+          success: La consulta s'ha eliminat amb èxit.
+        edit:
+          update: Actualitzar
+        form:
+          slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten
+            a aquesta consulta. Només accepta lletres, números i guions, i ha de començar
+            amb una lletra. Exemple: %{url}'
+          title: Informació general
         index:
           not_published: No publicada
           published: Publicat
         new:
-          title: Nova pregunta
           create: Crea
-        form:
-          title: Informació general
-        create:
-          error: S'ha produït un error en crear una nova pregunta.
-          success: Pregunta creada correctament.
-        edit:
-          update: Actualitzar
+          title: Nova consulta
         update:
-          error: S'ha produït un error en actualitzar aquesta pregunta.
-          success: La pregunta s'ha actualitzat correctament.
-        destroy:
-          success: La pregunta s'ha eliminat amb èxit.
-
+          error: S'ha produït un error en actualitzar aquesta consulta.
+          success: La consulta s'ha actualitzat correctament.
+      menu:
+        consultations: Consultes
+        consultations_submenu:
+          info: Informació
+          questions: Preguntes
+        questions_submenu:
+          consultation: Consulta
+          features: Funcionalitats
+          info: Informació
+          responses: Respostes
+      models:
+        consultation:
+          fields:
+            created_at: Data de creació
+            published: Publicada
+            title: Títol
+          name:
+            one: Consulta
+            other: Consultes
+        question:
+          fields:
+            created_at: Data de creació
+            published: Publicada
+            title: Títol
+          name:
+            one: Pregunta
+            other: Preguntes
+        response:
+          fields:
+            created_at: Data de creació
+            title: Títol
+          name:
+            one: Resposta
+            other: Respostes
       question_publications:
         create:
           error: S'ha produït un error en publicar aquesta pregunta.
@@ -160,96 +122,147 @@ ca:
         destroy:
           error: S'ha produït un error en despublicar aquesta pregunta.
           success: Pregunta despublicada amb èxit.
-      responses:
+      questions:
+        create:
+          error: S'ha produït un error en crear una nova pregunta.
+          success: Pregunta creada correctament.
+        destroy:
+          success: La pregunta s'ha eliminat amb èxit.
+        edit:
+          update: Actualitzar
+        form:
+          title: Informació general
+        index:
+          not_published: No publicada
+          published: Publicat
         new:
-          title: Nova resposta
           create: Crea
+          title: Nova pregunta
+        update:
+          error: S'ha produït un error en actualitzar aquesta pregunta.
+          success: La pregunta s'ha actualitzat correctament.
+      responses:
         create:
           error: S'ha produït un error en crear una nova resposta.
           success: Resposta creada correctament.
+        destroy:
+          error: S'ha produït un error en eliminar la resposta.
+          success: La resposta s'ha eliminat amb èxit.
         edit:
           update: Actualitzar
+        form:
+          title: Informació general
+        new:
+          create: Crea
+          title: Nova resposta
         update:
           error: S'ha produït un error en actualitzar aquesta resposta.
           success: La resposta s'ha actualitzat correctament.
-        form:
-          title: Informació general
-        destroy:
-          success: La resposta s'ha eliminat amb èxit.
-          error: S'ha produït un error en eliminar la resposta.
-    menu:
-      consultations: Multiconsultes
+      titles:
+        consultations: Consultes
+        questions: Preguntes
+        responses: Respostes
     consultations:
-      index:
-        title: Multiconsultes
-      show:
-        see_finished_consultations: Veure consultes anteriors
-      count:
-        title:
-          one: "%{count} multiconsulta"
-          other: "%{count} multiconsultes"
-      consultation_card:
-        view_results: Veure els resultats
-      filters_small_view:
-        filter: Filtra
-        unfold: Desplegar
-        filter_by: Filtrar per
-        close_modal: Tancar finestra
-      filters:
-        search: Cerca
-        state: Estat
-        all: Tots
-        active: Actives
-        upcoming: Properes
-        finished: Finalitzades
       consultation:
         start_voting_date: Votació a partir de
         view_results: Veure resultats
-      finished:
-        past_consultations: Multiconsultes anteriors
-        active_consultations: Multiconsultes actives
+      consultation_card:
+        view_results: Veure els resultats
       consultations:
         orders:
           label: 'Ordenar mlticonsultes per:'
           random: Aleatori
           recent: Més recent
+      count:
+        title:
+          one: "%{count} multiconsulta"
+          other: "%{count} multiconsultes"
+      filters:
+        active: Actives
+        all: Tots
+        finished: Finalitzades
+        search: Cerca
+        state: Estat
+        upcoming: Properes
+      filters_small_view:
+        close_modal: Tancar finestra
+        filter: Filtra
+        filter_by: Filtrar per
+        unfold: Desplegar
+      finished:
+        active_consultations: Multiconsultes actives
+        past_consultations: Multiconsultes anteriors
       highlighted_questions:
         title: Consultes de %{scope_name}
-      regular_questions:
-        title: Altres consultes
+      index:
+        title: Multiconsultes
       question:
         take_part: Participa
         view_results: Veure els resultats
         votes_out_of:
           one: vot de
           other: vots de
+      question_votes:
+        create:
+          error: Error
+      regular_questions:
+        title: Altres consultes
+      show:
+        see_finished_consultations: Veure consultes anteriors
+    menu:
+      consultations: Multiconsultes
     question_votes:
       create:
         error: Hi ha hagut errors en votar la pregunta
     questions:
+      results:
+        title: Resultats
+      show:
+        read_more: Llegir mes
       statistics:
-        supports_count_title: Adhesions
+        assistants_count_title: Assistents
         comments_count_title: Comentaris
         meetings_count_title: Trobades
-        assistants_count_title: Assistents
+        supports_count_title: Adhesions
       technical_info:
         technical_data: Dades tècniques
       vote_button:
         already_voted: Ja li has donat suport
         already_voted_hover: Retirar suport
-        vote: Donar suport
         starting_from: A partir de %{date}
+        vote: Donar suport
       vote_modal:
-        title: "Multiconsulta: votació de pregunta"
-        contextual_help:
-          Si us plau, selecciona una opció. Tingues en compte que un cop hagis confirmat
-          el teu support, no es podrà canviar.
+        contextual_help: Si us plau, selecciona una opció. Tingues en compte que un
+          cop hagis confirmat el teu support, no es podrà canviar.
+        title: 'Multiconsulta: votació de pregunta'
       vote_modal_confirm:
-        title: "Multiconsulta: confirmar suport"
-        contextual_help: Confirmeu l'opció seleccionada.
         change: Canviar
         confirm: Confirmar
-      results:
-        title: Resultats
-      show:
-        read_more: Llegir mes
+        contextual_help: Confirmeu l'opció seleccionada.
+        title: 'Multiconsulta: confirmar suport'
+  layouts:
+    admin:
+      question:
+        attachments: Arxius adjunts
+        categories: Categories
+    decidim:
+      admin:
+        question:
+          attachments: Fitxers adjunts
+          categories: Categories
+      consultation_header:
+        consultation_menu_item: Multiconsula
+        unfold: Desplegar
+      consultation_vote_data:
+        start_voting_date: El període de votació comença el
+      consultation_voting_data:
+        start_voting_date: Votació des de
+      question_features:
+        question_menu_item: La pregunta
+        unfold: Desplegar
+      question_header:
+        back_to_consultation: Veure totes les consultes
+  pages:
+    home:
+      statistics:
+        consultations_count: Multiconsultes
