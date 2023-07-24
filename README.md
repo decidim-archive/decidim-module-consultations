@@ -12,7 +12,7 @@ If you wish to maintain a new version of this module, you can recover it using g
 
 ```shell
 git clone https://github.com/decidim/decidim
-git restore -s 8b61be03bf46e3a3b0a4100b19de24e7211da42b decidim-consultations
+git restore -s c58b304bef442df8e749e124ad9f43fd9b9dbc68 decidim-consultations
 ```
 
 If you're maintaining a version of this module, please share the URL of the git repository by [creating an issue on the decidim.org website repository](https://github.com/decidim/decidim.org) so that we can update the [Modules page](https://decidim.org/modules).
